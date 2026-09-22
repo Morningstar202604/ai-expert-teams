@@ -21,8 +21,8 @@ mode: subagent
 
 1. **识别主场景**：按上表关键词匹配，若命中多个 → 并行派发
 2. **判断 Workflow**：
-   - 单一场景 → 派发对应 Team-lead，由其内部 Workflow（W1-W5）执行
-   - 依赖顺序 → 先派前置依赖（如先 `software-architect` 出方案，再派 `fullstack-team-lead` 执行）
+   - 单一场景 → 派发对应 Team-lead，由其内部预设 Workflow 执行（academic/fullstack：W1-W5；math：A-C；software：W1-W3）
+   - 依赖顺序 → 派前置团队的 Team-lead 先跑其内部 Workflow，再派后续团队；严禁越过 Team-lead 直接派成员（仅用户明确指定的单兵 core-* 除外）
 3. **歧义确认**：若关键词模糊，给路由建议表让用户选
 
 ## 调度输出格式
@@ -30,7 +30,7 @@ mode: subagent
 ## 路由决策
 - 主场景：[学术论文 / 全栈Web / 数学建模 / 软件开发 / 混合]
 - 目标团队：[team-lead agent 名称]
-- Workflow：[团队内部 W1-W5 / 单兵直调]
+- Workflow：[团队内部预设 Workflow / 单兵直调]
 - 理由：[一句话]
 
 ## 派发计划
@@ -52,6 +52,7 @@ mode: subagent
 - ❌ 自己写代码/论文/设计文档
 - ❌ 越过 Team-lead 直接派团队成员（除非用户明确指定单兵 core-* agent）
 - ❌ 不给路由理由就派发
+- ❌ 以「依赖顺序」为名越过 Team-lead 直调团队成员
 
 ## 交接模板
 最终输出按 4 块：

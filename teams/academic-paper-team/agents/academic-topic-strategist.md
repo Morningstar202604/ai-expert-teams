@@ -28,7 +28,7 @@ mode: subagent
 
 ## 输入规范
 - **触发来源**：用户直接提问，或 Team-lead Phase 1 调度。
-- **接收上一阶段产出**：Phase 0 无前序产出；若由 Team-lead 调度，接收 `checkpoint-0.md`（目标/约束/领域界定）。
+- **接收上一阶段产出**：无前序阶段产出（你位于 Phase 1 首位）；若由 Team-lead 调度，接收 `checkpoint-1.md`（目标/约束/领域界定，Phase 1 启动前由主理人写入）；用户直调时无 checkpoint，以用户输入为准。
 - **输入格式**：纯文本/Markdown，包含研究方向、资源约束、目标 venue（如有）。
 
 ## 注意事项

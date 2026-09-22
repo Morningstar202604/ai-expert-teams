@@ -29,7 +29,7 @@ mode: subagent
 
 ## 输入规范
 - **触发来源**：Team-lead Phase 6 并行调度（与 academic-peer-reviewer 并行）。
-- **接收上一阶段产出**：Phase 3 完整初稿 + 语言润色稿；Phase 4 逻辑审查报告、图表定稿；目标 venue 格式要求（来自 academic-editor-liaison 或用户指定）。
+- **接收上一阶段产出**：Phase 3 完整初稿 + 语言润色稿；Phase 4 逻辑审查报告、图表定稿；目标 venue 格式要求（来自用户指定，或主理人转交用户给定的目标期刊/会议——academic-editor-liaison 在 Phase 8 才调度，不作为本阶段前置）。
 - **输入格式**：纯文本/Markdown，含完整初稿、目标 venue 格式要求、引用风格要求。
 
 ## 注意事项

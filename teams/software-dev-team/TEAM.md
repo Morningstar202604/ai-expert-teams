@@ -5,7 +5,7 @@
 ## 团队定位
 - **输入**：需求文档/用户故事、现有代码库、约束（时间/质量/合规）
 - **输出**：通过评审门禁、测试全绿、可构建可运行的增量交付件
-- **核心价值**：四人小组、严门禁（评审→测试）、主理人只做拆解调度验收
+- **核心价值**：12 人分工、严门禁（评审并行 → tester 收口）、主理人只做拆解调度验收
 
 ## 成员架构（12 人）
 
@@ -28,13 +28,13 @@
 
 | Workflow | 触发场景 | 执行流程 |
 |----------|----------|----------|
-| **W1 全流程** | "新功能从零到交付" | 拆解 → 设计(api/database) → 实现(frontend/backend **并行**) → 部署(devops) → 门禁(security+qa+reviewer+quality **并行**) → 交付 |
-| **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（产出 ADR + api 契约 + 数据模型） |
-| **W3 仅评审+测试** | "对现有代码跑门禁" | reviewer + quality + security + qa **并行**（无实现阶段） |
+| **W1 全流程** | "新功能从零到交付" | 拆解 → 设计(api/database **并行**+architect) → 实现(frontend/backend **并行**) → 门禁(security+qa+reviewer+quality **并行**，reviewer 清零后) → tester（评审通过后收口，全绿才过） → 交付 |
+| **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（architect+api+database 并行，产出 ADR + api 契约 + 数据模型） |
+| **W3 仅评审+测试** | "对现有代码跑门禁" | reviewer + quality + security + qa **并行**（无实现阶段）→ tester（评审通过后收口） |
 
 ## 协作机制
 - **小步提交**：每步可构建可运行，保持主干稳定
-- **门禁规则**：实现完成 → 必经 reviewer（critical/major 清零）→ 再派 tester（全绿才过）
+- **门禁规则（唯一口径）**：实现完成 → 门禁四员（security+qa+reviewer+quality）并行评审 → **reviewer 无 critical/major 且门禁通过后** → 派 software-tester 补测试收口（全绿才过）。W3 无实现阶段，同样按「门禁并行 → tester 收口」顺序。
 - **驳回机制**：同一任务被驳回 2 次以上，停下来重查任务定义或方案
 - **交接模板**：4 块（产出/决策/风险/重点），缺一不可
 
@@ -47,18 +47,18 @@
 ## 入口调用
 ```bash
 # 全流程开发
-opencode agent software-team-lead "帮我实现用户登录模块，从设计到测试全走一遍"
+opencode run --agent software-team-lead "帮我实现用户登录模块，从设计到测试全走一遍"
 
 # 单点需求
-opencode agent software-architect "帮我设计订单模块的接口契约"
-opencode agent software-api-designer "出一份用户模块的 REST API spec"
-opencode agent software-database-engineer "设计订单表结构和索引"
-opencode agent software-frontend-engineer "实现购物车页面"
-opencode agent software-backend-engineer "实现下单接口和鉴权"
-opencode agent software-devops-engineer "写 Dockerfile 和 CI 流水线"
-opencode agent software-security-engineer "对这个模块做安全审查"
-opencode agent software-qa-engineer "设计支付流程的测试策略"
-opencode agent software-reviewer "帮我评审这个 PR"
-opencode agent software-code-quality-reviewer "做一次质量评审"
-opencode agent software-tester "帮我给支付模块补边界测试"
+opencode run --agent software-architect "帮我设计订单模块的接口契约"
+opencode run --agent software-api-designer "出一份用户模块的 REST API spec"
+opencode run --agent software-database-engineer "设计订单表结构和索引"
+opencode run --agent software-frontend-engineer "实现购物车页面"
+opencode run --agent software-backend-engineer "实现下单接口和鉴权"
+opencode run --agent software-devops-engineer "写 Dockerfile 和 CI 流水线"
+opencode run --agent software-security-engineer "对这个模块做安全审查"
+opencode run --agent software-qa-engineer "设计支付流程的测试策略"
+opencode run --agent software-reviewer "帮我评审这个 PR"
+opencode run --agent software-code-quality-reviewer "做一次质量评审"
+opencode run --agent software-tester "帮我给支付模块补边界测试"
 ```

@@ -36,9 +36,9 @@
 |----------|----------|-------------|
 | **W1 全链路** | "写完整论文"、"从选题到投稿" | 1→2→3(并行分支)→4→5→6→7→8 |
 | **W2 快速选题** | "这个题行不行"、"缺什么创新" | 1 |
-| **W3 稿件打磨** | "已有初稿要润色/查逻辑/出图" | 3(并行分支)→4 |
-| **W4 审稿备战** | "拿到审稿意见要回复" | 7→5 |
-| **W5 投稿定稿** | "投哪个刊"、"格式对不对" | 8→6 |
+| **W3 稿件打磨** | "已有初稿要润色/查逻辑/出图" | 3(并行分支)→4（跳过 1-2，须用户确认） |
+| **W4 审稿备战** | "拿到审稿意见要回复" | 5→7（跳过 1-4/6/8，须用户确认） |
+| **W5 投稿定稿** | "投哪个刊"、"格式对不对" | 6→8（跳过 1-5/7，须用户确认） |
 
 ## 协作机制
 - **Checkpoint**：主理人每 Phase 前执行 `git tag phase-N` + `checkpoint-N.md`
@@ -52,10 +52,10 @@
 ## 入口调用
 ```bash
 # 完整论文
-opencode agent academic-team-lead "帮我从选题到投稿写一篇关于 X 的论文"
+opencode run --agent academic-team-lead "帮我从选题到投稿写一篇关于 X 的论文"
 
 # 单点需求
-opencode agent academic-topic-strategist "这个研究方向可行吗"
-opencode agent academic-writer "帮我写 Introduction"
-opencode agent academic-peer-reviewer "帮我模拟审稿一次"
+opencode run --agent academic-topic-strategist "这个研究方向可行吗"
+opencode run --agent academic-writer "帮我写 Introduction"
+opencode run --agent academic-peer-reviewer "帮我模拟审稿一次"
 ```

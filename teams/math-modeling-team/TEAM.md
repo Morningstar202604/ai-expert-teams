@@ -5,7 +5,7 @@
 ## 团队定位
 - **输入**：赛题原文、数据（或无数据）、目标奖项
 - **输出**：查重安全、格式合规、可冲省一/国奖的论文 PDF + 程序 + 数据
-- **核心价值**：三人小组、串行闭环、主理人全程把关一致性与查重
+- **核心价值**：9 人串行闭环、主理人全程把关一致性与查重
 
 ## 成员架构（9 人）
 
@@ -25,9 +25,9 @@
 
 | Workflow | 触发场景 | 执行流程 |
 |----------|----------|----------|
-| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0(data-analyst/literature)→1(modeler)→2(solver/visualizer)→3(writer)→4(reproducibility+qa **并行**) |
-| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡数据→data-analyst；卡文献→literature；卡建模→modeler；卡求解→solver；卡图表→visualizer；卡写作→writer |
-| **C 赛前特训** | "还没比赛，想练真题/补短板" | 指定年份真题跑通 Phase 1→2→3，Phase 4 自查打分 |
+| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0(lead 路线规划+data-analyst/literature **并行**)→1(modeler)→2(solver→visualizer **串行**)→3(writer)→4(reproducibility+qa **并行**) |
+| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡数据→data-analyst；卡文献→literature；卡建模→modeler；卡求解→solver；卡图表→visualizer；卡写作→writer；卡复现→reproducibility；卡终检→qa |
+| **C 赛前特训** | "还没比赛，想练真题/补短板" | 指定年份真题跑通 Phase 0→1→2→3，Phase 4 自查打分 |
 
 ## 关键差异（国赛 vs 美赛）
 - 摘要单独成页、不要求英文摘要
@@ -50,15 +50,15 @@
 ## 入口调用
 ```bash
 # 完整国赛托管
-opencode agent math-team-lead "帮我全程托管这个国赛赛题"
+opencode run --agent math-team-lead "帮我全程托管这个国赛赛题"
 
 # 单点攻坚
-opencode agent math-data-analyst "帮我清洗这份赛题数据并做EDA"
-opencode agent math-literature-researcher "这个题型往届怎么解的"
-opencode agent math-modeler "这个题型选什么模型"
-opencode agent math-solver "帮我把模型落地跑出数值"
-opencode agent math-visualizer "把结果画成国赛规范图表"
-opencode agent math-writer "帮我按国赛格式写论文"
-opencode agent math-reproducibility "生成一键复现脚本并做查重自查"
-opencode agent math-qa-reviewer "提交前做终检"
+opencode run --agent math-data-analyst "帮我清洗这份赛题数据并做EDA"
+opencode run --agent math-literature-researcher "这个题型往届怎么解的"
+opencode run --agent math-modeler "这个题型选什么模型"
+opencode run --agent math-solver "帮我把模型落地跑出数值"
+opencode run --agent math-visualizer "把结果画成国赛规范图表"
+opencode run --agent math-writer "帮我按国赛格式写论文"
+opencode run --agent math-reproducibility "生成一键复现脚本并做查重自查"
+opencode run --agent math-qa-reviewer "提交前做终检"
 ```

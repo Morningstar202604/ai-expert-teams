@@ -5,9 +5,9 @@
 ## 团队定位
 - **输入**：产品需求/模糊想法、约束（团队/预算/时间/合规）、或既有代码库需加固
 - **输出**：可运行、测试通过、CI 绿、有部署脚本、有回滚预案、有文档的完整交付包
-- **核心价值**：15 专家分工协作，Phase 门禁质量把关，主理人只做编排与验收
+- **核心价值**：15 位 fullstack 专家 + 4 位 core 单兵分工协作，Phase 门禁质量把关，主理人只做编排与验收
 
-## 成员架构（15+4 人）
+## 成员架构（19 人）
 
 | 角色 | Agent ID | 核心职责 | 典型触发 |
 |------|----------|----------|----------|
@@ -26,11 +26,12 @@
 | 无障碍专家 | `fullstack-accessibility-expert` | WCAG AA、语义标签、键盘/读屏、对比度 | "无障碍行不行" |
 | 移动端工程师 | `fullstack-mobile-engineer` | 响应式、触摸交互、PWA/离线、设备适配 | "手机上好不好用" |
 | 技术债治理师 | `fullstack-tech-debt-strategist` | 债务盘点、量化、优先级、重构策略、还债节奏 | "哪里最该还债" |
-| 通用架构师 | `core-architect` | 系统架构决策、模块边界、接口契约、扩展性评估 | "架构怎么设计" |
-| 通用代码审查 | `core-code-reviewer` | 正确性缺陷、安全漏洞、性能陷阱、可维护性 | "帮我审代码" |
-| 通用安全审计 | `core-security-auditor` | 注入、硬编码密钥、越权、依赖漏洞、敏感数据泄露 | "安全扫描一下" |
-| 通用测试工程师 | `core-test-engineer` | 单元测试、边界条件、回归测试设计与编写 | "补测试"、"提升覆盖率" |
-| 通用调研员 | `core-researcher` | 技术调研、库选型对比、文档检索与资料汇总 | "查资料"、"做技术对比" |
+| 通用架构师（单兵） | `core-architect` | 只读架构分析、模块边界、接口契约、扩展性评估 | "架构怎么设计"（用户明确指定） |
+| 通用代码审查（单兵） | `core-code-reviewer` | 只读正确性缺陷、安全漏洞、性能陷阱审查 | "帮我审代码"（用户明确指定） |
+| 通用安全审计（单兵） | `core-security-auditor` | 只读注入、硬编码密钥、越权、依赖漏洞扫描 | "安全扫描一下"（用户明确指定） |
+| 通用测试工程师（单兵） | `core-test-engineer` | 单元测试、边界条件、回归测试设计与编写 | "补测试"、"提升覆盖率"（用户明确指定） |
+
+**core-* 单兵与 fullstack-\* 专家的正交边界**：core-* 是用户明确指定时的**只读单兵**（core-architect/core-code-reviewer/core-security-auditor 默认 edit:deny，不做流程编排）；fullstack-* 是主理人 Phase 流程内的**可写交付角色**。两者不互相替代、不并行重复派发同一任务；未被用户点名时，主理人只调度 fullstack-* 成员。`core-researcher` 归属学术团队（见 academic-paper-team）。
 
 ## Workflow 对照
 
@@ -55,10 +56,14 @@
 ## 入口调用
 ```bash
 # 完整 Web 应用
-opencode agent fullstack-team-lead "帮我从零做一个电商 Web 应用上线"
+opencode run --agent fullstack-team-lead "帮我从零做一个电商 Web 应用上线"
 
 # 单点需求
-opencode agent fullstack-architect "微服务还是单体，怎么选型"
-opencode agent fullstack-frontend-engineer "React 组件架构怎么分层"
-opencode agent fullstack-security-engineer "帮我做次安全审计"
+opencode run --agent fullstack-architect "微服务还是单体，怎么选型"
+opencode run --agent fullstack-frontend-engineer "React 组件架构怎么分层"
+opencode run --agent fullstack-security-engineer "帮我做次安全审计"
+
+# 通用单兵（用户明确指定时）
+opencode run --agent core-architect "只做架构分析，不改代码"
+opencode run --agent core-code-reviewer "帮我审这段 diff"
 ```

@@ -1,6 +1,6 @@
 # Agent 系统使用手册 - AGENTS.md
 
-> **4 个专家团队 + 核心单兵** = 37 个 agent。按**场景**组织，每个团队自包含，不拆单兵池。
+> **4 个专家团队 + 核心单兵** = 58 个 agent。按**场景**组织，每个团队自包含，不拆单兵池。
 
 ---
 
@@ -13,6 +13,9 @@
 ```
 
 ### 2. 明确单一场景 → 直调 Team-lead
+```bash
+opencode run --agent <team-lead-id> "任务描述"
+```
 | 场景 | Team-lead | 典型触发 |
 |------|-----------|----------|
 | 学术论文全流程 | `academic-team-lead` | "写论文"、"投稿"、"审稿回复" |
@@ -21,10 +24,13 @@
 | 软件开发交付 | `software-team-lead` | "新功能开发"、"代码评审" |
 
 ### 3. 团队内部单兵 → 直调成员（仅用户明确指定）
+```bash
+opencode run --agent <member-id> "任务描述"
+```
 - 学术团队：`academic-topic-strategist` / `academic-writer` / `academic-peer-reviewer` ...
 - 全栈团队：`fullstack-architect` / `fullstack-frontend-engineer` / `fullstack-security-engineer` ...
-- 数学建模：`math-data-analyst` / `math-literature-researcher` / `math-modeler` / `math-solver` / `math-visualizer` / `math-writer` / `math-reproducibility` / `math-qa-reviewer`
-- 软件开发：`software-architect` / `software-api-designer` / `software-database-engineer` / `software-frontend-engineer` / `software-backend-engineer` / `software-devops-engineer` / `software-security-engineer` / `software-qa-engineer` / `software-reviewer` / `software-code-quality-reviewer` / `software-tester`
+- 数学建模：`math-data-analyst` / `math-literature-researcher` / `math-modeler` / `math-solver` / `math-visualizer` / `math-writer` / `math-reproducibility` / `math-qa-reviewer` / `math-team-lead`
+- 软件开发：`software-architect` / `software-api-designer` / `software-database-engineer` / `software-frontend-engineer` / `software-backend-engineer` / `software-devops-engineer` / `software-security-engineer` / `software-qa-engineer` / `software-reviewer` / `software-code-quality-reviewer` / `software-tester` / `software-team-lead`
 - 通用单兵：`core-architect` / `core-code-reviewer` / `core-security-auditor` / `core-test-engineer` / `core-researcher`
 
 ---
@@ -37,8 +43,8 @@
 | **W1 全链路** | "写完整论文"、"从选题到投稿" | 1→2→3(并行分支)→4→5→6→7→8 |
 | **W2 快速选题** | "这个题行不行"、"缺什么创新" | 1 |
 | **W3 稿件打磨** | "已有初稿要润色/查逻辑/出图" | 3(并行分支)→4 |
-| **W4 审稿备战** | "拿到审稿意见要回复" | 7→5 |
-| **W5 投稿定稿** | "投哪个刊"、"格式对不对" | 8→6 |
+| **W4 审稿备战** | "拿到审稿意见要回复" | 5→7 |
+| **W5 投稿定稿** | "投哪个刊"、"格式对不对" | 6→8 |
 
 ### Fullstack Team（全栈 Web）
 | Workflow | 触发场景 | 执行 Phases |
@@ -52,8 +58,8 @@
 ### Math Modeling Team（数学建模）
 | Workflow | 触发场景 | 执行流程 |
 |----------|----------|----------|
-| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0→1(modeler)→2(solver)→3(writer)→4 |
-| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡建模→modeler；卡求解→solver；卡写作→writer |
+| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0(lead+data/literature)→1(modeler)→2(solver→visualizer)→3(writer)→4(reproducibility+qa **并行**) |
+| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡数据→data-analyst；卡文献→literature；卡建模→modeler；卡求解→solver；卡图表→visualizer；卡写作→writer |
 | **C 赛前特训** | "练真题/补短板" | 指定年份真题跑通 1→2→3，4 自查打分 |
 
 ### Software Dev Team（软件开发）
@@ -61,7 +67,7 @@
 |----------|----------|----------|
 | **W1 全流程** | "新功能从零到交付" | 拆解 → 设计 → 实现 → 评审 → 测试 → 交付 |
 | **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（ADR + 接口契约） |
-| **W3 仅评审+测试** | "对现有代码跑门禁" | 评审 → 测试 |
+| **W3 仅评审+测试** | "对现有代码跑门禁" | reviewer+quality+security+qa **并行** → tester（评审通过后） |
 
 ---
 
@@ -100,19 +106,19 @@
 ├── AGENTS.md                    # 本文档
 ├── teams/
 │   ├── academic-paper-team/
-│   │   ├── agents/ (17+1)       # team-lead + 16 专家 + 1 core
+│   │   ├── agents/ (18)          # team-lead + 16 专家 + 1 core-researcher
 │   │   ├── skills/              # 团队专用 skill
 │   │   └── TEAM.md              # 团队说明
 │   ├── fullstack-web-team/
-│   │   ├── agents/ (15+4)        # team-lead + 14 专家 + 4 core
+│   │   ├── agents/ (19)          # team-lead + 14 fullstack + 4 core
 │   │   ├── skills/
 │   │   └── TEAM.md
 │   ├── math-modeling-team/
-│   │   ├── agents/ (4)          # team-lead + 3 专家
+│   │   ├── agents/ (9)          # team-lead + 8 专家
 │   │   ├── skills/
 │   │   └── TEAM.md
 │   └── software-dev-team/
-│       ├── agents/ (4)          # team-lead + 3 专家
+│       ├── agents/ (12)          # team-lead + 11 专家
 │       ├── skills/
 │       └── TEAM.md
 ```

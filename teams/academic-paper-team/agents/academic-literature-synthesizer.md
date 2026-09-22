@@ -30,7 +30,7 @@ mode: subagent
 
 ## 输入规范
 - **触发来源**：用户直接提问，或 Team-lead Phase 1 并行调度。
-- **接收上一阶段产出**：接收 `checkpoint-0.md`（研究问题/领域/约束）与 academic-topic-strategist 的缺口候选（如有）。
+- **接收上一阶段产出**：接收 `checkpoint-1.md`（研究问题/领域/约束，Phase 1 启动前由主理人写入）；用户直调时无 checkpoint，以用户输入为准；academic-topic-strategist 的缺口候选在并行产出后可选参考，非前置依赖。
 - **输入格式**：纯文本/Markdown，包含研究问题、领域界定、目标数据库（如有）。
 
 ## 注意事项

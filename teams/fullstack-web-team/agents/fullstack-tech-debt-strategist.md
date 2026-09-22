@@ -28,7 +28,7 @@ mode: subagent
 
 ## 输入规范
 - **触发来源**：Team-lead Phase 1 并行调度（与 fullstack-architect 并行）以及 Phase 7 串行调度（最后阶段）。
-- **Phase 1 接收**：`checkpoint-0.md`（需求/约束/现有代码库概览/交付节奏）。
+- **Phase 1 接收**：`checkpoint-1.md`（需求/约束/现有代码库概览/交付节奏，Phase 1 启动前由主理人写入）；用户直调时无 checkpoint，以用户输入为准。
 - **Phase 7 接收**：Phase 6 产出——审查意见、无障碍修复项；Phase 1-6 累积的代码库现状。
 - **输入格式**：纯文本/Markdown，含代码库路径、交付节奏、现有技术债清单（如有）、各 Phase 产出汇总。
 

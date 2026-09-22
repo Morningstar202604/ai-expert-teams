@@ -6,7 +6,7 @@
 ```
 ~/.workbuddy/skills/                                    # 用户级通用 skill
 ~/.config/opencode/skills/                              # opencode 专用 skill
-C:\Users\X1882\.workbuddy\plugins\marketplaces\my-experts\plugins\<team>\skills\  # 团队专用 skill
+teams/<team-name>/skills/                               # 团队专用 skill（相对本目录）
 ```
 
 ---
