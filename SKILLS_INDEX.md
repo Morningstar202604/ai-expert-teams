@@ -43,42 +43,19 @@ teams/<team-name>/skills/                               # 团队专用 skill（�
 
 ---
 
-## 🔢 数学建模团队专用
-
-| Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
-|----------|------|------------|------|--------|
-| `math-modeling-guosai` | 国赛建模/求解/写作资料库 | math-team-lead, math-data-analyst, math-literature-researcher, math-modeler, math-solver, math-visualizer, math-writer, math-reproducibility, math-qa-reviewer | 团队 skills/ | P0 |
-| `math-modeling-selfcheck` | 自检清单（开工前/产出后） | math 团队全部成员 | 团队 skills/ | P0 |
-| 题型/方法/模板/查重类 skill | 细分领域专用 | 对应成员 | 团队 skills/ | P1 |
-
----
-
-## 💻 软件开发团队专用
-
-| Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
-|----------|------|------------|------|--------|
-| `code-reviewer` (内置) | 代码评审规范/模板 | software-reviewer, software-code-quality-reviewer | 团队 skills/ | P1 |
-| `test-case-generator-v2` | 企业级测试用例生成 | software-tester, software-qa-engineer, fullstack-qa-engineer | 用户级/团队 skills/ | P1 |
-| `api-design-reviewer` | REST API 设计评审 | software-api-designer | 用户级 | P1 |
-| `docker-development` / `ci-cd-pipeline-builder` | 容器与流水线 | software-devops-engineer | 用户级 | P1 |
-| `aqg-security-review` / OWASP 类 | 安全审计 | software-security-engineer | 用户级 | P1 |
-| `sql-database-assistant` | SQL/索引/迁移 | software-database-engineer | 用户级 | P1 |
-
----
-
 ## 🔧 通用基础 skill（全团队共用）
 
 | Skill ID | 描述 | 适配团队 | 优先级 |
 |----------|------|----------|--------|
 | `web-search` | 免费联网搜索（SearXNG/DuckDuckGo）、缓存 | 全部 | P0 |
-| `deep-research` | 多轮检索+综合报告、引用溯源 | 学术、全栈、软件开发 | P1 |
-| `security-scan` | 单遍仓库安全审计 | 全栈、软件开发 | P1 |
+| `deep-research` | 多轮检索+综合报告、引用溯源 | 学术、全栈 | P1 |
+| `security-scan` | 单遍仓库安全审计 | 全栈 | P1 |
 | `deep-security-scan` | 多遍深度安全扫描 | 全栈 | P2 |
-| `api-design-reviewer` | REST/GraphQL 设计评审 | 全栈、软件开发 | P1 |
-| `performance-profiler` | CPU/内存/IO 瓶颈剖析 | 全栈、软件开发 | P1 |
-| `ci-cd-pipeline-builder` | 流水线生成/门禁/发布 | 全栈、软件开发 | P1 |
-| `test-case-generator-v2` | 企业级测试用例生成 | 全栈、软件开发 | P1 |
-| `uml-and-software-architecture-visualization` | 架构/时序/类图生成 | 全栈、软件开发 | P1 |
+| `api-design-reviewer` | REST/GraphQL 设计评审 | 全栈 | P1 |
+| `performance-profiler` | CPU/内存/IO 瓶颈剖析 | 全栈 | P1 |
+| `ci-cd-pipeline-builder` | 流水线生成/门禁/发布 | 全栈 | P1 |
+| `test-case-generator-v2` | 企业级测试用例生成 | 全栈 | P1 |
+| `uml-and-software-architecture-visualization` | 架构/时序/类图生成 | 全栈 | P1 |
 | `frontend-app-builder` | 前端应用脚手架/组件实现 | 全栈 | P1 |
 | `frontend-testing-debugging` | 前端 E2E/组件测试调试 | 全栈 | P1 |
 

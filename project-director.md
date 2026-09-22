@@ -13,22 +13,20 @@ mode: primary
 |---------------|---------|----------------------------------------------|
 | 论文、选题、文献、研究设计、投稿、审稿、润色、查重、伦理、可复现、学术写作 | **学术论文全流程** | `teams/academic-paper-team/agents/academic-team-lead` |
 | Web 应用、前端、后端、API、数据库、DevOps、CI/CD、测试、安全、性能、无障碍、移动端、技术债、全栈交付 | **全栈 Web 应用交付** | `teams/fullstack-web-team/agents/fullstack-team-lead` |
-| 数学建模、国赛、CUMCM、建模竞赛、建模/求解/写作、72小时 | **数学建模竞赛** | `teams/math-modeling-team/agents/math-team-lead` |
-| 软件开发、架构设计、代码评审、测试补全、功能实现、交付门禁 | **软件开发交付** | `teams/software-dev-team/agents/software-team-lead` |
 | 混合：论文+配套代码、实验实现、文档+代码 | **多场景并行** | 并行派发多团队 |
 
 ## 路由决策流程
 
 1. **识别主场景**：按上表关键词匹配，若命中多个 → 并行派发
 2. **判断 Workflow**：
-   - 单一场景 → 派发对应 Team-lead，由其内部预设 Workflow 执行（academic/fullstack：W1-W5；math：A-C；software：W1-W3）；`Task(subagent_type)` 必须传上表**路径 ID**（短名 not found）；`Task(subagent_type)` 必须传上表**路径 ID**（短名 not found）
+   - 单一场景 → 派发对应 Team-lead，由其内部预设 Workflow 执行（academic/fullstack：W1-W5）；`Task(subagent_type)` 必须传上表**路径 ID**（短名 not found）
    - 依赖顺序 → 派前置团队的 Team-lead 先跑其内部 Workflow，再派后续团队；严禁越过 Team-lead 直接派成员（仅用户明确指定的单兵 core-* 除外）
 3. **歧义确认**：若关键词模糊，给路由建议表让用户选
 
 ## 调度输出格式
 ```
 ## 路由决策
-- 主场景：[学术论文 / 全栈Web / 数学建模 / 软件开发 / 混合]
+- 主场景：[学术论文 / 全栈Web / 混合]
 - 目标团队：[team-lead agent 名称]
 - Workflow：[团队内部预设 Workflow / 单兵直调]
 - 理由：[一句话]

@@ -1,6 +1,6 @@
 # Agent 系统使用手册 - AGENTS.md
 
-> **4 个专家团队 + 核心单兵** = 58 个 agent。按**场景**组织，每个团队自包含，不拆单兵池。
+> **2 个专家团队 + 核心单兵** = 37 个 agent（Academic 18 + Fullstack 19）。按**场景**组织，每个团队自包含，不拆单兵池。
 
 ---
 
@@ -22,8 +22,6 @@ opencode run --agent <team-lead-path> "任务描述"
 |------|-------------------|----------|
 | 学术论文全流程 | `teams/academic-paper-team/agents/academic-team-lead` | "写论文"、"投稿"、"审稿回复" |
 | Web 应用全链路 | `teams/fullstack-web-team/agents/fullstack-team-lead` | "做 Web 应用"、"上线"、"重构" |
-| 数学建模竞赛 | `teams/math-modeling-team/agents/math-team-lead` | "国赛托管"、"建模攻坚" |
-| 软件开发交付 | `teams/software-dev-team/agents/software-team-lead` | "新功能开发"、"代码评审" |
 
 ### 3. 团队内部单兵 → 经 Team-lead 的 Task 派发（subagent）
 其余成员不作为 `--agent` 入口（短名不可直调）；由 Team-lead 按 Workflow 用 Task 派发。仅当用户明确指定单兵时，Team-lead 可 `Task(subagent_type=<路径 ID>)` 直达：
@@ -32,13 +30,10 @@ opencode run --agent <team-lead-path> "任务描述"
 teams/academic-paper-team/agents/academic-topic-strategist
 teams/academic-paper-team/agents/academic-writer
 teams/fullstack-web-team/agents/core-architect
-teams/math-modeling-team/agents/math-data-analyst
-teams/software-dev-team/agents/software-architect
+teams/fullstack-web-team/agents/fullstack-frontend-engineer
 ```
 - 学术团队前缀：`teams/academic-paper-team/agents/`
 - 全栈团队前缀：`teams/fullstack-web-team/agents/`
-- 数学建模前缀：`teams/math-modeling-team/agents/`
-- 软件开发前缀：`teams/software-dev-team/agents/`
 - core-* 单兵（core-architect / core-code-reviewer / core-security-auditor / core-test-engineer）在 fullstack 目录；core-researcher 在 academic 目录
 
 ---
@@ -62,20 +57,6 @@ teams/software-dev-team/agents/software-architect
 | **W3 加固既有代码** | "安全/性能/质量/无障碍加固" | 5+6 |
 | **W4 仅接口与数据** | "只做 API 设计 + 数据建模" | 2 |
 | **W5 发布就绪** | "冲刺上线，CI/CD/部署" | 4 |
-
-### Math Modeling Team（数学建模）
-| Workflow | 触发场景 | 执行流程 |
-|----------|----------|----------|
-| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0(lead+data/literature)→1(modeler)→2(solver→visualizer)→3(writer)→4(reproducibility+qa **并行**) |
-| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡数据→data-analyst；卡文献→literature；卡建模→modeler；卡求解→solver；卡图表→visualizer；卡写作→writer |
-| **C 赛前特训** | "练真题/补短板" | 指定年份真题跑通 1→2→3，4 自查打分 |
-
-### Software Dev Team（软件开发）
-| Workflow | 触发场景 | 执行流程 |
-|----------|----------|----------|
-| **W1 全流程** | "新功能从零到交付" | 拆解 → 设计 → 实现 → 评审 → 测试 → 交付 |
-| **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（ADR + 接口契约） |
-| **W3 仅评审+测试** | "对现有代码跑门禁" | reviewer+quality+security+qa **并行** → tester（评审通过后） |
 
 ---
 
@@ -121,14 +102,6 @@ opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
 │   │   ├── agents/ (19)          # team-lead + 14 fullstack + 4 core
 │   │   ├── skills/
 │   │   └── TEAM.md
-│   ├── math-modeling-team/
-│   │   ├── agents/ (9)          # team-lead + 8 专家
-│   │   ├── skills/
-│   │   └── TEAM.md
-│   └── software-dev-team/
-│       ├── agents/ (12)          # team-lead + 11 专家
-│       ├── skills/
-│       └── TEAM.md
 ```
 
 ---

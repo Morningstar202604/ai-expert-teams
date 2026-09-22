@@ -1,6 +1,6 @@
 # opencode-expert-teams
 
-> **4 个自包含的专家团队**，覆盖学术论文、全栈 Web、数学建模竞赛、软件开发交付四大核心场景。每个团队内含主理人 + 专家成员，内置 Workflow、门禁、Checkpoint、技能依赖，开箱即用。
+> **2 个自包含的专家团队**，覆盖学术论文与全栈 Web 两大核心场景。每个团队内含主理人 + 专家成员，内置 Workflow、门禁、Checkpoint、技能依赖，开箱即用。
 
 ## 🎯 适用场景
 
@@ -8,8 +8,6 @@
 |------|----------|------------|
 | **Academic Paper** | 学术论文全流程：选题→文献→设计→方法→写作→审查→投稿 | "帮我写篇论文"、"选题可行性"、"审稿回复" |
 | **Fullstack Web** | Web 应用全链路交付：架构→前后端→API→DB→DevOps→测试→安全→上线 | "从零做个 Web 应用"、"重构加固"、"发布就绪" |
-| **Math Modeling** | 全国大学生数学建模竞赛（CUMCM）72h 全程托管 | "国赛托管"、"建模攻坚"、"求解出图" |
-| **Software Dev** | 软件开发强门禁交付：拆解→设计→实现→评审→测试 | "新功能开发"、"代码评审"、"补测试" |
 
 ## 🚀 快速开始
 
@@ -47,15 +45,7 @@ opencode-expert-teams/
     │   ├── agents/
     │   ├── skills/
     │   └── TEAM.md
-    ├── fullstack-web-team/        # 15 专家 + 4 core 单兵
-    │   ├── agents/
-    │   ├── skills/
-    │   └── TEAM.md
-    ├── math-modeling-team/        # 9 专家（数据/文献/建模/求解/图表/写作/复现/质检+主理人）
-    │   ├── agents/
-    │   ├── skills/
-    │   └── TEAM.md
-    └── software-dev-team/         # 12 专家（架构/API/DB/前后端/DevOps/安全/测试/评审+主理人）
+    └── fullstack-web-team/        # 15 专家 + 4 core 单兵
         ├── agents/
         ├── skills/
         └── TEAM.md
@@ -77,8 +67,6 @@ opencode-expert-teams/
 |------|----------------|------------|
 | Academic | `paper-topic-selector`、`journal-adapt`、`lit-review`、`figure-maker` | `web-search`、`deep-research` |
 | Fullstack | `docker-development`、`helm-chart-builder`、`github-actions-advanced`、`supabase-postgres-best-practices` | `security-scan`、`performance-profiler`、`ci-cd-pipeline-builder` |
-| Math Modeling | `math-modeling-guosai`、`math-modeling-selfcheck` | `web-search`、`deep-research` |
-| Software Dev | 团队内置评审/测试模板 | `test-case-generator-v2`、`api-design-reviewer` |
 
 > 详见 [`SKILLS_INDEX.md`](SKILLS_INDEX.md)
 
