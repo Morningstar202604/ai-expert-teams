@@ -7,22 +7,30 @@
 - **输出**：通过评审门禁、测试全绿、可构建可运行的增量交付件
 - **核心价值**：四人小组、严门禁（评审→测试）、主理人只做拆解调度验收
 
-## 成员架构（4 人）
+## 成员架构（12 人）
 
 | 角色 | Agent ID | 核心职责 | 典型触发 |
 |------|----------|----------|----------|
 | 开发统筹 | `software-team-lead` | 任务拆解、验收标准、角色分派、阶段门禁 | 所有软件开发需求入口 |
 | 架构师 | `software-architect` | 模块边界、接口契约、数据流、风险、备选方案 | "怎么设计模块"、"接口契约怎么定" |
+| API 设计师 | `software-api-designer` | REST/GraphQL 契约、Schema、校验、错误模型、版本 | "设计接口"、"出 API spec" |
+| 数据库工程师 | `software-database-engineer` | 数据建模、查询与索引、迁移规划、一致性 | "设计表结构"、"优化查询"、"迁移" |
+| 前端工程师 | `software-frontend-engineer` | 组件架构、状态管理、路由、数据获取、构建优化 | "实现前端"、"组件怎么拆" |
+| 后端工程师 | `software-backend-engineer` | 服务路由、中间件、认证鉴权、后台任务、韧性 | "实现后端"、"认证怎么做" |
+| DevOps 工程师 | `software-devops-engineer` | 容器化、CI/CD、IaC、可观测、部署与回滚 | "Dockerfile"、"流水线"、"部署" |
+| 安全工程师 | `software-security-engineer` | OWASP、注入/XSS、鉴权、依赖漏洞、密钥处理 | "安全审查"、"有没有漏洞" |
+| 测试工程师 | `software-qa-engineer` | 测试策略、单测/集成/E2E、覆盖率与风险报告 | "测试计划"、"补用例" |
 | 评审员 | `software-reviewer` | 正确性、安全、性能陷阱、数据一致性门禁 | "帮我评审这段代码"、"这有没有安全问题" |
-| 测试工程师 | `software-tester` | 单元/边界/回归测试、缺口识别、覆盖率、独立可运行 | "补测试"、"覆盖率不够"、"边界用例" |
+| 代码质量评审员 | `software-code-quality-reviewer` | 可读性、可维护性、复杂度、重复、约定一致性 | "质量评审"、"代码是不是太复杂" |
+| 测试工程师(门禁) | `software-tester` | 单元/边界/回归测试、缺口识别、覆盖率、独立可运行 | "补测试"、"覆盖率不够"、"边界用例" |
 
 ## Workflow 对照
 
 | Workflow | 触发场景 | 执行流程 |
 |----------|----------|----------|
-| **W1 全流程** | "新功能从零到交付" | 拆解 → 设计 → 实现 → 评审 → 测试 → 交付 |
-| **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（产出 ADR + 接口契约） |
-| **W3 仅评审+测试** | "对现有代码跑门禁" | 评审 → 测试（无实现阶段） |
+| **W1 全流程** | "新功能从零到交付" | 拆解 → 设计(api/database) → 实现(frontend/backend **并行**) → 部署(devops) → 门禁(security+qa+reviewer+quality **并行**) → 交付 |
+| **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（产出 ADR + api 契约 + 数据模型） |
+| **W3 仅评审+测试** | "对现有代码跑门禁" | reviewer + quality + security + qa **并行**（无实现阶段） |
 
 ## 协作机制
 - **小步提交**：每步可构建可运行，保持主干稳定
@@ -43,6 +51,14 @@ opencode agent software-team-lead "帮我实现用户登录模块，从设计到
 
 # 单点需求
 opencode agent software-architect "帮我设计订单模块的接口契约"
+opencode agent software-api-designer "出一份用户模块的 REST API spec"
+opencode agent software-database-engineer "设计订单表结构和索引"
+opencode agent software-frontend-engineer "实现购物车页面"
+opencode agent software-backend-engineer "实现下单接口和鉴权"
+opencode agent software-devops-engineer "写 Dockerfile 和 CI 流水线"
+opencode agent software-security-engineer "对这个模块做安全审查"
+opencode agent software-qa-engineer "设计支付流程的测试策略"
 opencode agent software-reviewer "帮我评审这个 PR"
+opencode agent software-code-quality-reviewer "做一次质量评审"
 opencode agent software-tester "帮我给支付模块补边界测试"
 ```

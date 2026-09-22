@@ -47,8 +47,8 @@ C:\Users\X1882\.workbuddy\plugins\marketplaces\my-experts\plugins\<team>\skills\
 
 | Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
 |----------|------|------------|------|--------|
-| `math-modeling-guosai` | 国赛建模/求解/写作资料库 | math-team-lead, math-modeler, math-solver, math-writer | 团队 skills/ | P0 |
-| `math-modeling-selfcheck` | 自检清单（开工前/产出后） | math-modeler, math-solver, math-writer | 团队 skills/ | P0 |
+| `math-modeling-guosai` | 国赛建模/求解/写作资料库 | math-team-lead, math-data-analyst, math-literature-researcher, math-modeler, math-solver, math-visualizer, math-writer, math-reproducibility, math-qa-reviewer | 团队 skills/ | P0 |
+| `math-modeling-selfcheck` | 自检清单（开工前/产出后） | math 团队全部成员 | 团队 skills/ | P0 |
 | 题型/方法/模板/查重类 skill | 细分领域专用 | 对应成员 | 团队 skills/ | P1 |
 
 ---
@@ -57,8 +57,12 @@ C:\Users\X1882\.workbuddy\plugins\marketplaces\my-experts\plugins\<team>\skills\
 
 | Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
 |----------|------|------------|------|--------|
-| `code-reviewer` (内置) | 代码评审规范/模板 | software-reviewer | 团队 skills/ | P1 |
-| `test-case-generator-v2` | 企业级测试用例生成 | software-tester, fullstack-qa-engineer | 用户级/团队 skills/ | P1 |
+| `code-reviewer` (内置) | 代码评审规范/模板 | software-reviewer, software-code-quality-reviewer | 团队 skills/ | P1 |
+| `test-case-generator-v2` | 企业级测试用例生成 | software-tester, software-qa-engineer, fullstack-qa-engineer | 用户级/团队 skills/ | P1 |
+| `api-design-reviewer` | REST API 设计评审 | software-api-designer | 用户级 | P1 |
+| `docker-development` / `ci-cd-pipeline-builder` | 容器与流水线 | software-devops-engineer | 用户级 | P1 |
+| `aqg-security-review` / OWASP 类 | 安全审计 | software-security-engineer | 用户级 | P1 |
+| `sql-database-assistant` | SQL/索引/迁移 | software-database-engineer | 用户级 | P1 |
 
 ---
 

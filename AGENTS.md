@@ -23,8 +23,8 @@
 ### 3. 团队内部单兵 → 直调成员（仅用户明确指定）
 - 学术团队：`academic-topic-strategist` / `academic-writer` / `academic-peer-reviewer` ...
 - 全栈团队：`fullstack-architect` / `fullstack-frontend-engineer` / `fullstack-security-engineer` ...
-- 数学建模：`math-modeler` / `math-solver` / `math-writer`
-- 软件开发：`software-architect` / `software-reviewer` / `software-tester`
+- 数学建模：`math-data-analyst` / `math-literature-researcher` / `math-modeler` / `math-solver` / `math-visualizer` / `math-writer` / `math-reproducibility` / `math-qa-reviewer`
+- 软件开发：`software-architect` / `software-api-designer` / `software-database-engineer` / `software-frontend-engineer` / `software-backend-engineer` / `software-devops-engineer` / `software-security-engineer` / `software-qa-engineer` / `software-reviewer` / `software-code-quality-reviewer` / `software-tester`
 - 通用单兵：`core-architect` / `core-code-reviewer` / `core-security-auditor` / `core-test-engineer` / `core-researcher`
 
 ---

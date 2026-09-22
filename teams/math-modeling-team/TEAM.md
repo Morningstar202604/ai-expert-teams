@@ -7,21 +7,26 @@
 - **输出**：查重安全、格式合规、可冲省一/国奖的论文 PDF + 程序 + 数据
 - **核心价值**：三人小组、串行闭环、主理人全程把关一致性与查重
 
-## 成员架构（4 人）
+## 成员架构（9 人）
 
 | 角色 | Agent ID | 核心职责 | 典型触发 |
 |------|----------|----------|----------|
 | 竞赛总指挥 | `math-team-lead` | 选题路线、3天节奏、创新点、查重管控、终审 | 所有建模竞赛需求入口 |
+| 数据分析师 | `math-data-analyst` | 数据清洗、EDA、特征工程、训练划分 | "清洗数据"、"缺失值怎么办"、"EDA" |
+| 文献调研员 | `math-literature-researcher` | 往届论文检索、方法库对齐、基线设定 | "参考什么模型"、"往届怎么解的" |
 | 建模专家 | `math-modeler` | 题型识别、假设与符号、主/改进模型、灵敏度设计 | "建什么模型"、"假设怎么写" |
 | 算法求解师 | `math-solver` | Python/MATLAB 双栈求解、仿真、规范图表、可复现 | "代码实现"、"数值结果"、"画图" |
+| 可视化专家 | `math-visualizer` | 三线表、黑白矢量图、匿名题注、LaTeX 就绪导出 | "画图表"、"三线表"、"出图" |
 | 论文主笔 | `math-writer` | 国赛结构、摘要单页含数值、LaTeX、三线表、附录程序 | "写国赛论文"、"摘要单页"、"LaTeX/查重" |
+| 复现与查重守护 | `math-reproducibility` | 环境锁定、种子固定、一键复现、查重/匿名自查 | "复现脚本"、"查重风险"、"锁定环境" |
+| 论文质检员 | `math-qa-reviewer` | 逻辑链、数值一致性、格式规范、提交清单终检 | "终检"、"数值对不上吗"、"提交前检查" |
 
 ## Workflow 对照
 
 | Workflow | 触发场景 | 执行流程 |
 |----------|----------|----------|
-| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0→1(modeler)→2(solver)→3(writer)→4 |
-| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡建模→modeler；卡求解→solver；卡写作→writer |
+| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0(data-analyst/literature)→1(modeler)→2(solver/visualizer)→3(writer)→4(reproducibility+qa **并行**) |
+| **B 单题攻坚** | "只卡在某问/某步" | 卡选题→主理人；卡数据→data-analyst；卡文献→literature；卡建模→modeler；卡求解→solver；卡图表→visualizer；卡写作→writer |
 | **C 赛前特训** | "还没比赛，想练真题/补短板" | 指定年份真题跑通 Phase 1→2→3，Phase 4 自查打分 |
 
 ## 关键差异（国赛 vs 美赛）
@@ -47,7 +52,12 @@
 opencode agent math-team-lead "帮我全程托管这个国赛赛题"
 
 # 单点攻坚
+opencode agent math-data-analyst "帮我清洗这份赛题数据并做EDA"
+opencode agent math-literature-researcher "这个题型往届怎么解的"
 opencode agent math-modeler "这个题型选什么模型"
-opencode agent math-solver "帮我把模型落地跑出数值和图表"
+opencode agent math-solver "帮我把模型落地跑出数值"
+opencode agent math-visualizer "把结果画成国赛规范图表"
 opencode agent math-writer "帮我按国赛格式写论文"
+opencode agent math-reproducibility "生成一键复现脚本并做查重自查"
+opencode agent math-qa-reviewer "提交前做终检"
 ```

@@ -50,11 +50,11 @@ opencode-expert-teams/
 │       │   ├── agents/
 │       │   ├── skills/
 │       │   └── TEAM.md
-│       ├── math-modeling-team/    # 4 专家（3人小组+主理人）
+│       ├── math-modeling-team/    # 9 专家（数据/文献/建模/求解/图表/写作/复现/质检+主理人）
 │       │   ├── agents/
 │       │   ├── skills/
 │       │   └── TEAM.md
-│       └── software-dev-team/     # 4 专家（主理人+架构/评审/测试）
+│       └── software-dev-team/     # 12 专家（架构/API/DB/前后端/DevOps/安全/测试/评审+主理人）
 │           ├── agents/
 │           ├── skills/
 │           └── TEAM.md
