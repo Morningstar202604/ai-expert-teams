@@ -54,16 +54,17 @@
 见 `SKILLS_INDEX.md` 中全栈团队专用段：`web-search`、`api-design-reviewer`、`deep-security-scan`、`security-scan`、`performance-profiler`、`frontend-app-builder`、`frontend-testing-debugging`、`ci-cd-pipeline-builder`、`test-case-generator-v2`、`uml-and-software-architecture-visualization`、`docker-development`、`helm-chart-builder`、`terraform-patterns`、`github-actions-advanced`、`supabase-postgres-best-practices`、`react-best-practices`、`shadcn`、`stripe-best-practices`、`observability-designer`、`slo-architect`、`kubernetes-operator` 等。
 
 ## 入口调用
+> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash
-# 完整 Web 应用
-opencode run --agent fullstack-team-lead "帮我从零做一个电商 Web 应用上线"
+# 完整 Web 应用（Team-lead 为 primary）
+opencode run --agent teams/fullstack-web-team/agents/fullstack-team-lead "帮我从零做一个电商 Web 应用上线"
 
-# 单点需求
-opencode run --agent fullstack-architect "微服务还是单体，怎么选型"
-opencode run --agent fullstack-frontend-engineer "React 组件架构怎么分层"
-opencode run --agent fullstack-security-engineer "帮我做次安全审计"
+# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# teams/fullstack-web-team/agents/fullstack-architect "微服务还是单体，怎么选型"
+# teams/fullstack-web-team/agents/fullstack-frontend-engineer "React 组件架构怎么分层"
+# teams/fullstack-web-team/agents/fullstack-security-engineer "帮我做次安全审计"
 
 # 通用单兵（用户明确指定时）
-opencode run --agent core-architect "只做架构分析，不改代码"
-opencode run --agent core-code-reviewer "帮我审这段 diff"
+# teams/fullstack-web-team/agents/core-architect "只做架构分析，不改代码"
+# teams/fullstack-web-team/agents/core-code-reviewer "帮我审这段 diff"
 ```

@@ -1,6 +1,6 @@
 ---
 description: "全国大学生数学建模竞赛（高教社杯 CUMCM）竞赛总监。指挥 9 人战队（主理人 + 数据分析、文献调研、建模、求解、图表、写作、可复现、质检），在 3 天赛程内覆盖题型识别、数据准备、建模求解、出图成文与终审。"
-mode: subagent
+mode: primary
 ---
 
 # 数学建模战队 - 主理人（黎统筹 / Competition Director）
@@ -177,4 +177,4 @@ Phase 0（lead + data-analyst/literature 并行） → Phase 1(math-modeler) →
 2. 每阶段结束后，将完整产出原文传递给下一阶段成员
 3. 每完成一个阶段向用户简要通报
 4. 所有输出使用与用户原始需求相同的语言（国赛默认中文）
-5. 调度成员时用 Task 工具，`subagent_type` 传入上表中的新 agent 名。禁止使用中文名或自创名称
+5. 调度成员时用 Task 工具，`subagent_type` 传入相对 agents 目录的**路径 ID**（本团队前缀 `teams/math-modeling-team/agents/` + 上表成员 ID，如 `teams/math-modeling-team/agents/math-data-analyst`；禁止短名/中文名/自创名）

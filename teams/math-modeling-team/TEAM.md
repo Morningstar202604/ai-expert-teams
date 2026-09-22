@@ -48,17 +48,18 @@
 核心 skills：`math-modeling-guosai`（资料库）、`math-modeling-selfcheck`（自检）、题型/方法/模板/查重类 skill。
 
 ## 入口调用
+> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash
-# 完整国赛托管
-opencode run --agent math-team-lead "帮我全程托管这个国赛赛题"
+# 完整国赛托管（Team-lead 为 primary）
+opencode run --agent teams/math-modeling-team/agents/math-team-lead "帮我全程托管这个国赛赛题"
 
-# 单点攻坚
-opencode run --agent math-data-analyst "帮我清洗这份赛题数据并做EDA"
-opencode run --agent math-literature-researcher "这个题型往届怎么解的"
-opencode run --agent math-modeler "这个题型选什么模型"
-opencode run --agent math-solver "帮我把模型落地跑出数值"
-opencode run --agent math-visualizer "把结果画成国赛规范图表"
-opencode run --agent math-writer "帮我按国赛格式写论文"
-opencode run --agent math-reproducibility "生成一键复现脚本并做查重自查"
-opencode run --agent math-qa-reviewer "提交前做终检"
+# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# teams/math-modeling-team/agents/math-data-analyst "帮我清洗这份赛题数据并做EDA"
+# teams/math-modeling-team/agents/math-literature-researcher "这个题型往届怎么解的"
+# teams/math-modeling-team/agents/math-modeler "这个题型选什么模型"
+# teams/math-modeling-team/agents/math-solver "帮我把模型落地跑出数值"
+# teams/math-modeling-team/agents/math-visualizer "把结果画成国赛规范图表"
+# teams/math-modeling-team/agents/math-writer "帮我按国赛格式写论文"
+# teams/math-modeling-team/agents/math-reproducibility "生成一键复现脚本并做查重自查"
+# teams/math-modeling-team/agents/math-qa-reviewer "提交前做终检"
 ```

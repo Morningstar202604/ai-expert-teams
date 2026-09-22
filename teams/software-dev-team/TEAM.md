@@ -45,20 +45,21 @@
 - 测试只改测试代码，不动业务代码；失败用例给最小复现步骤
 
 ## 入口调用
+> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash
-# 全流程开发
-opencode run --agent software-team-lead "帮我实现用户登录模块，从设计到测试全走一遍"
+# 全流程开发（Team-lead 为 primary）
+opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我实现用户登录模块，从设计到测试全走一遍"
 
-# 单点需求
-opencode run --agent software-architect "帮我设计订单模块的接口契约"
-opencode run --agent software-api-designer "出一份用户模块的 REST API spec"
-opencode run --agent software-database-engineer "设计订单表结构和索引"
-opencode run --agent software-frontend-engineer "实现购物车页面"
-opencode run --agent software-backend-engineer "实现下单接口和鉴权"
-opencode run --agent software-devops-engineer "写 Dockerfile 和 CI 流水线"
-opencode run --agent software-security-engineer "对这个模块做安全审查"
-opencode run --agent software-qa-engineer "设计支付流程的测试策略"
-opencode run --agent software-reviewer "帮我评审这个 PR"
-opencode run --agent software-code-quality-reviewer "做一次质量评审"
-opencode run --agent software-tester "帮我给支付模块补边界测试"
+# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# teams/software-dev-team/agents/software-architect "帮我设计订单模块的接口契约"
+# teams/software-dev-team/agents/software-api-designer "出一份用户模块的 REST API spec"
+# teams/software-dev-team/agents/software-database-engineer "设计订单表结构和索引"
+# teams/software-dev-team/agents/software-frontend-engineer "实现购物车页面"
+# teams/software-dev-team/agents/software-backend-engineer "实现下单接口和鉴权"
+# teams/software-dev-team/agents/software-devops-engineer "写 Dockerfile 和 CI 流水线"
+# teams/software-dev-team/agents/software-security-engineer "对这个模块做安全审查"
+# teams/software-dev-team/agents/software-qa-engineer "设计支付流程的测试策略"
+# teams/software-dev-team/agents/software-reviewer "帮我评审这个 PR"
+# teams/software-dev-team/agents/software-code-quality-reviewer "做一次质量评审"
+# teams/software-dev-team/agents/software-tester "帮我给支付模块补边界测试"
 ```

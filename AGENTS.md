@@ -10,28 +10,36 @@
 > 「帮我写篇论文并配套实现代码」「做个 Web 应用还要写技术文档」
 ```bash
 # 直接描述需求，project-director 自动路由到对应团队
+opencode run --agent project-director "帮我写篇论文并配套实现代码"
 ```
 
 ### 2. 明确单一场景 → 直调 Team-lead
+> Agent ID 为相对 `~/.config/opencode/agents/` 的路径；短名不可用（`opencode run --agent academic-team-lead` → not found）。
 ```bash
-opencode run --agent <team-lead-id> "任务描述"
+opencode run --agent <team-lead-path> "任务描述"
 ```
-| 场景 | Team-lead | 典型触发 |
-|------|-----------|----------|
-| 学术论文全流程 | `academic-team-lead` | "写论文"、"投稿"、"审稿回复" |
-| Web 应用全链路 | `fullstack-team-lead` | "做 Web 应用"、"上线"、"重构" |
-| 数学建模竞赛 | `math-team-lead` | "国赛托管"、"建模攻坚" |
-| 软件开发交付 | `software-team-lead` | "新功能开发"、"代码评审" |
+| 场景 | Team-lead 路径 ID | 典型触发 |
+|------|-------------------|----------|
+| 学术论文全流程 | `teams/academic-paper-team/agents/academic-team-lead` | "写论文"、"投稿"、"审稿回复" |
+| Web 应用全链路 | `teams/fullstack-web-team/agents/fullstack-team-lead` | "做 Web 应用"、"上线"、"重构" |
+| 数学建模竞赛 | `teams/math-modeling-team/agents/math-team-lead` | "国赛托管"、"建模攻坚" |
+| 软件开发交付 | `teams/software-dev-team/agents/software-team-lead` | "新功能开发"、"代码评审" |
 
-### 3. 团队内部单兵 → 直调成员（仅用户明确指定）
+### 3. 团队内部单兵 → 经 Team-lead 的 Task 派发（subagent）
+其余成员不作为 `--agent` 入口（短名不可直调）；由 Team-lead 按 Workflow 用 Task 派发。仅当用户明确指定单兵时，Team-lead 可 `Task(subagent_type=<路径 ID>)` 直达：
 ```bash
-opencode run --agent <member-id> "任务描述"
+# Task subagent_type 同样用路径 ID（示例）
+teams/academic-paper-team/agents/academic-topic-strategist
+teams/academic-paper-team/agents/academic-writer
+teams/fullstack-web-team/agents/core-architect
+teams/math-modeling-team/agents/math-data-analyst
+teams/software-dev-team/agents/software-architect
 ```
-- 学术团队：`academic-topic-strategist` / `academic-writer` / `academic-peer-reviewer` ...
-- 全栈团队：`fullstack-architect` / `fullstack-frontend-engineer` / `fullstack-security-engineer` ...
-- 数学建模：`math-data-analyst` / `math-literature-researcher` / `math-modeler` / `math-solver` / `math-visualizer` / `math-writer` / `math-reproducibility` / `math-qa-reviewer` / `math-team-lead`
-- 软件开发：`software-architect` / `software-api-designer` / `software-database-engineer` / `software-frontend-engineer` / `software-backend-engineer` / `software-devops-engineer` / `software-security-engineer` / `software-qa-engineer` / `software-reviewer` / `software-code-quality-reviewer` / `software-tester` / `software-team-lead`
-- 通用单兵：`core-architect` / `core-code-reviewer` / `core-security-auditor` / `core-test-engineer` / `core-researcher`
+- 学术团队前缀：`teams/academic-paper-team/agents/`
+- 全栈团队前缀：`teams/fullstack-web-team/agents/`
+- 数学建模前缀：`teams/math-modeling-team/agents/`
+- 软件开发前缀：`teams/software-dev-team/agents/`
+- core-* 单兵（core-architect / core-code-reviewer / core-security-auditor / core-test-engineer）在 fullstack 目录；core-researcher 在 academic 目录
 
 ---
 

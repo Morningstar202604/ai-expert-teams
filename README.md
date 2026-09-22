@@ -28,10 +28,10 @@ ln -sfn "$(pwd)" ~/.config/opencode/agents
 
 ### 方式二：直接引用（开发中）
 ```bash
-# 在 opencode 中直接使用
+# 在 opencode 中直接使用（agent ID 为相对 agents 目录的路径）
 opencode run --agent project-director "帮我写篇论文并配套实现代码"
-opencode run --agent academic-team-lead "从选题到投稿全流程"
-opencode run --agent fullstack-team-lead "做个电商 Web 应用上线"
+opencode run --agent teams/academic-paper-team/agents/academic-team-lead "从选题到投稿全流程"
+opencode run --agent teams/fullstack-web-team/agents/fullstack-team-lead "做个电商 Web 应用上线"
 ```
 
 ## 📁 仓库结构

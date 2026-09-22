@@ -50,12 +50,13 @@
 见 `SKILLS_INDEX.md` 中学术团队专用段：`paper-topic-selector`、`journal-adapt`、`lit-review`、`figure-maker`、`model-formulator`、`model-solver`、`pdf-pipeline`、`web-search`、`deep-research` 等。
 
 ## 入口调用
+> Agent ID 为相对 agents 目录的路径；团队成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash
-# 完整论文
-opencode run --agent academic-team-lead "帮我从选题到投稿写一篇关于 X 的论文"
+# 完整论文（Team-lead 为 primary）
+opencode run --agent teams/academic-paper-team/agents/academic-team-lead "帮我从选题到投稿写一篇关于 X 的论文"
 
-# 单点需求
-opencode run --agent academic-topic-strategist "这个研究方向可行吗"
-opencode run --agent academic-writer "帮我写 Introduction"
-opencode run --agent academic-peer-reviewer "帮我模拟审稿一次"
+# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# teams/academic-paper-team/agents/academic-topic-strategist "这个研究方向可行吗"
+# teams/academic-paper-team/agents/academic-writer "帮我写 Introduction"
+# teams/academic-paper-team/agents/academic-peer-reviewer "帮我模拟审稿一次"
 ```
