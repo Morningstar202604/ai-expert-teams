@@ -42,11 +42,11 @@ opencode-expert-teams/
 │   ├── SKILLS_INDEX.md            # 50+ skill 统一索引（含归属团队）
 │   ├── AGENTS.md                  # 使用手册：Workflow/协议/结构
 │   └── teams/
-│       ├── academic-paper-team/   # 17 专家（含 core-researcher）
+│       ├── academic-paper-team/   # 18 专家（17 academic + core-researcher）
 │       │   ├── agents/
 │       │   ├── skills/
 │       │   └── TEAM.md
-│       ├── fullstack-web-team/    # 15 专家 + 5 core 单兵
+│       ├── fullstack-web-team/    # 15 专家 + 4 core 单兵
 │       │   ├── agents/
 │       │   ├── skills/
 │       │   └── TEAM.md

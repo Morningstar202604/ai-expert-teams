@@ -37,13 +37,14 @@
 
 ## 协作机制
 - **技能调用协议**：每 Phase 前必扫 `skills/`，命中即用、严格按其执行
+- **交接模板**：4 块（产出/决策/风险/重点），缺一不可
 - **思想纪律**：忠于原文、不绕圈、出错即停（2-3 轮无解即回传复核）
 - **自检闸门**：`math-modeling-selfcheck` A 组开工前/B 组产出后，任一不过即停
 - **一致性终审**：模型符号、求解数值、结论必须首尾一致
 - **查重零容忍**：全程禁止复制往届/网文/教材
 
 ## 技能依赖
-团队专用 skills 目录：`~/.workbuddy/plugins/marketplaces/my-experts/plugins/math-modeling-team/skills/`
+团队专用 skills 目录：`teams/math-modeling-team/skills/`
 核心 skills：`math-modeling-guosai`（资料库）、`math-modeling-selfcheck`（自检）、题型/方法/模板/查重类 skill。
 
 ## 入口调用

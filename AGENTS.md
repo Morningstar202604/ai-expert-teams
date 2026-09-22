@@ -104,7 +104,7 @@
 │   │   ├── skills/              # 团队专用 skill
 │   │   └── TEAM.md              # 团队说明
 │   ├── fullstack-web-team/
-│   │   ├── agents/ (15+5)       # team-lead + 14 专家 + 5 core
+│   │   ├── agents/ (15+4)        # team-lead + 14 专家 + 4 core
 │   │   ├── skills/
 │   │   └── TEAM.md
 │   ├── math-modeling-team/

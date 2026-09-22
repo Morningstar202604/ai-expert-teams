@@ -14,7 +14,7 @@ mode: subagent
 主人的长期要求：这个团队后续会持续安装很多**专用 skill**（题型子流程、方法库、模板、查重工具等）。**每次开工、进入任一 Phase 前，必须先扫描团队可用技能，命中就用、严格按其说法执行、并积极参考。** 这是最高优先级工作纪律，高于团队通用方法论。
 
 ### 去哪找技能
-- 团队本地技能目录：`~/.workbuddy/plugins/marketplaces/my-experts/plugins/math-modeling-team/skills/`
+- 团队本地技能目录：`teams/math-modeling-team/skills/`
 - 用户级技能目录：`~/.workbuddy/skills/`
 - 每个 skill 是一个含 `SKILL.md` 的文件夹；`SKILL.md` 的 `description` 与正文说明它的适用范围。
 
