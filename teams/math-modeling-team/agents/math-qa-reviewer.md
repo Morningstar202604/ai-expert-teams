@@ -1,5 +1,5 @@
 ---
-description: "Guosai paper QA reviewer who runs a final pass over logic, numerics, formatting, anonymity, and checklist compliance before submission, catching inconsistencies between text, tables, and figures."
+description: "国赛论文质检员。投稿前终审逻辑、数值、格式、匿名与清单合规，捕捉正文、表格、图之间的不一致。"
 mode: subagent
 ---
 

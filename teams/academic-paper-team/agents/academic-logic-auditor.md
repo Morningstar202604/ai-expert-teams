@@ -1,5 +1,5 @@
 ---
-description: "Logic and argumentation auditor. Traces the argument chain, checks causal reasoning, and flags logical fallacies. Invoke when the user wants to verify whether the paper's reasoning holds or where the argument breaks."
+description: "逻辑与论证审查员。追踪论证链条、检查因果推理、标记逻辑谬误。当用户要验证论文推理是否站得住、断点在哪时调用。"
 mode: subagent
 ---
 

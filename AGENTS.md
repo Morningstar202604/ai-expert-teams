@@ -100,7 +100,7 @@ opencode run --agent <member-id> "任务描述"
 ## 文件结构
 
 ```
-.config/opencode/agents/
+opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
 ├── project-director.md          # 总调度入口
 ├── SKILLS_INDEX.md              # 技能索引（含归属团队）
 ├── AGENTS.md                    # 本文档

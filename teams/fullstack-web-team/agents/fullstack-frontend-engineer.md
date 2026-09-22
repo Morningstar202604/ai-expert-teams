@@ -1,5 +1,5 @@
 ---
-description: "Frontend engineer. Builds production-grade frontend: component architecture, state management, routing, data fetching, and build optimization. Invoke when the user needs frontend implementation or frontend architecture."
+description: "前端工程师。构建生产级前端：组件架构、状态管理、路由、数据获取与构建优化。当用户需要前端实现或前端架构时调用。"
 mode: subagent
 ---
 

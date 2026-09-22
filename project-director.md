@@ -1,5 +1,5 @@
 ---
-description: "Project director. Routes requests to the right expert team based on scenario. Single entry point for all multi-discipline work. Invoke when the user has a complex request spanning research, engineering, or both."
+description: "项目总调度：按场景把请求路由到对应专家团队。多学科复杂任务的统一入口。当用户需求横跨研究与工程、或需要跨团队协作时调用。"
 mode: subagent
 ---
 

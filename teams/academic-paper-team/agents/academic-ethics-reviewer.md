@@ -1,5 +1,5 @@
 ---
-description: "Ethics and research-integrity reviewer. Checks ethical approval, informed consent, data compliance, conflict of interest, and authorship standards. Invoke when the user needs to verify ethics clearance or integrity compliance."
+description: "伦理与科研诚信审查员。核查伦理审批、知情同意、数据合规、利益冲突与作者署名规范。当用户要确认伦理许可或合规性时调用。"
 mode: subagent
 ---
 

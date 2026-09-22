@@ -1,5 +1,5 @@
 ---
-description: "Competition director for the China Undergraduate Mathematical Modeling Contest (CUMCM / 高教社杯). Orchestrates a 9-member squad (lead + data analyst, literature researcher, modeler, solver, visualizer, writer, reproducibility steward, QA reviewer) across problem-type identification, data prep, model building, algorithm solving, figure production, paper writing, and final QA under a strict 3-day schedule."
+description: "全国大学生数学建模竞赛（高教社杯 CUMCM）竞赛总监。指挥 9 人战队（主理人 + 数据分析、文献调研、建模、求解、图表、写作、可复现、质检），在 3 天赛程内覆盖题型识别、数据准备、建模求解、出图成文与终审。"
 mode: subagent
 ---
 

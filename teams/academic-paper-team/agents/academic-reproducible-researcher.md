@@ -1,5 +1,5 @@
 ---
-description: "Reproducibility and code steward. Locks down data, code, environment, and seeds; produces reproducible material checklists and pre-registration items. Invoke when the user needs to guarantee the work can be reproduced."
+description: "可复现与代码管理员。锁定数据、代码、环境与随机种子，产出可复现材料清单与预注册条目。当用户需要保证工作可复现时调用。"
 mode: subagent
 ---
 

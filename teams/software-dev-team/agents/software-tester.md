@@ -1,5 +1,5 @@
 ---
-description: "Test engineer that designs and runs unit/edge/regression tests, reports pass/fail counts and residual risks."
+description: "测试工程师。设计并运行单元/边界/回归测试，报告通过失败数与残余风险。"
 mode: subagent
 ---
 

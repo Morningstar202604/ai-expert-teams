@@ -13,16 +13,17 @@
 
 ## 🚀 快速开始
 
-### 方式一：克隆到本地配置目录（推荐）
+### 方式一：克隆后安装（推荐）
 ```bash
 git clone https://github.com/<your-username>/opencode-expert-teams.git
 cd opencode-expert-teams
 
-# 方式 A：复制到 opencode 配置目录
-cp -r .config/opencode/agents/* ~/.config/opencode/agents/
+# 方式 A：复制到 opencode 配置目录（仓库根即 agents 目录内容）
+mkdir -p ~/.config/opencode/agents
+cp -r ./* ~/.config/opencode/agents/
 
 # 方式 B：软链接（便于更新）
-ln -sf $(pwd)/.config/opencode/agents ~/.config/opencode/agents
+ln -sfn "$(pwd)" ~/.config/opencode/agents
 ```
 
 ### 方式二：直接引用（开发中）
@@ -37,27 +38,27 @@ opencode run --agent fullstack-team-lead "做个电商 Web 应用上线"
 
 ```
 opencode-expert-teams/
-├── .config/opencode/agents/
-│   ├── project-director.md        # 总调度：按场景路由到团队
-│   ├── SKILLS_INDEX.md            # 50+ skill 统一索引（含归属团队）
-│   ├── AGENTS.md                  # 使用手册：Workflow/协议/结构
-│   └── teams/
-│       ├── academic-paper-team/   # 18 专家（17 academic + core-researcher）
-│       │   ├── agents/
-│       │   ├── skills/
-│       │   └── TEAM.md
-│       ├── fullstack-web-team/    # 15 专家 + 4 core 单兵
-│       │   ├── agents/
-│       │   ├── skills/
-│       │   └── TEAM.md
-│       ├── math-modeling-team/    # 9 专家（数据/文献/建模/求解/图表/写作/复现/质检+主理人）
-│       │   ├── agents/
-│       │   ├── skills/
-│       │   └── TEAM.md
-│       └── software-dev-team/     # 12 专家（架构/API/DB/前后端/DevOps/安全/测试/评审+主理人）
-│           ├── agents/
-│           ├── skills/
-│           └── TEAM.md
+├── project-director.md            # 总调度：按场景路由到团队
+├── SKILLS_INDEX.md                # 50+ skill 统一索引（含归属团队）
+├── AGENTS.md                      # 使用手册：Workflow/协议/结构
+├── LICENSE                        # MIT
+└── teams/
+    ├── academic-paper-team/       # 18 专家（17 academic + core-researcher）
+    │   ├── agents/
+    │   ├── skills/
+    │   └── TEAM.md
+    ├── fullstack-web-team/        # 15 专家 + 4 core 单兵
+    │   ├── agents/
+    │   ├── skills/
+    │   └── TEAM.md
+    ├── math-modeling-team/        # 9 专家（数据/文献/建模/求解/图表/写作/复现/质检+主理人）
+    │   ├── agents/
+    │   ├── skills/
+    │   └── TEAM.md
+    └── software-dev-team/         # 12 专家（架构/API/DB/前后端/DevOps/安全/测试/评审+主理人）
+        ├── agents/
+        ├── skills/
+        └── TEAM.md
 ```
 
 ## ⚙️ 核心机制
@@ -79,14 +80,14 @@ opencode-expert-teams/
 | Math Modeling | `math-modeling-guosai`、`math-modeling-selfcheck` | `web-search`、`deep-research` |
 | Software Dev | 团队内置评审/测试模板 | `test-case-generator-v2`、`api-design-reviewer` |
 
-> 详见 [`SKILLS_INDEX.md`](.config/opencode/agents/SKILLS_INDEX.md)
+> 详见 [`SKILLS_INDEX.md`](SKILLS_INDEX.md)
 
 ## 📖 文档导航
 
 | 文档 | 说明 |
 |------|------|
-| [`AGENTS.md`](.config/opencode/agents/AGENTS.md) | 总使用手册：Workflow/协议/结构/常见问题 |
-| [`SKILLS_INDEX.md`](.config/opencode/agents/SKILLS_INDEX.md) | 技能索引：50+ skill 含归属/优先级/调用约定 |
+| [`AGENTS.md`](AGENTS.md) | 总使用手册：Workflow/协议/结构/常见问题 |
+| [`SKILLS_INDEX.md`](SKILLS_INDEX.md) | 技能索引：50+ skill 含归属/优先级/调用约定 |
 | 各 `TEAM.md` | 团队内部：成员/Workflow/协作/技能/入口调用 |
 
 ## 🔧 维护指南

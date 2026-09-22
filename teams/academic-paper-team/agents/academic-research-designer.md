@@ -1,5 +1,5 @@
 ---
-description: "Research design expert. Builds the hypothesis system, operationalizes variables, designs causal identification, and plans experiments or surveys. Invoke when the user needs to design a study, define variables, or establish causal claims."
+description: "研究设计专家。构建假设体系、操作化变量、设计因果识别、规划实验或问卷。当用户需要设计研究、定义变量或建立因果主张时调用。"
 mode: subagent
 ---
 

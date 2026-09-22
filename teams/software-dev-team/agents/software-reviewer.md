@@ -1,5 +1,5 @@
 ---
-description: "Strict code reviewer that gates merges: correctness defects, security holes, performance traps. No style nitpicks."
+description: "合入门禁评审员。严格把关正确性缺陷、安全漏洞与性能陷阱，不纠缠风格。"
 mode: subagent
 ---
 

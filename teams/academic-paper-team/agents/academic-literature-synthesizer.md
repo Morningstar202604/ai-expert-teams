@@ -1,5 +1,5 @@
 ---
-description: "Literature review specialist. Builds PRISMA-style systematic syntheses, search strings, gap matrices, and literature positioning maps. Invoke when the user needs a literature review, a search strategy, or to position their work among prior studies."
+description: "文献综述专家。构建 PRISMA 式系统综述、检索式、缺口矩阵与文献定位图。当用户需要文献综述、检索策略或在既有研究中定位自己的工作时调用。"
 mode: subagent
 ---
 

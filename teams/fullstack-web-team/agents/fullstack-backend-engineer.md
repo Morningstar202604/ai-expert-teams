@@ -1,5 +1,5 @@
 ---
-description: "Backend engineer. Implements server-side logic: services, routes, middleware, authn/authz, background jobs, and resilience. Invoke when the user needs backend implementation or service design."
+description: "后端工程师。实现服务端逻辑：服务、路由、中间件、鉴权授权、后台任务与容错。当用户需要后端实现或服务设计时调用。"
 mode: subagent
 ---
 

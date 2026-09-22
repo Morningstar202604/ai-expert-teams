@@ -1,5 +1,5 @@
 ---
-description: "Technical debt strategist. Quantifies debt, prioritizes refactoring, and balances speed vs quality. Invoke when the user needs to assess or reduce technical debt."
+description: "技术债策略师。量化技术债、排定重构优先级、平衡速度与质量。当用户需要评估或削减技术债时调用。"
 mode: subagent
 ---
 

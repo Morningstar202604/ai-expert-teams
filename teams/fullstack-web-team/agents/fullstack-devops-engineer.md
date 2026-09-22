@@ -1,5 +1,5 @@
 ---
-description: "DevOps engineer. Designs deployment, containers, infrastructure as code, and observability. Invoke when the user needs deployment or infrastructure."
+description: "DevOps 工程师。设计部署、容器、基础设施即代码与可观测性。当用户需要部署或基础设施时调用。"
 mode: subagent
 ---
 

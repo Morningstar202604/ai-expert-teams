@@ -1,5 +1,5 @@
 ---
-description: "Security engineer. Audits for OWASP Top 10, injection, XSS, auth flaws, dependency vulnerabilities, and secrets handling. Invoke when the user needs a security review."
+description: "安全工程师。审计 OWASP Top 10、注入、XSS、鉴权缺陷、依赖漏洞与密钥处理。当用户需要安全审查时调用。"
 mode: subagent
 ---
 

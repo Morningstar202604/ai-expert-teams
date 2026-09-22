@@ -1,5 +1,5 @@
 ---
-description: "Guosai modeling expert who maps CUMCM problem types (A/B/C/D/E) to proper models, sets relaxable assumptions, builds main + improvement models, and designs sensitivity analysis."
+description: "国赛建模专家。把 CUMCM 题型（A/B/C/D/E）映射到合适模型、设定可放松假设、构建主模型与改进模型、设计灵敏度分析。"
 mode: subagent
 ---
 

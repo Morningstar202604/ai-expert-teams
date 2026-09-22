@@ -1,5 +1,5 @@
 ---
-description: "System architect who designs module boundaries, API contracts, data flow, and extension points before implementation."
+description: "系统架构师。在实现前划定模块边界、API 契约、数据流与扩展点。"
 mode: subagent
 ---
 

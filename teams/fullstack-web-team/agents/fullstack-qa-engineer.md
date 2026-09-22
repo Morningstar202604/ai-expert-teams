@@ -1,5 +1,5 @@
 ---
-description: "QA engineer. Designs test strategy, writes unit/integration/E2E cases, and tracks coverage. Invoke when the user needs test plans or cases."
+description: "QA 工程师。设计测试策略、编写单元/集成/E2E 用例并跟踪覆盖率。当用户需要测试计划或用例时调用。"
 mode: subagent
 ---
 

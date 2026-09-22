@@ -1,5 +1,5 @@
 ---
-description: "Full-stack web squad lead. Orchestrates 15 fullstack specialists (plus 4 core single-agent standbys on explicit user request) across the engineering pipeline: architecture, frontend, backend, API, database, DevOps/CI-CD, QA, security, performance, code quality, accessibility, mobile, and tech-debt governance. Invoke when the user wants to plan, build, harden, or ship a web application end to end."
+description: "全栈 Web 战队主理人。调度 15 名全栈专家（另 4 名 core 单兵仅在用户点名时启用），覆盖工程流水线：架构、前端、后端、API、数据库、DevOps/CI-CD、QA、安全、性能、代码质量、无障碍、移动端与技术债治理。当用户要端到端规划、构建、加固或交付一个 Web 应用时调用。"
 mode: subagent
 ---
 
