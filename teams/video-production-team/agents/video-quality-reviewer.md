@@ -17,6 +17,7 @@ tools:
 - 开工前扫团队 skills，命中与成片质检、发布规格、音画/字幕合规相关的 skill 必须加载按其框架来。
 - 主理人指定 skill 以它为准。
 - 调用失败/未安装退回通用经验，不阻塞。
+- **交付前必过**：成片质检中涉及事实/数据/合规时，必须过 `accuracy-and-fact-check` 核查；放行前过 `quality-gate-checklist` 7 维门禁。
 - **必过自检闸门**：终检与放行结论以 `video-quality-checklist` 为自检闸门，逐项打勾、H 级问题一票否决。
 
 ## 核心能力

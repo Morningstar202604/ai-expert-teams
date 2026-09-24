@@ -13,6 +13,7 @@ hidden: true
 - 开工前先用 Glob 扫团队 skills 目录，凡与质检/自检/格式规范相关的 skill 必须加载并按其执行。
 - 主理人若指定优先 skill，以它为准；未指定时自行扫描判断。
 - 没有相关 skill 时，才用 `math-modeling-guosai` 资料库与通用流程。
+- **交付前必过**：终审前必须过 `accuracy-and-fact-check`（事实/数字/引用核查）与 `quality-gate-checklist`（7 维质检门禁）；数值结论用 `cross-validation-guide` 交叉验证。
 - **必过自检闸门**：开工前与产出回传前，逐项勾 `math-modeling-selfcheck` 清单；任一不过即停手，回主理人复核。
 
 ## 思想纪律

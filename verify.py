@@ -122,7 +122,7 @@ for team in os.listdir(f"{BASE}/teams"):
 agent_files.append(("project-director", f"{BASE}/project-director.md", "root"))
 
 print(f"  发现 {len(agent_files)} 个 agent 文件")
-READONLY_CORE = {"core-architect", "core-code-reviewer", "core-security-auditor", "core-test-engineer",
+READONLY_CORE = {"core-architect", "core-code-reviewer", "core-security-auditor", "core-test-engineer", "core-fact-checker",
     "visual-design-reviewer", "content-reviewer", "video-performance-analyst", "video-quality-reviewer"}
 TEAM_LEADS = {"academic-team-lead", "fullstack-team-lead", "math-team-lead", "software-team-lead",
     "visual-team-lead", "content-team-lead", "video-team-lead"}
@@ -232,7 +232,7 @@ for agent_id, path, team in agent_files:
         continue
     team_counts[team] = team_counts.get(team, 0) + 1
 
-expected = {"academic-paper-team": 18, "fullstack-web-team": 19, "math-modeling-team": 9, "software-dev-team": 12,
+expected = {"academic-paper-team": 19, "fullstack-web-team": 19, "math-modeling-team": 9, "software-dev-team": 12,
     "visual-design-team": 14, "content-writing-team": 14, "video-production-team": 14}
 total = 0
 for team, count in sorted(team_counts.items()):
@@ -242,9 +242,9 @@ for team, count in sorted(team_counts.items()):
     total += count
     if count != exp:
         err(f"{team} 人数 {count} != 预期 {exp}")
-print(f"  总计: {total} (预期 100)")
-if total != 100:
-    err(f"总人数 {total} != 100")
+print(f"  总计: {total} (预期 101)")
+if total != 101:
+    err(f"总人数 {total} != 101")
 
 # ═══════════════════════════════════════════════════════
 # 5. 文件存在性校验

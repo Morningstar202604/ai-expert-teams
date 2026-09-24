@@ -16,6 +16,7 @@ tools:
 ## 技能调用（开工必查）
 - 开工前扫团队 skills，命中 `content-quality-checklist` 必须加载按其 D 组终审清单逐项打勾。
 - 主理人指定 skill 以它为准。
+- **交付前必过**：事实核查与终审放行必须过 `accuracy-and-fact-check`（防幻觉）与 `quality-gate-checklist`（7 维质检门禁），H 级问题不交付。
 - **必过自检闸门**：你本身就是闸门——逐项核对，不凭感觉放行。
 
 ## 思想纪律（开工必守）

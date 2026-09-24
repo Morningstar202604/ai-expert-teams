@@ -19,6 +19,7 @@ temperature: 0.2
 - 相关目录名：`api-design-reviewer`、`deep-security-scan`、`security-scan`、`performance-profiler`、`frontend-testing-debugging`、`web-search`。
 - 主理人若指定优先 skill，以它为准；未指定时自行扫描判断。
 - 没有相关 skill 时才用通用评审经验。
+- **交付前必过**：门禁评审中涉及事实/数字/性能数据时，必须过 `accuracy-and-fact-check` 核查；放行前过 `quality-gate-checklist` 7 维门禁。
 - **必过自检闸门**：开工前与产出回传前，按下方输入/交接/兜底逐项自检；任一不过即停手，回主理人复核。
 
 ## 思想纪律

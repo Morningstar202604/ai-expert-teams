@@ -15,6 +15,7 @@ permission:
 ## 技能调用（开工必查）
 - 开工前先扫团队 skills/，命中 `paper-topic-selector`、`lit-review`、`journal-adapt`、`pdf-pipeline` 即按其框架执行；这四项为本团队核心 skill。
 - 编排时把适配 skill 派给对应成员：选题/缺口类交 `paper-topic-selector`，文献/逻辑/风险/审稿类交 `lit-review`，语言/回应/编辑/格式类交 `journal-adapt`，可复现/格式落盘类交 `pdf-pipeline`。
+- **交付前必过**：最终汇编交付前必须过 `accuracy-and-fact-check`（事实准确性核查，防幻觉）与 `quality-gate-checklist`（7 维质检门禁），H 级问题不交付；涉事实/数字/引用时派 `core-fact-checker` 独立核查。
 - 主理人指定 skill 以它为准。
 - 调用失败/未安装退回通用经验，不阻塞。
 

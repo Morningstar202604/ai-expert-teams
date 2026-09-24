@@ -1,17 +1,17 @@
 # 技能索引 - SKILLS_INDEX.md
 
-> 本仓库共实装 **49 个 skill**（通用 11 + 团队专用 38）。
+> 本仓库共实装 **52 个 skill**（通用 14 + 团队专用 38）。
 > 统一按归属团队登记；调用失败/未安装时自动回退通用经验，不阻塞。
 
 ## 目录结构
 ```
-skills/                                 # 用户级通用 skill（11 个，全团队共用）
+skills/                                 # 用户级通用 skill（14 个，全团队共用）
 teams/<team-name>/skills/               # 团队专用 skill（相对本仓库根）
 ```
 
 ---
 
-## 🔧 通用 skills/（11 个，全团队共用）
+## 🔧 通用 skills/（14 个，全团队共用）
 
 | 名称 | 位置 | 一句话用途 |
 |------|------|------------|
@@ -26,6 +26,9 @@ teams/<team-name>/skills/               # 团队专用 skill（相对本仓库�
 | `api-design-reviewer` | `skills/api-design-reviewer/` | REST/GraphQL 设计评审：命名、状态码、分页版本化、错误格式与安全检查清单。 |
 | `test-case-generator-v2` | `skills/test-case-generator-v2/` | 企业级测试用例生成：等价类/边界值/决策表设计、标准化模板与回归集分层。 |
 | `uml-and-software-architecture-visualization` | `skills/uml-and-software-architecture-visualization/` | 架构/时序/类/流程图：PlantUML 与 Mermaid、C4 模型与图表选型规则。 |
+| `accuracy-and-fact-check` | `skills/accuracy-and-fact-check/` | **P0 全团队**：交付前事实准确性核查，断言三级分级+证据强度五级，防幻觉，反例搜索与交叉计算。 |
+| `cross-validation-guide` | `skills/cross-validation-guide/` | **P1 数学/学术/工程/数据**：数值结果用 ≥2 种独立方法交叉验证，量纲自检、边界反例、敏感性检验。 |
+| `quality-gate-checklist` | `skills/quality-gate-checklist/` | **P0 全团队**：交付前 7 维质检门禁（完整性/一致性/可追溯/可复现/合规/版权/格式），H 级不交付。 |
 
 ---
 
@@ -148,4 +151,4 @@ def use_skill(skill_id: str, team_context: str = None, fallback: bool = True):
 - 新增 skill → 必须在此表登记（名称/位置/一句话用途）
 - 废弃 skill → 标记 `DEPRECATED`，保留 90 天
 - 团队专用 skill → 仅在对应团队目录，不污染全局 `skills/`
-- 总数口径：本仓库统一为 **49 个 skill**，新增/删除时同步更新顶部数字
+- 总数口径：本仓库统一为 **52 个 skill**，新增/删除时同步更新顶部数字

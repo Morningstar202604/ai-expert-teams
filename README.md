@@ -1,9 +1,9 @@
 <div align="center">
   <h1>opencode-expert-teams</h1>
-  <p>7 个自包含专家团队 · 100 位专家 · 49 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
+  <p>7 个自包含专家团队 · 101 位专家 · 52 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
-  <img src="https://img.shields.io/badge/Agents-100_experts-purple" alt="Experts" />
-  <img src="https://img.shields.io/badge/Skills-49-green" alt="Skills" />
+  <img src="https://img.shields.io/badge/Agents-101_experts-purple" alt="Experts" />
+  <img src="https://img.shields.io/badge/Skills-52-green" alt="Skills" />
   <img src="https://img.shields.io/badge/Framework-Opencode-blueviolet" alt="Framework" />
   <br />
   <p>
@@ -110,7 +110,7 @@ bash install.sh /path/to/opencode/config
 
 `install.sh` 会自动完成：
 1. 按 `teams/<team>/agents/<name>.md` 结构，把各团队 agents 软链到 `$TARGET/agents/`；
-2. 把 `skills/*/` 与 `teams/*/skills/*/` 共 49 个 skill 目录，按目录名扁平软链到 `$TARGET/skills/<name>/`；
+2. 把 `skills/*/` 与 `teams/*/skills/*/` 共 52 个 skill 目录，按目录名扁平软链到 `$TARGET/skills/<name>/`；
 3. 打印安装摘要（agent 数、skill 数、目标路径）。
 
 > 幂等：可重复执行，`ln -sfn` 自动覆盖已有软链。
@@ -147,7 +147,7 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 
 | 大类 | 团队 | 专家数 | 典型场景 |
 |------|------|--------|----------|
-| **学术研究** | Academic Paper | 18 | 论文选题→文献→方法→写作→审稿→投稿 |
+| **学术研究** | Academic Paper | 19 | 论文选题→文献→方法→写作→审稿→投稿 |
 | **学术应用** | Math Modeling | 9 | 国赛/美赛建模竞赛全程托管（72h） |
 | **技术开发** | Fullstack Web | 19 | Web 应用全链路：架构→前后端→DevOps→上线 |
 | **技术开发** | Software Dev | 12 | 模块拆解→设计→实现→门禁→测试交付 |
@@ -161,7 +161,7 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 
 | 团队 | 专家数 | 核心场景 | 触发语示例 |
 |------|--------|----------|------------|
-| **Academic Paper** | 18 位 | 选题 → 文献 → 方法 → 写作 → 审查 → 投稿 | "帮我写篇论文"、"审稿回复" |
+| **Academic Paper** | 19 位 | 选题 → 文献 → 方法 → 写作 → 审查 → 投稿 | "帮我写篇论文"、"审稿回复" |
 | **Fullstack Web** | 19 位 | 架构 → 前后端 → API → DB → DevOps → 测试 → 上线 | "从零做个 Web 应用"、"重构加固" |
 | **Math Modeling** | 9 位 | 国赛选题 → 建模 → 求解 → 写作 → 终审交付（72h） | "托管国赛赛题"、"这个题型怎么建" |
 | **Software Dev** | 12 位 | 拆解 → 设计 → 实现 → 门禁 → 测试收口 → 交付 | "实现登录模块"、"评审这个 PR" |
@@ -187,11 +187,11 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 ```
 opencode-expert-teams/
 ├── project-director.md      # 总调度（7 场景路由）
-├── SKILLS_INDEX.md          # 49 个 skill 统一索引
+├── SKILLS_INDEX.md          # 52 个 skill 统一索引
 ├── AGENTS.md                # 使用手册
 ├── install.sh               # 一键安装脚本（agents + skills 软链）
 ├── opencode.json            # opencode 配置（skill 权限全开）
-├── skills/                  # 已实装（通用 11 + 团队 38）
+├── skills/                  # 已实装（通用 14 + 团队 38）
 │   ├── web-search/
 │   ├── deep-research/
 │   ├── security-scan/
@@ -202,9 +202,12 @@ opencode-expert-teams/
 │   ├── frontend-testing-debugging/
 │   ├── api-design-reviewer/
 │   ├── test-case-generator-v2/
-│   └── uml-and-software-architecture-visualization/
+│   ├── uml-and-software-architecture-visualization/
+│   ├── accuracy-and-fact-check/
+│   ├── cross-validation-guide/
+│   └── quality-gate-checklist/
 └── teams/
-    ├── academic-paper-team/ # 18 专家
+    ├── academic-paper-team/ # 19 专家（含 core-researcher + core-fact-checker 通用单兵）
     │   ├── agents/
     │   ├── skills/          # 7 个团队专用 skill（已实装）
     │   └── TEAM.md

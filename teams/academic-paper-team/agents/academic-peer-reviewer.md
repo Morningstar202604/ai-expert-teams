@@ -11,6 +11,7 @@ hidden: true
 
 ## 技能调用（开工必查）
 - 开工前扫团队 skills，命中 `journal-adapt`、`lit-review` 必须加载按其框架来。
+- **交付前必过**：审稿结论中涉及事实/数字/引用时，必须过 `accuracy-and-fact-check` 核查；终审放行前过 `quality-gate-checklist` 7 维门禁。
 - 主理人指定 skill 以它为准。
 - 调用失败/未安装退回通用经验，不阻塞。
 

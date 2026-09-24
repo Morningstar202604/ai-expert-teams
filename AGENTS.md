@@ -1,6 +1,6 @@
 # Agent 系统使用手册 - AGENTS.md
 
-> **7 个专家团队 + 核心单兵** = 100 个 agent（Academic 18 + Fullstack 19 + Math 9 + Software 12 + Visual 14 + Content 14 + Video 14）。按**场景**组织，每个团队自包含，不拆单兵池。
+> **7 个专家团队 + 核心单兵** = 101 个 agent（Academic 19 + Fullstack 19 + Math 9 + Software 12 + Visual 14 + Content 14 + Video 14）。按**场景**组织，每个团队自包含，不拆单兵池。
 
 ---
 
@@ -48,7 +48,7 @@ teams/software-dev-team/agents/software-tester
 - 视觉设计团队前缀：`teams/visual-design-team/agents/`
 - 内容写作团队前缀：`teams/content-writing-team/agents/`
 - 视频制作团队前缀：`teams/video-production-team/agents/`
-- core-* 单兵（core-architect / core-code-reviewer / core-security-auditor / core-test-engineer）在 fullstack 目录；core-researcher 在 academic 目录
+- core-* 单兵（core-architect / core-code-reviewer / core-security-auditor / core-test-engineer）在 fullstack 目录；core-researcher、core-fact-checker（跨团队通用事实核查官，只读）在 academic 目录
 
 ---
 
@@ -140,14 +140,14 @@ teams/software-dev-team/agents/software-tester
 ```
 opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
 ├── project-director.md          # 总调度入口（7 场景路由）
-├── SKILLS_INDEX.md              # 技能索引（49 个，含归属团队）
+├── SKILLS_INDEX.md              # 技能索引（52 个，含归属团队）
 ├── AGENTS.md                    # 本文档
 ├── install.sh                   # 一键安装脚本
 ├── opencode.json                # opencode 配置（skill 权限）
-├── skills/                      # 通用 skill（已实装 11 个，全团队共用）
+├── skills/                      # 通用 skill（已实装 14 个，全团队共用）
 ├── teams/
 │   ├── academic-paper-team/
-│   │   ├── agents/ (18)          # team-lead + 16 专家 + 1 core-researcher
+│   │   ├── agents/ (19)          # team-lead + 16 专家 + 2 core（researcher + fact-checker）
 │   │   ├── skills/ (7)           # 团队专用 skill（已实装）
 │   │   └── TEAM.md              # 团队说明
 │   ├── fullstack-web-team/

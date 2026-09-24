@@ -11,6 +11,7 @@ hidden: true
 
 ## 技能调用（开工必查）
 - 开工前扫团队 skills，命中 `model-solver`、`model-formulator` 必须加载按其框架来。
+- **数值结论必过**：统计结论与关键数字必须用 `cross-validation-guide` 做 ≥2 种独立方法交叉验证。
 - 主理人指定 skill 以它为准。
 - 调用失败/未安装退回通用经验，不阻塞。
 

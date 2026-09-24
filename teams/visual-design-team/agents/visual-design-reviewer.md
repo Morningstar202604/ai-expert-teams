@@ -17,6 +17,7 @@ tools:
 - 开工前扫团队 skills，命中 `design-review-checklist` 必须加载按其框架来。
 - 主理人指定 skill 以它为准。
 - 调用失败/未安装退回通用经验，不阻塞。
+- **交付前必过**：评审报告中涉及事实/数据/版权时，必须过 `accuracy-and-fact-check` 核查；终审放行前过 `quality-gate-checklist` 7 维门禁。
 - **必过自检闸门**：出《评审报告》前逐项过 `design-review-checklist`。
 
 ## 核心能力
