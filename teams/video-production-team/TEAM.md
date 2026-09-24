@@ -52,6 +52,8 @@
 团队专用 skills 目录：`teams/video-production-team/skills/`
 核心 skills：`video-script-template`（脚本骨架）、`storyboard-guide`（分镜）、`short-video-structure-guide`（短视频结构）、`video-editing-guide`（剪辑）、`caption-and-subtitle-guide`（字幕）、`video-quality-checklist`（成片质检）。
 
+> **协作接口**：可对接 content（脚本/口播文案/选题）、visual（封面/分镜视觉/字幕版式）；典型跨场景触发词：抖音视频、短视频带货、宣传片+文案、视频+封面设计。
+
 ## 入口调用
 > Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash

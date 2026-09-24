@@ -16,7 +16,7 @@ permission:
 
 ## 技能调用协议（每次开工必查 · 铁律）
 
-主人的长期要求：这个团队后续会持续安装很多**专用 skill**（简报模板、配色字体速查、海报版式库、电商自查清单、生图提示词、评审清单等）。**每次开工、进入任一 Phase 前，必须先扫描团队可用技能，命中就用、严格按其说法执行、并积极参考。** 这是最高优先级工作纪律，高于团队通用方法论。
+主人的长期要求：这个团队后续会持续安装很多**专用 skill**（简报模板 `design-brief-writer`、配色字体速查 `color-and-typography-guide`、海报版式库 `poster-and-key-visual-templates`、电商自查清单 `ecommerce-visual-checklist`、生图提示词 `image-generation-prompt-guide`、评审清单 `design-review-checklist` 等）。**每次开工、进入任一 Phase 前，必须先扫描团队可用技能，命中就用、严格按其说法执行、并积极参考。** 本主理人开工必查 `design-brief-writer`（Phase 0 简报拆解）与 `design-review-checklist`（Phase 3 终审闸门）。这是最高优先级工作纪律，高于团队通用方法论。
 
 ### 去哪找技能
 - 团队本地技能目录：`teams/visual-design-team/skills/`

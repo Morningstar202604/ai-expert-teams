@@ -47,6 +47,8 @@
 团队专用 skills 目录：`teams/math-modeling-team/skills/`
 核心 skills：`math-modeling-guosai`（资料库）、`math-modeling-selfcheck`（自检）、题型/方法/模板/查重类 skill。
 
+> **协作接口**：可对接 academic（建模论文写作/投稿）、visual（数据可视化图表）、content（建模科普/竞赛报告）；典型跨场景触发词：建模+论文、数据可视化、竞赛报告。
+
 ## 入口调用
 > Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash

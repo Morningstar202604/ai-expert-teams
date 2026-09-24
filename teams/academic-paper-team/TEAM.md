@@ -49,6 +49,8 @@
 ## 技能依赖
 见 `SKILLS_INDEX.md` 中学术团队专用段：`paper-topic-selector`、`journal-adapt`、`lit-review`、`figure-maker`、`model-formulator`、`model-solver`、`pdf-pipeline`、`web-search`、`deep-research` 等。
 
+> **协作接口**：可对接 software/fullstack（论文+配套代码/实验复现）、visual（数据图表/论文配图）、content（科普文章/学术传播）；典型跨场景触发词：论文+代码、实验复现、学术可视化、科普写作。
+
 ## 入口调用
 > Agent ID 为相对 agents 目录的路径；团队成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash

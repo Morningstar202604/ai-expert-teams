@@ -16,7 +16,7 @@ temperature: 0.2
 
 ## 技能调用（开工必扫）
 - 开工前先扫根 skills 目录，凡与安全/测试/性能相关的 skill 必须加载并按其执行。
-- 相关目录名：`deep-security-scan`、`security-scan`、`performance-profiler`、`frontend-testing-debugging`、`web-search`。
+- 相关目录名：`api-design-reviewer`、`deep-security-scan`、`security-scan`、`performance-profiler`、`frontend-testing-debugging`、`web-search`。
 - 主理人若指定优先 skill，以它为准；未指定时自行扫描判断。
 - 没有相关 skill 时才用通用评审经验。
 - **必过自检闸门**：开工前与产出回传前，按下方输入/交接/兜底逐项自检；任一不过即停手，回主理人复核。

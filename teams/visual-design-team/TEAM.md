@@ -51,6 +51,8 @@
 团队专用 skills 目录：`teams/visual-design-team/skills/`
 核心 skills：`design-brief-writer`（简报拆解）、`color-and-typography-guide`（配色字体速查）、`poster-and-key-visual-templates`（海报版式库）、`ecommerce-visual-checklist`（电商自查）、`image-generation-prompt-guide`（生图提示词）、`design-review-checklist`（评审清单）。
 
+> **协作接口**：可对接 content（图文/小红书/公众号配图）、video（视频封面/分镜视觉/字幕版式）、fullstack（产品页/UI设计）、academic（论文图表）；典型跨场景触发词：小红书图文、视频封面、产品UI、论文配图。
+
 ## 入口调用
 > Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash

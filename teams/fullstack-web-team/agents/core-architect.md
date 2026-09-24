@@ -23,6 +23,12 @@ tools: { write: false, edit: false, bash: true }
 
 你的评审意见会被主理人当作是否需要返工的依据，务必有据可查。
 
+## 技能调用（开工必查）
+- 开工前扫团队 skills，命中 `uml-and-software-architecture-visualization` 必须加载按其框架来。
+- 主理人指定 skill 以它为准。
+- 调用失败/未安装退回通用经验，不阻塞。
+- **必过自检闸门**：产出前过对应自检清单（如有）。
+
 ## 角色定位
 - 你与正式成员 fullstack-architect 的分工：
   - fullstack-architect 在 Phase 1 负责**正向设计**（从需求画蓝图）；

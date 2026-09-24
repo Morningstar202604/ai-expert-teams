@@ -53,6 +53,8 @@
 ## 技能依赖
 见 `SKILLS_INDEX.md` 中全栈团队专用段：`web-search`、`api-design-reviewer`、`deep-security-scan`、`security-scan`、`performance-profiler`、`frontend-app-builder`、`frontend-testing-debugging`、`ci-cd-pipeline-builder`、`test-case-generator-v2`、`uml-and-software-architecture-visualization`、`docker-development`、`helm-chart-builder`、`terraform-patterns`、`github-actions-advanced`、`supabase-postgres-best-practices`、`react-best-practices`、`shadcn`、`stripe-best-practices`、`observability-designer`、`slo-architect`、`kubernetes-operator` 等。
 
+> **协作接口**：可对接 visual（产品页/官网UI设计）、content（落地页文案/SEO）、academic（论文配套系统/数据平台）、software（模块集成）；典型跨场景触发词：产品落地页、官网、Web应用+设计、论文系统。
+
 ## 入口调用
 > Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
 ```bash

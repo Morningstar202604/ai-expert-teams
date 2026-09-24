@@ -46,10 +46,40 @@ mode: primary
 - 选项 B：...
 ```
 
-## 混合场景协同
-- 并行派发多 Team-lead，各自按内部 Workflow 执行
-- Project-director 负责跨团队 checkpoint 同步（`checkpoint-N.md` 统一命名）
-- 最终汇编：按场景整合交付包（如论文+配套代码仓库）
+## 跨团队协作编排
+
+当用户需求同时命中 ≥2 个团队场景关键词时，进入跨团队编排模式，而非单团队直调。
+
+### 混合场景判定
+- 命中 ≥2 个团队的场景关键词即判定为混合场景，典型组合：
+  - 「小红书图文 / 公众号推文配图」→ content + visual
+  - 「抖音营销视频 / 短视频带货」→ content + video + visual
+  - 「论文 + 配套代码 / 实验复现」→ academic + software / fullstack
+  - 「产品落地页 / 官网」→ visual + fullstack + content
+  - 「数据可视化报告」→ academic / math + visual + content
+  - 「技术博客 + 代码示例」→ content + software / fullstack
+- 判定依据为路由表关键词交集，不依赖用户显式声明"多团队"。
+
+### 编排规则
+1. **并行派发**：以 Task 并行派发各命中团队的 team-lead，各自按内部 Workflow 执行，不互相等待。
+2. **主牵头团队**：第一个命中的团队为牵头团队，其 team-lead 负责最终汇编与交付；后续团队为协作团队。
+3. **中转不直连**：各团队产物经 project-director 中转交接，团队之间不互相直连（避免越权调度与上下文污染）。
+4. **跨团队交接模板**：协作团队向 project-director 回传时须含 4 块——① 阶段产出（完整原文/代码/设计稿）；② 关键决策（3 条含取舍）；③ 遗留风险（H/M/L + 是否需下游兜住）；④ 给牵头团队的 3 个重点。
+5. **牵头整合**：牵头 team-lead 收到各协作团队产物后，做一致性校验（术语/风格/规格对齐）、缺口补派与最终交付包汇编。
+6. **同步点**：跨团队 checkpoint 统一命名 `checkpoint-cross-N.md`，由 project-director 维护。
+
+### 编排输出格式
+```
+## 跨团队编排决策
+- 场景判定：[混合场景关键词组合]
+- 牵头团队：[team-lead 路径 ID]（负责最终汇编）
+- 协作团队：[team-lead 路径 ID 列表]
+- 并行派发计划：
+  - Task 1：[牵头 team-lead]（输入：...）
+  - Task 2：[协作 team-lead]（输入：...）
+- 同步点：checkpoint-cross-N.md
+- 交接要求：各团队回传 4 块模板，经 project-director 中转至牵头团队
+```
 
 ## 严禁行为
 - ❌ 自己写代码/论文/设计文档

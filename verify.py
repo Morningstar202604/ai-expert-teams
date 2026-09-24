@@ -275,6 +275,56 @@ else:
     err("install.sh 不可执行")
 
 # ═══════════════════════════════════════════════════════
+# 6. 团队 skill 绑定检查
+# ═══════════════════════════════════════════════════════
+print("\n=== 6. 团队 skill 绑定检查 ===")
+unbound_count = 0
+total_checked = 0
+
+def read_agent_bodies(agents_path):
+    bodies = []
+    if os.path.isdir(agents_path):
+        for fname in sorted(os.listdir(agents_path)):
+            if fname.endswith('.md'):
+                bodies.append(open(f"{agents_path}/{fname}", encoding='utf-8').read())
+    return bodies
+
+# 团队 skill：每个 teams/<team>/skills/* 必须被该团队至少 1 个 agent 显式反引号引用
+for team in sorted(os.listdir(f"{BASE}/teams")):
+    skills_path = f"{BASE}/teams/{team}/skills"
+    agents_path = f"{BASE}/teams/{team}/agents"
+    if not os.path.isdir(skills_path):
+        continue
+    team_body = '\n'.join(read_agent_bodies(agents_path))
+    for skill_name in sorted(os.listdir(skills_path)):
+        if not os.path.isdir(f"{skills_path}/{skill_name}"):
+            continue
+        total_checked += 1
+        if f'`{skill_name}`' not in team_body:
+            err(f"[skill绑定] {team}/{skill_name} 未被该团队任何 agent 显式反引号引用")
+            unbound_count += 1
+
+# 通用 skill：skills/* 必须被至少 1 个 agent（全团队 + project-director）显式反引号引用
+general_skills_path = f"{BASE}/skills"
+if os.path.isdir(general_skills_path):
+    all_bodies = []
+    for team in sorted(os.listdir(f"{BASE}/teams")):
+        all_bodies.extend(read_agent_bodies(f"{BASE}/teams/{team}/agents"))
+    pd_path = f"{BASE}/project-director.md"
+    if os.path.isfile(pd_path):
+        all_bodies.append(open(pd_path, encoding='utf-8').read())
+    global_body = '\n'.join(all_bodies)
+    for skill_name in sorted(os.listdir(general_skills_path)):
+        if not os.path.isdir(f"{general_skills_path}/{skill_name}"):
+            continue
+        total_checked += 1
+        if f'`{skill_name}`' not in global_body:
+            err(f"[skill绑定] 通用 skill {skill_name} 未被任何 agent 显式反引号引用")
+            unbound_count += 1
+
+ok(f"skill 绑定检查：{total_checked} 个 skill，{unbound_count} 个未绑定")
+
+# ═══════════════════════════════════════════════════════
 # 总结
 # ═══════════════════════════════════════════════════════
 print("\n" + "=" * 50)
