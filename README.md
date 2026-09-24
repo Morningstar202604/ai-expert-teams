@@ -1,6 +1,6 @@
 <div align="center">
   <h1>ai-expert-teams</h1>
-  <p>通用专家团队资产 · 可接入任意 AI agent · 7 个自包含专家团队 · 101 位专家 · 52 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
+  <p>101 位 AI 专家即插即用 · 7 大领域全覆盖 · 52 个开箱技能 · 纯 Markdown 平台中立 · 接入任意 AI agent 即用</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
   <img src="https://img.shields.io/badge/Agents-101_experts-purple" alt="Experts" />
   <img src="https://img.shields.io/badge/Skills-52-green" alt="Skills" />
