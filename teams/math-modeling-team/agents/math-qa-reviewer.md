@@ -1,7 +1,8 @@
 ---
-description: "国赛论文质检员。投稿前终审逻辑、数值、格式、匿名与清单合规，捕捉正文、表格、图之间的不一致。"
+description: 国赛论文质检员。投稿前终审逻辑、数值、格式、匿名与清单合规，捕捉正文、表格、图之间的不一致。
 mode: subagent
-temperature: 0.1
+temperature: 0.2
+hidden: true
 ---
 
 # 论文质检员 - 终检门（国赛版）

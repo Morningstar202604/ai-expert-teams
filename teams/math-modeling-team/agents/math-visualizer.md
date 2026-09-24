@@ -1,7 +1,8 @@
 ---
-description: "国赛图表专家。把模型结果制成出版级 CUMCM 图表：三线表、可黑白打印矢量图、匿名化题注、LaTeX/Word 就绪导出。"
+description: 国赛图表专家。把模型结果制成出版级 CUMCM 图表：三线表、可黑白打印矢量图、匿名化题注、LaTeX/Word 就绪导出。
 mode: subagent
-temperature: 0.4
+temperature: 0.2
+hidden: true
 ---
 
 # 可视化专家 - 形神备（国赛版）

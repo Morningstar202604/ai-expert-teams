@@ -1,168 +1,102 @@
 #!/usr/bin/env bash
-# opencode-expert-teams 一键安装脚本
-# 用法: ./install.sh [--dry-run|-c]
-#   --dry-run / -c : 仅列出将执行的操作，不实际创建软链
+#
+# install.sh — opencode-expert-teams 一键安装脚本
+#
+# 把本仓库的 agents 与 skills 通过软链接接入 opencode 配置目录：
+#   - agents: 每个团队的 teams/<team>/agents/ 按 teams/<team>/agents/<name>.md
+#             结构软链到 $TARGET/agents/；根级 project-director.md 一并软链。
+#   - skills: skills/*/ 与 teams/*/skills/*/ 共 31 个 skill 目录，
+#             按目录名扁平软链到 $TARGET/skills/<name>/
+#
+# 用法:
+#   bash install.sh [OPENDOCONFIG_DIR]
+#   OPENDOCONFIG_DIR 默认 ~/.config/opencode
+#
+# 幂等：可重复执行，已存在的软链用 ln -sfn 覆盖。
 
 set -euo pipefail
 
-# ── 配置 ──────────────────────────────────────────────
+# ---------- 路径与参数 ----------
+# 可选参数指定 opencode 配置目录，默认 ~/.config/opencode
+TARGET="${1:-$HOME/.config/opencode}"
+# 仓库根 = 本脚本所在目录
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OPENCODE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/opencode"
-AGENTS_TARGET="${OPENCODE_CONFIG}/agents"
-SKILLS_TARGET="${OPENCODE_CONFIG}/skills"
 
-DRY_RUN=false
-if [[ "${1:-}" == "--dry-run" || "${1:-}" == "-c" ]]; then
-  DRY_RUN=true
-  echo "[dry-run] 以下操作仅预览，不会实际执行"
-  echo "----------------------------------------"
-fi
+mkdir -p "$TARGET/agents" "$TARGET/skills"
 
-# ── 辅助函数 ──────────────────────────────────────────
-log()  { echo "  $*"; }
-ok()   { echo "  ✅ $*"; }
-skip() { echo "  ⏭️  $*"; }
+agent_count=0
+skill_count=0
 
-run() {
-  if $DRY_RUN; then
-    echo "  [dry-run] $*"
-  else
-    eval "$@"
-  fi
-}
+echo "==> opencode 配置目录: $TARGET"
+echo "==> 仓库根: $REPO_ROOT"
+echo
 
-# ── 1. 创建 opencode 配置目录 ─────────────────────────
-echo ""
-echo "[1/4] 准备 opencode 配置目录"
-if [[ ! -d "${OPENCODE_CONFIG}" ]]; then
-  run "mkdir -p '${OPENCODE_CONFIG}'"
-  ok "创建 ${OPENCODE_CONFIG}"
-else
-  skip "${OPENCODE_CONFIG} 已存在"
-fi
-
-# ── 2. 软链仓库到 agents 目录 ─────────────────────────
-echo ""
-echo "[2/4] 链接 agents 目录"
-run "ln -sfn '${REPO_ROOT}' '${AGENTS_TARGET}'"
-if $DRY_RUN; then
-  log "将链接: ${AGENTS_TARGET} -> ${REPO_ROOT}"
-else
-  if [[ -L "${AGENTS_TARGET}" ]]; then
-    ok "agents 软链已更新: ${AGENTS_TARGET} -> $(readlink "${AGENTS_TARGET}")"
-  else
-    ok "agents 软链已创建: ${AGENTS_TARGET} -> ${REPO_ROOT}"
-  fi
-fi
-
-# ── 3. 软链全部 skill 包到 skills 目录 ────────────────
-echo ""
-echo "[3/4] 链接 skill 包"
-if [[ ! -d "${SKILLS_TARGET}" ]]; then
-  run "mkdir -p '${SKILLS_TARGET}'"
-  ok "创建 ${SKILLS_TARGET}"
-else
-  skip "${SKILLS_TARGET} 已存在"
-fi
-
-SKILL_COUNT=0
-
-# 3a. 团队专用 skills: teams/<team>/skills/<name>/
-for team_dir in "${REPO_ROOT}"/teams/*/skills/*/; do
-  [[ -d "${team_dir}" ]] || continue
-  skill_name="$(basename "${team_dir}")"
-  # 校验 SKILL.md 存在
-  if [[ ! -f "${team_dir}/SKILL.md" ]]; then
-    echo "  ⚠️  跳过 ${skill_name}: 缺少 SKILL.md"
-    continue
-  fi
-  run "ln -sfn '${team_dir}' '${SKILLS_TARGET}/${skill_name}'"
-  if $DRY_RUN; then
-    log "将链接: ${SKILLS_TARGET}/${skill_name} -> ${team_dir}"
-  else
-    ok "skill: ${skill_name}"
-  fi
-  SKILL_COUNT=$((SKILL_COUNT + 1))
+# ---------- 1. agents：按团队软链 ----------
+# 保持 teams/<team>/agents/<name>.md 结构：
+#   $TARGET/agents/teams/<team>/agents -> $REPO_ROOT/teams/<team>/agents
+echo "==> 安装 agents ..."
+mkdir -p "$TARGET/agents/teams"
+for team_dir in "$REPO_ROOT"/teams/*/; do
+    [ -d "$team_dir" ] || continue
+    team="$(basename "$team_dir")"
+    src_agents="$team_dir/agents"
+    # 源目录存在才链接
+    if [ ! -d "$src_agents" ]; then
+        echo "    - 跳过 $team（无 agents 目录）"
+        continue
+    fi
+    mkdir -p "$TARGET/agents/teams/$team"
+    ln -sfn "$src_agents" "$TARGET/agents/teams/$team/agents"
+    n="$(find "$src_agents" -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
+    agent_count=$((agent_count + n))
+    echo "    + teams/$team/agents/  ($n 个 agent)"
 done
 
-# 3b. 通用 skills: skills/<name>/
-if [[ -d "${REPO_ROOT}/skills" ]]; then
-  for skill_dir in "${REPO_ROOT}"/skills/*/; do
-    [[ -d "${skill_dir}" ]] || continue
-    skill_name="$(basename "${skill_dir}")"
-    if [[ ! -f "${skill_dir}/SKILL.md" ]]; then
-      echo "  ⚠️  跳过 ${skill_name}: 缺少 SKILL.md"
-      continue
-    fi
-    # 防重名：如果团队 skill 已占用同名，通用 skill 加前缀
-    target_path="${SKILLS_TARGET}/${skill_name}"
-    if [[ -L "${target_path}" || -d "${target_path}" ]]; then
-      existing_target="$(readlink "${target_path}" 2>/dev/null || echo "${target_path}")"
-      if [[ "${existing_target}" == "${skill_dir}" ]]; then
-        skip "skill: ${skill_name} (已指向同一路径)"
-        SKILL_COUNT=$((SKILL_COUNT + 1))
+# 仓库根级 agent（project-director.md 等），非文档/许可证类 .md
+for root_md in "$REPO_ROOT"/*.md; do
+    [ -f "$root_md" ] || continue
+    base="$(basename "$root_md")"
+    case "$base" in
+        SKILLS_INDEX.md|README.md|AGENTS.md|CONTRIBUTING.md|CODE_OF_CONDUCT.md|SECURITY.md|LICENSE) continue ;;
+    esac
+    ln -sfn "$root_md" "$TARGET/agents/$base"
+    agent_count=$((agent_count + 1))
+    echo "    + $base (根级 agent)"
+done
+
+echo
+
+# ---------- 2. skills：扁平软链 ----------
+echo "==> 安装 skills ..."
+# 收集所有 skill 目录：通用 skills/ + 各团队 teams/*/skills/*/
+skill_dirs=()
+for s in "$REPO_ROOT"/skills/*/; do
+    [ -d "$s" ] && skill_dirs+=("$s")
+done
+for s in "$REPO_ROOT"/teams/*/skills/*/; do
+    [ -d "$s" ] && skill_dirs+=("$s")
+done
+
+for src in "${skill_dirs[@]}"; do
+    name="$(basename "$src")"
+    # 源目录存在、且含 SKILL.md 才链接
+    if [ ! -d "$src" ] || [ ! -f "$src/SKILL.md" ]; then
+        echo "    - 跳过 $name（缺少 SKILL.md）"
         continue
-      fi
-      echo "  ⚠️  命名冲突: ${skill_name} 已存在 (指向 ${existing_target})，跳过通用版本"
-      continue
     fi
-    run "ln -sfn '${skill_dir}' '${target_path}'"
-    if $DRY_RUN; then
-      log "将链接: ${target_path} -> ${skill_dir}"
-    else
-      ok "skill: ${skill_name} (通用)"
-    fi
-    SKILL_COUNT=$((SKILL_COUNT + 1))
-  done
-fi
+    ln -sfn "$src" "$TARGET/skills/$name"
+    skill_count=$((skill_count + 1))
+    echo "    + $name"
+done
 
-echo "  共链接 ${SKILL_COUNT} 个 skill 包"
+echo
 
-# ── 4. 验证 ───────────────────────────────────────────
-echo ""
-echo "[4/4] 安装验证"
-if $DRY_RUN; then
-  log "dry-run 模式跳过实际验证"
-else
-  # 验证 agents 软链
-  if [[ -L "${AGENTS_TARGET}" && -d "${AGENTS_TARGET}" ]]; then
-    ok "agents 目录可访问: $(ls "${AGENTS_TARGET}"/*.md 2>/dev/null | wc -l) 个根级 agent 文件"
-  else
-    echo "  ❌ agents 软链异常"
-    exit 1
-  fi
-
-  # 验证 skills 目录
-  linked_skills=0
-  for skill_dir in "${SKILLS_TARGET}"/*/; do
-    [[ -d "${skill_dir}" ]] || continue
-    if [[ -f "${skill_dir}/SKILL.md" ]]; then
-      linked_skills=$((linked_skills + 1))
-    fi
-  done
-  ok "skills 目录可访问: ${linked_skills} 个已安装 skill（含 SKILL.md）"
-
-  # 验证 opencode.json
-  if [[ -f "${REPO_ROOT}/opencode.json" ]]; then
-    ok "opencode.json 存在（skill 权限已配置）"
-  else
-    echo "  ⚠️  未找到 opencode.json，skill 可能需要手动授权"
-  fi
-fi
-
-# ── 完成 ──────────────────────────────────────────────
-echo ""
-echo "========================================"
-if $DRY_RUN; then
-  echo "  dry-run 完成，共 ${SKILL_COUNT} 个 skill 将被链接"
-else
-  echo "  安装完成！"
-  echo "  agents: ${AGENTS_TARGET}"
-  echo "  skills: ${SKILLS_TARGET} (${SKILL_COUNT} 个)"
-fi
-echo "========================================"
-echo ""
-echo "使用示例:"
-echo "  opencode run --agent project-director \"你的任务\""
-echo "  opencode run --agent teams/fullstack-web-team/agents/fullstack-team-lead \"做个 Web 应用\""
-echo ""
+# ---------- 3. 安装摘要 ----------
+echo "=============================================="
+echo " 安装完成"
+echo "   agents: $agent_count 个  -> $TARGET/agents/"
+echo "   skills: $skill_count 个  -> $TARGET/skills/"
+echo "   目标:   $TARGET"
+echo "=============================================="
+echo
+echo "提示：重启 opencode 后生效。"

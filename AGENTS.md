@@ -117,24 +117,23 @@ opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
 ├── AGENTS.md                    # 本文档
 ├── install.sh                   # 一键安装脚本
 ├── opencode.json                # opencode 配置（skill 权限）
-├── skills/                      # 通用 skill（8 个，全团队共用）
+├── skills/                      # 通用 skill（已实装 11 个，全团队共用）
 ├── teams/
 │   ├── academic-paper-team/
 │   │   ├── agents/ (18)          # team-lead + 16 专家 + 1 core-researcher
-│   │   ├── skills/ (7)           # 团队专用 skill
+│   │   ├── skills/ (7)           # 团队专用 skill（已实装）
 │   │   └── TEAM.md              # 团队说明
 │   ├── fullstack-web-team/
 │   │   ├── agents/ (19)          # team-lead + 14 fullstack + 4 core
-│   │   ├── skills/ (11)          # 团队专用 skill
+│   │   ├── skills/ (11)          # 团队专用 skill（已实装）
 │   │   └── TEAM.md
 │   ├── math-modeling-team/
 │   │   ├── agents/ (9)           # team-lead + 8 专家
-│   │   ├── skills/ (2)           # math-modeling-guosai + selfcheck
+│   │   ├── skills/ (2)           # math-modeling-guosai + selfcheck（已实装）
 │   │   └── TEAM.md
 │   └── software-dev-team/
 │       ├── agents/ (12)          # team-lead + 11 专家
-│       ├── skills/ (3)           # 团队专用 skill
-│       └── TEAM.md
+│       └── TEAM.md              # 无独立 skill，引用通用 skills/ 中 3 个
 ```
 
 ---

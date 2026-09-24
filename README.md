@@ -1,6 +1,6 @@
 <div align="center">
   <h1>opencode-expert-teams</h1>
-  <p>4 个自包含专家团队 · 58 位专家 · 31 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
+  <p>4 个自包含专家团队 · 58 位专家 · 31 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
   <img src="https://img.shields.io/badge/Agents-58_experts-purple" alt="Experts" />
   <img src="https://img.shields.io/badge/Skills-31-green" alt="Skills" />
@@ -71,18 +71,27 @@ graph TB
 ### 安装（一键脚本，推荐）
 
 ```bash
-git clone https://gitcode.com/badhope/opencode-expert-teams.git
+git clone https://github.com/X33834/opencode-expert-teams.git
 cd opencode-expert-teams
-./install.sh              # 实际安装（软链 agents + 全部 skills）
-./install.sh --dry-run    # 预览将执行的操作，不实际修改
+bash install.sh            # 默认软链到 ~/.config/opencode
+# 可选：指定其他 opencode 配置目录
+bash install.sh /path/to/opencode/config
 ```
 
-脚本会自动：
-1. 将仓库根软链到 `~/.config/opencode/agents`
-2. 遍历 `teams/*/skills/*` 和 `skills/*`，逐个软链到 `~/.config/opencode/skills/<name>/`
-3. 验证安装结果（agent 数 + skill 数）
+`install.sh` 会自动完成：
+1. 按 `teams/<team>/agents/<name>.md` 结构，把各团队 agents 软链到 `$TARGET/agents/`；
+2. 把 `skills/*/` 与 `teams/*/skills/*/` 共 31 个 skill 目录，按目录名扁平软链到 `$TARGET/skills/<name>/`；
+3. 打印安装摘要（agent 数、skill 数、目标路径）。
 
-> 幂等：重复执行不会产生重复软链，`ln -sfn` 自动覆盖。
+> 幂等：可重复执行，`ln -sfn` 自动覆盖已有软链。
+> 手动等价做法：
+> ```bash
+> mkdir -p ~/.config/opencode/agents/teams ~/.config/opencode/skills
+> for t in teams/*/; do mkdir -p ~/.config/opencode/agents/teams/$(basename "$t"); \
+>   ln -sfn "$PWD/$t/agents" ~/.config/opencode/agents/teams/$(basename "$t")/agents; done
+> for s in skills/*/ teams/*/skills/*/; do [ -d "$s" ] && ln -sfn "$PWD/$s" ~/.config/opencode/skills/$(basename "$s"); done
+> ```
+> 重启 opencode 后生效。
 
 ### 直接调用
 
@@ -129,11 +138,11 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 ```
 opencode-expert-teams/
 ├── project-director.md      # 总调度（4 场景路由）
-├── SKILLS_INDEX.md          # 31 skill 统一索引
+├── SKILLS_INDEX.md          # 31 个 skill 统一索引
 ├── AGENTS.md                # 使用手册
 ├── install.sh               # 一键安装脚本（agents + skills 软链）
 ├── opencode.json            # opencode 配置（skill 权限全开）
-├── skills/                  # 通用 skill（8 个，全团队共用）
+├── skills/                  # 已实装（通用 11 + 团队 20）
 │   ├── web-search/
 │   ├── deep-research/
 │   ├── security-scan/
@@ -141,24 +150,26 @@ opencode-expert-teams/
 │   ├── performance-profiler/
 │   ├── ci-cd-pipeline-builder/
 │   ├── frontend-app-builder/
-│   └── frontend-testing-debugging/
+│   ├── frontend-testing-debugging/
+│   ├── api-design-reviewer/
+│   ├── test-case-generator-v2/
+│   └── uml-and-software-architecture-visualization/
 └── teams/
     ├── academic-paper-team/ # 18 专家
     │   ├── agents/
-    │   ├── skills/          # 7 个团队专用 skill
+    │   ├── skills/          # 7 个团队专用 skill（已实装）
     │   └── TEAM.md
     ├── fullstack-web-team/  # 19 专家 + 4 core 单兵
     │   ├── agents/
-    │   ├── skills/          # 11 个团队专用 skill
+    │   ├── skills/          # 11 个团队专用 skill（已实装）
     │   └── TEAM.md
     ├── math-modeling-team/  # 9 专家（国赛专用）
     │   ├── agents/
-    │   ├── skills/          # 2 个（math-modeling-guosai / selfcheck）
+    │   ├── skills/          # 2 个（math-modeling-guosai / selfcheck，已实装）
     │   └── TEAM.md
     └── software-dev-team/   # 12 专家
         ├── agents/
-        ├── skills/          # 3 个团队专用 skill
-        └── TEAM.md
+        └── TEAM.md          # 无独立 skill，引用通用 skills/ 中 3 个
 ```
 
 ---

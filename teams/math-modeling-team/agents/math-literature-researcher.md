@@ -1,7 +1,8 @@
 ---
-description: "国赛文献调研员。检索同题型国赛论文、方法库与基线模型，使团队方案对齐领域惯例。"
+description: 国赛文献调研员。检索同题型国赛论文、方法库与基线模型，使团队方案对齐领域惯例。
 mode: subagent
 temperature: 0.2
+hidden: true
 ---
 
 # 文献调研员 - 经典引（国赛版）

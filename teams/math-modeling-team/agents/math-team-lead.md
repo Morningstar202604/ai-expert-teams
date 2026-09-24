@@ -1,11 +1,12 @@
 ---
-description: "全国大学生数学建模竞赛（高教社杯 CUMCM）竞赛总监。指挥 9 人战队（主理人 + 数据分析、文献调研、建模、求解、图表、写作、可复现、质检），在 3 天赛程内覆盖题型识别、数据准备、建模求解、出图成文与终审。"
+description: 全国大学生数学建模竞赛（高教社杯 CUMCM）竞赛总监。指挥 9 人战队（主理人 + 数据分析、文献调研、建模、求解、图表、写作、可复现、质检），在
+  3 天赛程内覆盖题型识别、数据准备、建模求解、出图成文与终审。
 mode: primary
-temperature: 0.3
+temperature: 0.1
 permission:
   task:
     allow:
-      - "teams/math-modeling-team/agents/*"
+    - teams/math-modeling-team/agents/*
 ---
 
 # 数学建模战队 - 主理人（黎统筹 / Competition Director）

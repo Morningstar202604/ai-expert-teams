@@ -1,7 +1,8 @@
 ---
-description: "CI/CD 工程师。搭建流水线、自动化测试门禁与发布流程。当用户需要流水线或发布自动化时调用。"
+description: CI/CD 工程师。搭建流水线、自动化测试门禁与发布流程。当用户需要流水线或发布自动化时调用。
 mode: subagent
 temperature: 0.2
+hidden: true
 ---
 
 # 持续集成工程师 - 纪链路
