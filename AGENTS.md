@@ -1,6 +1,6 @@
 # Agent 系统使用手册 - AGENTS.md
 
-> **2 个专家团队 + 核心单兵** = 37 个 agent（Academic 18 + Fullstack 19）。按**场景**组织，每个团队自包含，不拆单兵池。
+> **4 个专家团队 + 核心单兵** = 58 个 agent（Academic 18 + Fullstack 19 + Math 9 + Software 12）。按**场景**组织，每个团队自包含，不拆单兵池。
 
 ---
 
@@ -22,6 +22,8 @@ opencode run --agent <team-lead-path> "任务描述"
 |------|-------------------|----------|
 | 学术论文全流程 | `teams/academic-paper-team/agents/academic-team-lead` | "写论文"、"投稿"、"审稿回复" |
 | Web 应用全链路 | `teams/fullstack-web-team/agents/fullstack-team-lead` | "做 Web 应用"、"上线"、"重构" |
+| 数学建模国赛 | `teams/math-modeling-team/agents/math-team-lead` | "托管国赛赛题"、"建模求解"、"赛前特训" |
+| 软件开发交付 | `teams/software-dev-team/agents/software-team-lead` | "实现 XX 模块"、"评审 PR"、"补测试" |
 
 ### 3. 团队内部单兵 → 经 Team-lead 的 Task 派发（subagent）
 其余成员不作为 `--agent` 入口（短名不可直调）；由 Team-lead 按 Workflow 用 Task 派发。仅当用户明确指定单兵时，Team-lead 可 `Task(subagent_type=<路径 ID>)` 直达：
@@ -31,9 +33,15 @@ teams/academic-paper-team/agents/academic-topic-strategist
 teams/academic-paper-team/agents/academic-writer
 teams/fullstack-web-team/agents/core-architect
 teams/fullstack-web-team/agents/fullstack-frontend-engineer
+teams/math-modeling-team/agents/math-modeler
+teams/math-modeling-team/agents/math-solver
+teams/software-dev-team/agents/software-architect
+teams/software-dev-team/agents/software-tester
 ```
 - 学术团队前缀：`teams/academic-paper-team/agents/`
 - 全栈团队前缀：`teams/fullstack-web-team/agents/`
+- 数学建模团队前缀：`teams/math-modeling-team/agents/`
+- 软件开发团队前缀：`teams/software-dev-team/agents/`
 - core-* 单兵（core-architect / core-code-reviewer / core-security-auditor / core-test-engineer）在 fullstack 目录；core-researcher 在 academic 目录
 
 ---
@@ -57,6 +65,20 @@ teams/fullstack-web-team/agents/fullstack-frontend-engineer
 | **W3 加固既有代码** | "安全/性能/质量/无障碍加固" | 5+6 |
 | **W4 仅接口与数据** | "只做 API 设计 + 数据建模" | 2 |
 | **W5 发布就绪** | "冲刺上线，CI/CD/部署" | 4 |
+
+### Math Modeling Team（数学建模国赛）
+| Workflow | 触发场景 | 执行流程 |
+|----------|----------|----------|
+| **A 完整国赛** | "拿到赛题、要全程托管" | Phase 0(选题+数据/文献并行)→1(建模)→2(求解→出图串行)→3(写作)→4(复现+质检并行) |
+| **B 单题攻坚** | "只卡在某问/某步" | 按卡点直派对应成员（选题→lead；数据→data-analyst；建模→modeler；求解→solver；写作→writer；终检→qa） |
+| **C 赛前特训** | "还没比赛，练真题/补短板" | 指定真题跑通 Phase 0→1→2→3，Phase 4 自查打分 |
+
+### Software Dev Team（软件开发交付）
+| Workflow | 触发场景 | 执行流程 |
+|----------|----------|----------|
+| **W1 全流程** | "新功能从零到交付" | 拆解 → 设计(architect+api+database 并行) → 实现(frontend/backend 并行) → 门禁(security+qa+reviewer+quality 并行) → tester 收口(全绿才过) → 交付 |
+| **W2 仅设计** | "只出架构方案/接口契约" | 拆解 → 设计（ADR + api 契约 + 数据模型） |
+| **W3 仅评审+测试** | "对现有代码跑门禁" | 门禁四员并行 → tester 收口 |
 
 ---
 
@@ -90,18 +112,26 @@ teams/fullstack-web-team/agents/fullstack-frontend-engineer
 
 ```
 opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
-├── project-director.md          # 总调度入口
+├── project-director.md          # 总调度入口（4 场景路由）
 ├── SKILLS_INDEX.md              # 技能索引（含归属团队）
 ├── AGENTS.md                    # 本文档
 ├── teams/
 │   ├── academic-paper-team/
 │   │   ├── agents/ (18)          # team-lead + 16 专家 + 1 core-researcher
-│   │   ├── skills/              # 团队专用 skill
+│   │   ├── skills/              # 团队专用 skill（外部/待装，见 SKILLS_INDEX）
 │   │   └── TEAM.md              # 团队说明
 │   ├── fullstack-web-team/
 │   │   ├── agents/ (19)          # team-lead + 14 fullstack + 4 core
 │   │   ├── skills/
 │   │   └── TEAM.md
+│   ├── math-modeling-team/
+│   │   ├── agents/ (9)           # team-lead + 8 专家
+│   │   ├── skills/              # math-modeling-guosai + math-modeling-selfcheck（实装）
+│   │   └── TEAM.md
+│   └── software-dev-team/
+│       ├── agents/ (12)          # team-lead + 11 专家
+│       ├── skills/
+│       └── TEAM.md
 ```
 
 ---

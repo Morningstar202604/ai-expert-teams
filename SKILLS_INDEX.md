@@ -25,6 +25,27 @@ teams/<team-name>/skills/                               # 团队专用 skill（�
 
 ---
 
+## 📐 数学建模团队专用
+
+| Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
+|----------|------|------------|------|--------|
+| `math-modeling-guosai` | 国赛资料库：题型映射/模型速查/LaTeX 骨架/评审自查表 | math-team-lead, math-modeler, math-writer, math-qa-reviewer | 团队 skills/（**已实装**） | P0 |
+| `math-modeling-selfcheck` | 国赛自检闸门：思想纪律 + 思维强化，开工前/产出后强制过单 | 全员（math-* 每 Phase 必过） | 团队 skills/（**已实装**） | P0 |
+
+---
+
+## 🧩 软件开发交付团队专用
+
+| Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
+|----------|------|------------|------|--------|
+| `api-design-reviewer` | REST/GraphQL 设计评审 | software-api-designer, software-reviewer | 用户级 | P1 |
+| `test-case-generator-v2` | 企业级测试用例生成 | software-qa-engineer, software-tester | 用户级 | P1 |
+| `uml-and-software-architecture-visualization` | 架构/时序/类图生成 | software-architect | 用户级 | P1 |
+
+> software 团队各成员遵循「开工前 Glob 扫团队 skills 目录」协议，命中即用、失败退回通用经验；上表为当前推荐的通用外部 skill，随装随登记。
+
+---
+
 ## 🌐 全栈 Web 团队专用
 
 | Skill ID | 描述 | 适配 Agent | 位置 | 优先级 |
@@ -48,14 +69,14 @@ teams/<team-name>/skills/                               # 团队专用 skill（�
 | Skill ID | 描述 | 适配团队 | 优先级 |
 |----------|------|----------|--------|
 | `web-search` | 免费联网搜索（SearXNG/DuckDuckGo）、缓存 | 全部 | P0 |
-| `deep-research` | 多轮检索+综合报告、引用溯源 | 学术、全栈 | P1 |
-| `security-scan` | 单遍仓库安全审计 | 全栈 | P1 |
-| `deep-security-scan` | 多遍深度安全扫描 | 全栈 | P2 |
-| `api-design-reviewer` | REST/GraphQL 设计评审 | 全栈 | P1 |
-| `performance-profiler` | CPU/内存/IO 瓶颈剖析 | 全栈 | P1 |
-| `ci-cd-pipeline-builder` | 流水线生成/门禁/发布 | 全栈 | P1 |
-| `test-case-generator-v2` | 企业级测试用例生成 | 全栈 | P1 |
-| `uml-and-software-architecture-visualization` | 架构/时序/类图生成 | 全栈 | P1 |
+| `deep-research` | 多轮检索+综合报告、引用溯源 | 学术、全栈、数学建模 | P1 |
+| `security-scan` | 单遍仓库安全审计 | 全栈、软件开发 | P1 |
+| `deep-security-scan` | 多遍深度安全扫描 | 全栈、软件开发 | P2 |
+| `api-design-reviewer` | REST/GraphQL 设计评审 | 全栈、软件开发 | P1 |
+| `performance-profiler` | CPU/内存/IO 瓶颈剖析 | 全栈、软件开发 | P1 |
+| `ci-cd-pipeline-builder` | 流水线生成/门禁/发布 | 全栈、软件开发 | P1 |
+| `test-case-generator-v2` | 企业级测试用例生成 | 全栈、软件开发 | P1 |
+| `uml-and-software-architecture-visualization` | 架构/时序/类图生成 | 全栈、软件开发 | P1 |
 | `frontend-app-builder` | 前端应用脚手架/组件实现 | 全栈 | P1 |
 | `frontend-testing-debugging` | 前端 E2E/组件测试调试 | 全栈 | P1 |
 
