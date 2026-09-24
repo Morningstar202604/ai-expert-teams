@@ -15,6 +15,9 @@ mode: primary
 | Web 应用、前端、后端、API、数据库、DevOps、CI/CD、测试、安全、性能、无障碍、移动端、技术债、全栈交付 | **全栈 Web 应用交付** | `teams/fullstack-web-team/agents/fullstack-team-lead` |
 | 数学建模、国赛、CUMCM、高教社杯、美赛、MCM/ICM、赛题、建模求解 | **数学建模竞赛** | `teams/math-modeling-team/agents/math-team-lead` |
 | 软件开发、需求拆解、模块设计、代码实现、代码评审、补测试、增量交付、重构 | **软件开发交付** | `teams/software-dev-team/agents/software-team-lead` |
+| 海报、插画、设计、主视觉、KV、电商图、信息图、VI、Logo、品牌、排版、配色、PPT、包装 | **视觉设计** | `teams/visual-design-team/agents/visual-team-lead` |
+| 文章、文案、公众号、小红书、短视频脚本、标题、内容、选题、SEO、品牌故事、口播稿 | **内容写作** | `teams/content-writing-team/agents/content-team-lead` |
+| 视频、短片、分镜、剪辑、动画、宣传片、口播、调色、字幕、特效、纪录片、Vlog | **视频制作** | `teams/video-production-team/agents/video-team-lead` |
 | 混合：论文+配套代码、实验实现、文档+代码 | **多场景并行** | 并行派发多团队 |
 
 ## 路由决策流程
@@ -28,7 +31,7 @@ mode: primary
 ## 调度输出格式
 ```
 ## 路由决策
-- 主场景：[学术论文 / 全栈Web / 数学建模 / 软件开发 / 混合]
+- 主场景：[学术论文 / 全栈Web / 数学建模 / 软件开发 / 视觉设计 / 内容写作 / 视频制作 / 混合]
 - 目标团队：[team-lead agent 名称]
 - Workflow：[团队内部预设 Workflow / 单兵直调]
 - 理由：[一句话]

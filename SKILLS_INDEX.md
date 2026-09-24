@@ -1,6 +1,6 @@
 # 技能索引 - SKILLS_INDEX.md
 
-> 本仓库共实装 **31 个 skill**（29 个新建 + 2 个数学建模已有）。
+> 本仓库共实装 **49 个 skill**（通用 11 + 团队专用 38）。
 > 统一按归属团队登记；调用失败/未安装时自动回退通用经验，不阻塞。
 
 ## 目录结构
@@ -79,6 +79,45 @@ teams/<team-name>/skills/               # 团队专用 skill（相对本仓库�
 
 ---
 
+## 🎨 视觉设计团队 visual-design-team（6 个）
+
+| 名称 | 位置 | 一句话用途 | 适配 Agent |
+|------|------|------------|------------|
+| `design-brief-writer` | `teams/visual-design-team/skills/design-brief-writer/` | 设计需求简报模板与拆解：目标/受众/风格/尺寸/交付物逐项对齐。 | visual-team-lead、visual-brand-identity-designer |
+| `color-and-typography-guide` | `teams/visual-design-team/skills/color-and-typography-guide/` | 色彩与字体体系速查：配色策略、字体层级、版式网格与对比度规范。 | visual-color-theory-expert、visual-typography-expert |
+| `poster-and-key-visual-templates` | `teams/visual-design-team/skills/poster-and-key-visual-templates/` | 海报与主视觉 KV 版式模板库：横/竖/方版构图、信息层级、留白与安全区。 | visual-poster-designer、visual-social-media-designer |
+| `ecommerce-visual-checklist` | `teams/visual-design-team/skills/ecommerce-visual-checklist/` | 电商视觉自查清单：主图/详情页/长图的卖点层级、合规与转化率要点。 | visual-ecommerce-designer |
+| `image-generation-prompt-guide` | `teams/visual-design-team/skills/image-generation-prompt-guide/` | AI 生图提示词工程：构图/光影/风格/负面词结构化写法与迭代策略。 | visual-illustrator、visual-poster-designer、visual-brand-identity-designer |
+| `design-review-checklist` | `teams/visual-design-team/skills/design-review-checklist/` | 设计评审清单：视觉一致性、可读性、品牌契合、合规与交付规范逐项检查。 | visual-design-reviewer、visual-team-lead |
+
+---
+
+## ✍️ 内容写作团队 content-writing-team（6 个）
+
+| 名称 | 位置 | 一句话用途 | 适配 Agent |
+|------|------|------------|------------|
+| `content-strategy-canvas` | `teams/content-writing-team/skills/content-strategy-canvas/` | 选题与策略画布：受众画像/内容定位/选题矩阵/差异化价值四象限。 | content-strategist、content-planner |
+| `title-crafting-guide` | `teams/content-writing-team/skills/title-crafting-guide/` | 标题工程：钩子类型、数字/疑问/对比/痛点公式、A/B 测试与合规边界。 | content-title-expert、content-social-media-writer |
+| `multi-platform-adaptation-guide` | `teams/content-writing-team/skills/multi-platform-adaptation-guide/` | 多平台改写适配：公众号/小红书/知乎/微博的字数、语气、标签与格式差异。 | content-multiplatform-adaptor、content-social-media-writer |
+| `copywriting-framework` | `teams/content-writing-team/skills/copywriting-framework/` | 文案框架：AIDA/SCQA/PAS/FAB 等经典模型的适用场景与模板。 | content-copywriter、content-article-writer |
+| `seo-writing-guide` | `teams/content-writing-team/skills/seo-writing-guide/` | SEO 写作：关键词布局、搜索意图匹配、内链结构、元描述与可读性优化。 | content-seo-writer、content-editor |
+| `content-quality-checklist` | `teams/content-writing-team/skills/content-quality-checklist/` | 内容质检清单：事实核查/原创度/结构逻辑/合规敏感词/排版规范逐项过单。 | content-reviewer、content-editor |
+
+---
+
+## 🎬 视频制作团队 video-production-team（6 个）
+
+| 名称 | 位置 | 一句话用途 | 适配 Agent |
+|------|------|------------|------------|
+| `video-script-template` | `teams/video-production-team/skills/video-script-template/` | 脚本结构模板：钩子/展开/行动号召三段式，含分栏表与时长配比。 | video-scriptwriter-director、video-short-form-expert |
+| `storyboard-guide` | `teams/video-production-team/skills/storyboard-guide/` | 分镜指南：镜号/景别/运镜/画面/对白/时长/转场字段规范与构图要点。 | video-storyboard-artist、video-scriptwriter-director |
+| `short-video-structure-guide` | `teams/video-production-team/skills/short-video-structure-guide/` | 短视频结构方法论：3 秒钩子/信息密度/完播曲线/互动引导与平台差异。 | video-short-form-expert、video-editor |
+| `video-editing-guide` | `teams/video-production-team/skills/video-editing-guide/` | 剪辑方法论：节奏曲线/转场选择/音画同步/J-cut L-cut 与叙事剪辑。 | video-editor、video-animation-motion-designer |
+| `caption-and-subtitle-guide` | `teams/video-production-team/skills/caption-and-subtitle-guide/` | 字幕规范：断句/字号/安全区/双语对照/敏感词合规与读屏速度。 | video-caption-subtitle-expert |
+| `video-quality-checklist` | `teams/video-production-team/skills/video-quality-checklist/` | 成片质检清单：画面/音频/字幕/色彩/合规/导出参数逐项终检。 | video-quality-reviewer、video-team-lead |
+
+---
+
 ## 调用约定
 
 ```python
@@ -109,4 +148,4 @@ def use_skill(skill_id: str, team_context: str = None, fallback: bool = True):
 - 新增 skill → 必须在此表登记（名称/位置/一句话用途）
 - 废弃 skill → 标记 `DEPRECATED`，保留 90 天
 - 团队专用 skill → 仅在对应团队目录，不污染全局 `skills/`
-- 总数口径：本仓库统一为 **31 个 skill**，新增/删除时同步更新顶部数字
+- 总数口径：本仓库统一为 **49 个 skill**，新增/删除时同步更新顶部数字

@@ -5,7 +5,7 @@
 # 把本仓库的 agents 与 skills 通过软链接接入 opencode 配置目录：
 #   - agents: 每个团队的 teams/<team>/agents/ 按 teams/<team>/agents/<name>.md
 #             结构软链到 $TARGET/agents/；根级 project-director.md 一并软链。
-#   - skills: skills/*/ 与 teams/*/skills/*/ 共 31 个 skill 目录，
+#   - skills: skills/*/ 与 teams/*/skills/*/ 共 49 个 skill 目录，
 #             按目录名扁平软链到 $TARGET/skills/<name>/
 #
 # 用法:

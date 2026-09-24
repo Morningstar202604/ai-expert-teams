@@ -1,9 +1,9 @@
 <div align="center">
   <h1>opencode-expert-teams</h1>
-  <p>4 个自包含专家团队 · 58 位专家 · 31 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
+  <p>7 个自包含专家团队 · 100 位专家 · 49 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
-  <img src="https://img.shields.io/badge/Agents-58_experts-purple" alt="Experts" />
-  <img src="https://img.shields.io/badge/Skills-31-green" alt="Skills" />
+  <img src="https://img.shields.io/badge/Agents-100_experts-purple" alt="Experts" />
+  <img src="https://img.shields.io/badge/Skills-49-green" alt="Skills" />
   <img src="https://img.shields.io/badge/Framework-Opencode-blueviolet" alt="Framework" />
   <br />
   <p>
@@ -53,15 +53,45 @@ graph TB
         S4["software-tester"]
         SN["...8 more"]
     end
+    subgraph Visual Design Team
+        VL["visual-team-lead<br/>(主理人)"]
+        V1["poster-designer"]
+        V2["illustrator"]
+        V3["ecommerce-designer"]
+        V4["logo-designer"]
+        VN["...10 more"]
+    end
+    subgraph Content Writing Team
+        CL["content-team-lead<br/>(主理人)"]
+        C1["article-writer"]
+        C2["copywriter"]
+        C3["short-video-scriptwriter"]
+        C4["seo-writer"]
+        CN["...10 more"]
+    end
+    subgraph Video Production Team
+        VDL["video-team-lead<br/>(主理人)"]
+        D1["scriptwriter-director"]
+        D2["storyboard-artist"]
+        D3["editor"]
+        D4["motion-graphics"]
+        DN["...10 more"]
+    end
     User --> PD
     PD -->|"论文/学术"| AL
     PD -->|"Web 应用"| FL
     PD -->|"数学建模竞赛"| ML
     PD -->|"软件开发交付"| SL
+    PD -->|"视觉设计"| VL
+    PD -->|"内容写作"| CL
+    PD -->|"视频制作"| VDL
     AL --- A1 & A2 & A3 & A4 & AN
     FL --- F1 & F2 & F3 & F4 & FN
     ML --- M1 & M2 & M3 & M4 & MN
     SL --- S1 & S2 & S3 & S4 & SN
+    VL --- V1 & V2 & V3 & V4 & VN
+    CL --- C1 & C2 & C3 & C4 & CN
+    VDL --- D1 & D2 & D3 & D4 & DN
 ```
 
 ---
@@ -80,7 +110,7 @@ bash install.sh /path/to/opencode/config
 
 `install.sh` 会自动完成：
 1. 按 `teams/<team>/agents/<name>.md` 结构，把各团队 agents 软链到 `$TARGET/agents/`；
-2. 把 `skills/*/` 与 `teams/*/skills/*/` 共 31 个 skill 目录，按目录名扁平软链到 `$TARGET/skills/<name>/`；
+2. 把 `skills/*/` 与 `teams/*/skills/*/` 共 49 个 skill 目录，按目录名扁平软链到 `$TARGET/skills/<name>/`；
 3. 打印安装摘要（agent 数、skill 数、目标路径）。
 
 > 幂等：可重复执行，`ln -sfn` 自动覆盖已有软链。
@@ -111,6 +141,22 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 
 ---
 
+## 场景分类
+
+7 个团队按 **4 大类** 组织，`project-director` 按关键词自动路由：
+
+| 大类 | 团队 | 专家数 | 典型场景 |
+|------|------|--------|----------|
+| **学术研究** | Academic Paper | 18 | 论文选题→文献→方法→写作→审稿→投稿 |
+| **学术应用** | Math Modeling | 9 | 国赛/美赛建模竞赛全程托管（72h） |
+| **技术开发** | Fullstack Web | 19 | Web 应用全链路：架构→前后端→DevOps→上线 |
+| **技术开发** | Software Dev | 12 | 模块拆解→设计→实现→门禁→测试交付 |
+| **视觉设计** | Visual Design | 14 | 品牌VI/海报KV/插画/电商图/信息图/PPT |
+| **内容创作** | Content Writing | 14 | 长文/公众号/小红书/短视频脚本/文案/SEO |
+| **视频制作** | Video Production | 14 | 脚本→分镜→剪辑→包装→音频→字幕→调色→质检 |
+
+---
+
 ## 团队总览
 
 | 团队 | 专家数 | 核心场景 | 触发语示例 |
@@ -119,6 +165,9 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 | **Fullstack Web** | 19 位 | 架构 → 前后端 → API → DB → DevOps → 测试 → 上线 | "从零做个 Web 应用"、"重构加固" |
 | **Math Modeling** | 9 位 | 国赛选题 → 建模 → 求解 → 写作 → 终审交付（72h） | "托管国赛赛题"、"这个题型怎么建" |
 | **Software Dev** | 12 位 | 拆解 → 设计 → 实现 → 门禁 → 测试收口 → 交付 | "实现登录模块"、"评审这个 PR" |
+| **Visual Design** | 14 位 | 品牌VI → 海报KV → 插画 → 电商图 → 信息图 → PPT → 评审 | "做张海报"、"设计个Logo"、"电商主图" |
+| **Content Writing** | 14 位 | 选题策略 → 长文/社媒 → 文案 → 脚本 → SEO → 编辑 → 质检 | "写篇公众号"、"小红书文案"、"短视频脚本" |
+| **Video Production** | 14 位 | 脚本 → 分镜 → 剪辑 → 包装 → 音频 → 字幕 → 调色 → 质检复盘 | "做条短视频"、"宣传片"、"口播脚本" |
 
 ---
 
@@ -137,12 +186,12 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 
 ```
 opencode-expert-teams/
-├── project-director.md      # 总调度（4 场景路由）
-├── SKILLS_INDEX.md          # 31 个 skill 统一索引
+├── project-director.md      # 总调度（7 场景路由）
+├── SKILLS_INDEX.md          # 49 个 skill 统一索引
 ├── AGENTS.md                # 使用手册
 ├── install.sh               # 一键安装脚本（agents + skills 软链）
 ├── opencode.json            # opencode 配置（skill 权限全开）
-├── skills/                  # 已实装（通用 11 + 团队 20）
+├── skills/                  # 已实装（通用 11 + 团队 38）
 │   ├── web-search/
 │   ├── deep-research/
 │   ├── security-scan/
@@ -167,9 +216,21 @@ opencode-expert-teams/
     │   ├── agents/
     │   ├── skills/          # 2 个（math-modeling-guosai / selfcheck，已实装）
     │   └── TEAM.md
-    └── software-dev-team/   # 12 专家
+    ├── software-dev-team/   # 12 专家
+    │   ├── agents/
+    │   └── TEAM.md          # 无独立 skill，引用通用 skills/ 中 3 个
+    ├── visual-design-team/  # 14 专家
+    │   ├── agents/
+    │   ├── skills/          # 6 个团队专用 skill（已实装）
+    │   └── TEAM.md
+    ├── content-writing-team/ # 14 专家
+    │   ├── agents/
+    │   ├── skills/          # 6 个团队专用 skill（已实装）
+    │   └── TEAM.md
+    └── video-production-team/ # 14 专家
         ├── agents/
-        └── TEAM.md          # 无独立 skill，引用通用 skills/ 中 3 个
+        ├── skills/          # 6 个团队专用 skill（已实装）
+        └── TEAM.md
 ```
 
 ---
