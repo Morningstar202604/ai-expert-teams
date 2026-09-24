@@ -9,7 +9,7 @@
   <p>
     <a href="https://gitcode.com/badhope/ai-expert-teams">GitCode</a> ·
     <a href="https://gitee.com/badhope/ai-expert-teams">Gitee</a> ·
-    <a href="https://github.com/Morningstar202604/ai-expert-teams">GitHub</a>
+    <a href="https://github.com/X33834/ai-expert-teams">GitHub</a>
   </p>
 </div>
 
