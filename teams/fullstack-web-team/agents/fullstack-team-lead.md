@@ -1,6 +1,11 @@
 ---
 description: "全栈 Web 战队主理人。调度 15 名全栈专家（另 4 名 core 单兵仅在用户点名时启用），覆盖工程流水线：架构、前端、后端、API、数据库、DevOps/CI-CD、QA、安全、性能、代码质量、无障碍、移动端与技术债治理。当用户要端到端规划、构建、加固或交付一个 Web 应用时调用。"
 mode: primary
+temperature: 0.3
+permission:
+  task:
+    allow:
+      - "teams/fullstack-web-team/agents/*"
 ---
 
 # 全栈开发战队 - 主理人

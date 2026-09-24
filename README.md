@@ -1,9 +1,9 @@
 <div align="center">
   <h1>opencode-expert-teams</h1>
-  <p>4 个自包含专家团队 · 58 位专家 · 50+ Skill · 内置 Workflow / 门禁 / Checkpoint</p>
+  <p>4 个自包含专家团队 · 58 位专家 · 31 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
   <img src="https://img.shields.io/badge/Agents-58_experts-purple" alt="Experts" />
-  <img src="https://img.shields.io/badge/Skills-50_plus-yellow" alt="Skills" />
+  <img src="https://img.shields.io/badge/Skills-31-green" alt="Skills" />
   <img src="https://img.shields.io/badge/Framework-Opencode-blueviolet" alt="Framework" />
   <br />
   <p>
@@ -68,12 +68,21 @@ graph TB
 
 ## 快速开始
 
-### 安装（推荐：软链接，便于后续更新）
+### 安装（一键脚本，推荐）
 
 ```bash
-git clone https://github.com/X33834/opencode-expert-teams.git
-ln -sfn "$(pwd)/opencode-expert-teams" ~/.config/opencode/agents
+git clone https://gitcode.com/badhope/opencode-expert-teams.git
+cd opencode-expert-teams
+./install.sh              # 实际安装（软链 agents + 全部 skills）
+./install.sh --dry-run    # 预览将执行的操作，不实际修改
 ```
+
+脚本会自动：
+1. 将仓库根软链到 `~/.config/opencode/agents`
+2. 遍历 `teams/*/skills/*` 和 `skills/*`，逐个软链到 `~/.config/opencode/skills/<name>/`
+3. 验证安装结果（agent 数 + skill 数）
+
+> 幂等：重复执行不会产生重复软链，`ln -sfn` 自动覆盖。
 
 ### 直接调用
 
@@ -120,24 +129,35 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 ```
 opencode-expert-teams/
 ├── project-director.md      # 总调度（4 场景路由）
-├── SKILLS_INDEX.md          # 50+ skill 统一索引
+├── SKILLS_INDEX.md          # 31 skill 统一索引
 ├── AGENTS.md                # 使用手册
+├── install.sh               # 一键安装脚本（agents + skills 软链）
+├── opencode.json            # opencode 配置（skill 权限全开）
+├── skills/                  # 通用 skill（8 个，全团队共用）
+│   ├── web-search/
+│   ├── deep-research/
+│   ├── security-scan/
+│   ├── deep-security-scan/
+│   ├── performance-profiler/
+│   ├── ci-cd-pipeline-builder/
+│   ├── frontend-app-builder/
+│   └── frontend-testing-debugging/
 └── teams/
     ├── academic-paper-team/ # 18 专家
     │   ├── agents/
-    │   ├── skills/
+    │   ├── skills/          # 7 个团队专用 skill
     │   └── TEAM.md
     ├── fullstack-web-team/  # 19 专家 + 4 core 单兵
     │   ├── agents/
-    │   ├── skills/
+    │   ├── skills/          # 11 个团队专用 skill
     │   └── TEAM.md
     ├── math-modeling-team/  # 9 专家（国赛专用）
     │   ├── agents/
-    │   ├── skills/          # math-modeling-guosai / math-modeling-selfcheck
+    │   ├── skills/          # 2 个（math-modeling-guosai / selfcheck）
     │   └── TEAM.md
     └── software-dev-team/   # 12 专家
         ├── agents/
-        ├── skills/
+        ├── skills/          # 3 个团队专用 skill
         └── TEAM.md
 ```
 

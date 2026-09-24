@@ -113,24 +113,27 @@ teams/software-dev-team/agents/software-tester
 ```
 opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
 ├── project-director.md          # 总调度入口（4 场景路由）
-├── SKILLS_INDEX.md              # 技能索引（含归属团队）
+├── SKILLS_INDEX.md              # 技能索引（31 个，含归属团队）
 ├── AGENTS.md                    # 本文档
+├── install.sh                   # 一键安装脚本
+├── opencode.json                # opencode 配置（skill 权限）
+├── skills/                      # 通用 skill（8 个，全团队共用）
 ├── teams/
 │   ├── academic-paper-team/
 │   │   ├── agents/ (18)          # team-lead + 16 专家 + 1 core-researcher
-│   │   ├── skills/              # 团队专用 skill（外部/待装，见 SKILLS_INDEX）
+│   │   ├── skills/ (7)           # 团队专用 skill
 │   │   └── TEAM.md              # 团队说明
 │   ├── fullstack-web-team/
 │   │   ├── agents/ (19)          # team-lead + 14 fullstack + 4 core
-│   │   ├── skills/
+│   │   ├── skills/ (11)          # 团队专用 skill
 │   │   └── TEAM.md
 │   ├── math-modeling-team/
 │   │   ├── agents/ (9)           # team-lead + 8 专家
-│   │   ├── skills/              # math-modeling-guosai + math-modeling-selfcheck（实装）
+│   │   ├── skills/ (2)           # math-modeling-guosai + selfcheck
 │   │   └── TEAM.md
 │   └── software-dev-team/
 │       ├── agents/ (12)          # team-lead + 11 专家
-│       ├── skills/
+│       ├── skills/ (3)           # 团队专用 skill
 │       └── TEAM.md
 ```
 
