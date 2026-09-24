@@ -163,8 +163,8 @@ for agent_id, path, team in agent_files:
     if agent_id in TEAM_LEADS:
         if fm.get('mode') != 'primary':
             err(f"[{agent_id}] team-lead mode 应为 primary")
-        if fm.get('temperature') != 0.3:
-            err(f"[{agent_id}] team-lead temperature 应为 0.3")
+        if fm.get('temperature') != 0.1:
+            err(f"[{agent_id}] team-lead temperature 应为 0.1")
         if 'permission' not in fm or 'task' not in fm['permission']:
             err(f"[{agent_id}] 缺 permission.task 配置")
         else:
