@@ -141,7 +141,7 @@ teams/software-dev-team/agents/software-tester
 ## 文件结构
 
 ```
-expert-teams/（本仓库根；纯 Markdown 资产，平台中立）
+ai-expert-teams/（本仓库根；纯 Markdown 资产，平台中立）
 ├── project-director.md          # 总调度入口（7 场景路由）
 ├── export-agents.py             # 导出脚本：导出 system prompt 文本 / JSON 到 dist/
 ├── dist/                        # 导出产物（gitignore，不入库）

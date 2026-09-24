@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>expert-teams</h1>
+  <h1>ai-expert-teams</h1>
   <p>通用专家团队资产 · 可接入任意 AI agent · 7 个自包含专家团队 · 101 位专家 · 52 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
   <img src="https://img.shields.io/badge/Agents-101_experts-purple" alt="Experts" />
@@ -7,9 +7,7 @@
   <img src="https://img.shields.io/badge/Platform-Agnostic-blueviolet" alt="Platform" />
   <br />
   <p>
-    <a href="https://github.com/X33834/expert-teams">GitHub</a> ·
-    <a href="https://gitcode.com/badhope/expert-teams">GitCode</a> ·
-    <a href="https://gitee.com/badhope/expert-teams">Gitee</a>
+    <a href="https://gitcode.com/badhope/ai-expert-teams">GitCode</a>
   </p>
 </div>
 
@@ -202,7 +200,7 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 ## 仓库结构
 
 ```
-expert-teams/
+ai-expert-teams/
 ├── project-director.md      # 总调度（7 场景路由）
 ├── export-agents.py         # 导出脚本：把各 agent 定义导出为 system prompt 文本 / JSON
 ├── dist/                    # 导出产物目录（gitignore，不入库）
