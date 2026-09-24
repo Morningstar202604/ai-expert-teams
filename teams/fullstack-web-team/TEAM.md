@@ -56,12 +56,12 @@
 > **协作接口**：可对接 visual（产品页/官网UI设计）、content（落地页文案/SEO）、academic（论文配套系统/数据平台）、software（模块集成）；典型跨场景触发词：产品落地页、官网、Web应用+设计、论文系统。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 完整 Web 应用（Team-lead 为 primary）
-opencode run --agent teams/fullstack-web-team/agents/fullstack-team-lead "帮我从零做一个电商 Web 应用上线"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 完整 Web 应用（Team-lead 为入口）
+teams/fullstack-web-team/agents/fullstack-team-lead "帮我从零做一个电商 Web 应用上线"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/fullstack-web-team/agents/fullstack-architect "微服务还是单体，怎么选型"
 # teams/fullstack-web-team/agents/fullstack-frontend-engineer "React 组件架构怎么分层"
 # teams/fullstack-web-team/agents/fullstack-security-engineer "帮我做次安全审计"

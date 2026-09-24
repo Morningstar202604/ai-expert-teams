@@ -2,7 +2,7 @@
 name: shadcn
 description: shadcn/ui 组件管理与主题定制指南。当需要用 CLI 添加/更新组件、配置 components.json、定制主题 token 与 CSS 变量、用 CVA 写 variants、覆盖默认样式、组织私有 registry 时，由 fullstack-frontend-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # shadcn/ui 组件管理

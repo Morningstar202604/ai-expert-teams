@@ -2,7 +2,7 @@
 name: content-quality-checklist
 description: 内容创作战队的「质检闸门」强制清单。把「忠于 brief·不洗稿·事实可溯·标题不党·平台不串味」五条铁律固化成开工前与每段产出后可逐条勾选的检查表，全员每阶段必过，任一不过即停手回溯。覆盖长文、社媒、短视频脚本、广告文案、SEO 与多平台改编。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 内容质检清单（强制闸门）

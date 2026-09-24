@@ -2,7 +2,7 @@
 name: model-formulator
 description: 把自然语言研究问题转写成严格数学模型的工具。当用户用大白话描述一个要研究的现象/决策问题（"想知道哪些因素影响 Y""要在资源约束下求最优分配""想预测未来 X"），需要抽象成变量、目标函数、约束、假设并明确模型边界时使用。适配 academic-research-designer，输出变量表、假设集、目标与约束的完整数学表述，供后续求解。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 文字问题 → 数学模型

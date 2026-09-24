@@ -2,7 +2,7 @@
 name: video-quality-checklist
 description: 成片质检清单。发布前逐项打勾的终检表：技术规格（分辨率/帧率/画幅/时长）、音画质量（曝光/对焦/同步/响度）、字幕合规与必含信息点。成片质检员与主理人终审时照此过单，H 级问题一票否决。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 成片质检清单（发布前终检闸门）

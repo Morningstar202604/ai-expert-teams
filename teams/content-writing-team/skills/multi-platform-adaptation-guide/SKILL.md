@@ -2,7 +2,7 @@
 name: multi-platform-adaptation-guide
 description: 多平台改编指南。提供公众号、小红书、微博、知乎、抖音、视频号、即刻七个平台的语感差异、字数上限、开头方式、标签习惯、发布时间建议。适用于 multiplatform-adaptor 做一稿多投、主笔按平台调性写稿。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 多平台改编指南

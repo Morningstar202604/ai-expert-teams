@@ -2,7 +2,7 @@
 name: title-crafting-guide
 description: 标题撰写指南。提供五种标题方向（悬念/利益/反常识/身份/数字）、各平台字数规范、限流词规避清单、A/B 测试分组方法。适用于 title-expert 写标题、主笔起工作标题、multiplatform-adaptor 改各平台标题。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 标题撰写指南

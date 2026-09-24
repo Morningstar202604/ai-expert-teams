@@ -2,7 +2,7 @@
 name: observability-designer
 description: 可观测性体系设计指南。当需要为服务规划 metrics/logs/traces、定义 RED/USE 指标、设计仪表盘与告警、接入 OpenTelemetry、做健康检查与关键路径埋点时，由 fullstack-devops-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 可观测性设计

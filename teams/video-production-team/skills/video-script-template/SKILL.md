@@ -2,7 +2,7 @@
 name: video-script-template
 description: 视频脚本结构模板。把一条 brief 套进「钩子→展开→行动号召」的标准脚本骨架，给出分段秒数表、旁白/对白写法与导演阐述模板。编剧导演、短视频专家、口播纪录片专家在写脚本时按此结构落地，确保前 3 秒有钩子、信息密度可控、结尾有明确 CTA。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 视频脚本结构模板（钩子 → 展开 → 行动号召）

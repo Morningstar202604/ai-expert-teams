@@ -2,7 +2,7 @@
 name: color-and-typography-guide
 description: 色彩体系与字体排版速查手册。当需要定品牌主色、搭配色方案、选字体、定字号层级与版式网格时使用；提供配色关系、60-30-10 比例、WCAG 对比度、中西文字体搭配与字号模数的可执行速查清单，平台中立。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 色彩与字体排版速查手册

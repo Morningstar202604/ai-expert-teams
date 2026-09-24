@@ -2,7 +2,7 @@
 name: video-editing-guide
 description: 剪辑方法论。讲节奏控制、转场选择与音画同步：粗剪定结构、精剪调节奏、在动作/语言停顿/音乐重音处切、让成片有呼吸感。剪辑师开工时按此执行，解决节奏拖沓与音画不同步。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 剪辑方法论（节奏 · 转场 · 音画同步）

@@ -2,7 +2,7 @@
 name: short-video-structure-guide
 description: 短视频结构方法论。专攻 15 秒-3 分钟竖屏短视频的完播结构：前 3 秒钩子类型、留存曲线、信息密度与平台竖屏规格。短视频专家在做信息流/竖屏短视频时按此结构提升完播率。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 短视频结构方法论（竖屏完播导向）

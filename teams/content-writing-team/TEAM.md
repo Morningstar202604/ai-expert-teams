@@ -49,12 +49,12 @@
 > **协作接口**：可对接 visual（图文配图/海报文案）、video（短视频脚本/口播稿）、academic（科普/学术传播）、software/fullstack（技术博客/产品文案）；典型跨场景触发词：小红书图文、抖音脚本、技术博客、产品文案。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 完整内容项目托管（Team-lead 为 primary）
-opencode run --agent teams/content-writing-team/agents/content-team-lead "帮我从选题写到发布，全程托管"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 完整内容项目托管（Team-lead 为入口）
+teams/content-writing-team/agents/content-team-lead "帮我从选题写到发布，全程托管"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/content-writing-team/agents/content-strategist "帮我做受众与内容定位"
 # teams/content-writing-team/agents/content-planner "排一个月发布日历"
 # teams/content-writing-team/agents/content-article-writer "写一篇 5000 字深度稿"

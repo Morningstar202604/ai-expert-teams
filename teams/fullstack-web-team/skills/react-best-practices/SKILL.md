@@ -2,7 +2,7 @@
 name: react-best-practices
 description: React / Next.js 性能与工程模式指南。当需要优化组件渲染、使用 Server/Client Component、配置 Suspense 与代码分割、治理 re-render、优化 Next.js 图片/字体/包体积、做性能 checklist 审查时，由 fullstack-frontend-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # React / Next.js 最佳实践

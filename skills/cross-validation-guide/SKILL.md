@@ -2,7 +2,7 @@
 name: cross-validation-guide
 description: 数值结果、模型结论、关键判断用 ≥2 种独立方法交叉核对。包含量纲自检、边界反例测试、敏感性检验（输入±10% 结论是否变化），输出方法×结果×是否收敛的验证矩阵。适用于数学求解、统计结论、性能数据、模型输出等任何"结论性数字"场景，防止单一方法自证不可靠。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 多方法交叉验证指南（cross-validation-guide）

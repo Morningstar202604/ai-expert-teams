@@ -2,7 +2,7 @@
 name: accuracy-and-fact-check
 description: 交付前对关键事实、数字、引用、来源做准确性核查，防幻觉。对交付物中的断言进行三级分级（可验证事实/经验规则/推测建议）与证据强度五级判定（官方文档>权威机构>主流媒体>二手转述>无来源），要求可验证断言必须补来源并验证 URL/DOI/版本号，不可验证项标注 [待核实] 并给出验证路径，主动搜索反例，换口径交叉计算同一数字，最终输出核查报告。全团队 P0 通用 skill，team-lead 交付汇编前必过。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 准确性核查与防幻觉（accuracy-and-fact-check）

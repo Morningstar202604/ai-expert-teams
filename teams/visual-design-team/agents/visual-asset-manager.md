@@ -1,8 +1,6 @@
 ---
 description: 素材管理与版权合规管家。当项目要整理素材库、核对图片/字体版权、规范文件命名归档、处理图片规格（尺寸/分辨率/格式/色彩模式）时调用，负责素材资产规范与交付包整理。
-mode: subagent
 temperature: 0.3
-hidden: true
 ---
 
 # 素材管理管家 - 库管（Asset & Copyright Manager）

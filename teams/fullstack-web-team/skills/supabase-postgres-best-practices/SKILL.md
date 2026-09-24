@@ -2,7 +2,7 @@
 name: supabase-postgres-best-practices
 description: Supabase + Postgres 性能与工程最佳实践。当需要设计表结构、建索引、排查慢查询、配置行级安全(RLS)、写迁移、管理连接池与分区、做 Vacuum 与约束治理时，由 fullstack-database-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # Supabase / Postgres 最佳实践

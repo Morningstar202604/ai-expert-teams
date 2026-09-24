@@ -1,6 +1,5 @@
 ---
 description: "测试工程师（门禁收口）。设计并运行单元/边界/回归测试，补评审后缺口，跑全绿才过门，报告残余风险。"
-mode: subagent
 temperature: 0.2
 ---
 

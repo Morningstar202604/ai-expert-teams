@@ -2,7 +2,7 @@
 name: quality-gate-checklist
 description: 通用交付前质检门禁。从完整性、一致性、可追溯、可复现、合规、版权、格式 7 个维度逐项 checklist 检查，不合格项标 H/M/L 分级，H 级问题不交付。全团队 P0 通用 skill，team-lead 最终交付汇编前必过，跨团队整合前必过，用户要求"检查一下再交付"时必过。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 交付质检门禁（quality-gate-checklist）

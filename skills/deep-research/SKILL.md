@@ -2,7 +2,7 @@
 name: deep-research
 description: 多轮深度检索与综合报告规程。当学术、全栈、数学建模团队需要系统性摸清某方向、产出带引用溯源的调研报告时调用。按「拆问题→多轮检索→证据分级→交叉综合→引用溯源」执行，要求每个结论可回链来源、标注证据强度与不确定性，拒绝无源断言和拼接式综述。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 深度研究（多轮检索 + 综合报告）

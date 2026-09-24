@@ -2,7 +2,7 @@
 name: lit-review
 description: 按 PRISMA 规范执行的系统文献综述工具。当用户需要"写综述""梳理这个方向研究现状""定位我的研究在文献里的位置""做一个可复现的文献检索"时使用。适配 academic-literature-synthesizer 与 academic-topic-strategist，负责检索式设计、文献去重筛选、证据提取表、PRISMA 流程图与缺口矩阵输出。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # PRISMA 系统文献综述

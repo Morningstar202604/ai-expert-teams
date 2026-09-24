@@ -2,7 +2,7 @@
 name: pdf-pipeline
 description: 学术论文 PDF 后处理流水线工具。当需要把多个 PDF 合并成投稿包、拆分章节/ supplementary、提取参考文献页或图表页、修正元数据（标题/作者/关键词）、加水印/盲审匿名化、批量压缩以满足投稿系统大小限制时使用。适配 academic-format-guardian，负责 PDF 合并/拆分/提取/元数据/压缩/匿名化的规范操作与质量校验。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # PDF 投稿流水线

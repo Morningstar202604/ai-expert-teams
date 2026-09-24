@@ -54,12 +54,12 @@
 > **协作接口**：可对接 content（图文/小红书/公众号配图）、video（视频封面/分镜视觉/字幕版式）、fullstack（产品页/UI设计）、academic（论文图表）；典型跨场景触发词：小红书图文、视频封面、产品UI、论文配图。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 完整视觉全案托管（Team-lead 为 primary）
-opencode run --agent teams/visual-design-team/agents/visual-team-lead "帮我全程托管这套活动视觉"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 完整视觉全案托管（Team-lead 为入口）
+teams/visual-design-team/agents/visual-team-lead "帮我全程托管这套活动视觉"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/visual-design-team/agents/visual-brand-identity-designer "帮我做品牌VI体系"
 # teams/visual-design-team/agents/visual-poster-designer "帮我做活动主视觉海报"
 # teams/visual-design-team/agents/visual-illustrator "帮我画一套扁平插画"

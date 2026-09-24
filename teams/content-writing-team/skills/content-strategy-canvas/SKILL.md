@@ -2,7 +2,7 @@
 name: content-strategy-canvas
 description: 内容策略画布工具。在动笔写任何内容之前，用一页纸画布锁定：目标、读者、核心信息、内容支柱、平台选择、调性红线、成功指标。适用于主理人做 brief 拆解、策略师做内容定位、排期师做矩阵规划。强制在 Phase 0 使用，避免上来就写稿。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 内容策略画布

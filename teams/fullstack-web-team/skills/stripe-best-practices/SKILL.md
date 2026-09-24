@@ -2,7 +2,7 @@
 name: stripe-best-practices
 description: Stripe 支付、订阅与 Connect 集成最佳实践。当需要接入 Checkout、客户门户、订阅生命周期、Webhook 签名与幂等、Connect 分账、处理退款/争议、落实 PCI 合规时，由 fullstack-backend-engineer 与 fullstack-api-designer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # Stripe 集成最佳实践

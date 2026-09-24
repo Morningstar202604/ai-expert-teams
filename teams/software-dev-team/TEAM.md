@@ -47,12 +47,12 @@
 > **协作接口**：可对接 academic（论文配套代码/工具开发）、fullstack（模块集成/交付）、content（技术博客/文档）；典型跨场景触发词：论文代码、工具开发、技术文档、论文+实现。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 全流程开发（Team-lead 为 primary）
-opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我实现用户登录模块，从设计到测试全走一遍"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 全流程开发（Team-lead 为入口）
+teams/software-dev-team/agents/software-team-lead "帮我实现用户登录模块，从设计到测试全走一遍"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/software-dev-team/agents/software-architect "帮我设计订单模块的接口契约"
 # teams/software-dev-team/agents/software-api-designer "出一份用户模块的 REST API spec"
 # teams/software-dev-team/agents/software-database-engineer "设计订单表结构和索引"

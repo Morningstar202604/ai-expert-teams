@@ -2,7 +2,7 @@
 name: api-design-reviewer
 description: REST/GraphQL 接口契约设计评审专用。当 software-api-designer 产出 API spec、或 software-reviewer 在门禁阶段审查接口正确性/一致性/安全时调用。覆盖资源建模、命名、HTTP 语义、状态码、错误模型、分页过滤、版本演进、GraphQL Schema 设计与 N+1/鉴权风险，输出可勾选评审清单与驳回项。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # API 设计评审（REST / GraphQL）

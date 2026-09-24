@@ -2,7 +2,7 @@
 name: performance-profiler
 description: 性能瓶颈剖析规程。当全栈/软件开发团队遇到慢接口、内存泄漏、CPU 打满、IO 阻塞或需要优化前先定位瓶颈时调用。按「先测量再优化」原则，用 profiler 抓火焰图/堆快照/IO 等待分布，区分 CPU/内存/IO/锁瓶颈，定位到具体函数与调用栈，拒绝凭直觉优化。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 性能瓶颈剖析（CPU / 内存 / IO）

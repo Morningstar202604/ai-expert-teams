@@ -55,12 +55,12 @@
 > **协作接口**：可对接 content（脚本/口播文案/选题）、visual（封面/分镜视觉/字幕版式）；典型跨场景触发词：抖音视频、短视频带货、宣传片+文案、视频+封面设计。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 完整视频制作托管（Team-lead 为 primary）
-opencode run --agent teams/video-production-team/agents/video-team-lead "帮我从这条 brief 全程做一条短视频"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 完整视频制作托管（Team-lead 为入口）
+teams/video-production-team/agents/video-team-lead "帮我从这条 brief 全程做一条短视频"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/video-production-team/agents/video-scriptwriter-director "帮我写这条片子的脚本"
 # teams/video-production-team/agents/video-storyboard-artist "把脚本画成分镜表"
 # teams/video-production-team/agents/video-short-form-expert "这条竖屏短视频前3秒钩子怎么做"

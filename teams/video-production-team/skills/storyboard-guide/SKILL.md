@@ -2,7 +2,7 @@
 name: storyboard-guide
 description: 分镜设计指南。把脚本拆成镜头级分镜表的方法论：景别/运镜/画面/对白/时长/转场怎么选，竖屏安全区与高难度镜头预判。分镜师在出分镜表时按此执行，确保镜头可拍、时长可控、剪辑师能直接落地。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 分镜设计指南（从脚本到可拍镜头表）

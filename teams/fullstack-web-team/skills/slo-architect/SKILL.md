@@ -2,7 +2,7 @@
 name: slo-architect
 description: SLO 定义与错误预算治理指南。当需要为关键服务定义 SLI/SLO、计算错误预算、配置多窗口多燃尽率告警、制定错误预算政策、做发布与可靠性权衡时，由 fullstack-devops-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # SLO 架构与错误预算

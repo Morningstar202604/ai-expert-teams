@@ -2,7 +2,7 @@
 name: frontend-app-builder
 description: 前端应用脚手架与组件实现规程。当全栈团队需要从零搭建前端工程或实现具体页面/组件时调用。覆盖技术栈选型、项目结构、路由与状态管理、数据获取、组件拆分、样式方案与构建优化，要求组件单一职责、服务端数据取放分层、可访问性与加载态到位，不堆砌框架。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 前端应用脚手架与组件实现

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""全局校验脚本：验证 skill 包、agent frontmatter、结构完整性。"""
+"""全局内容质量校验脚本：验证 skill 包、agent frontmatter、结构完整性（平台中立，不依赖任何具体 agent 框架）。"""
 import os
 import re
 import sys
@@ -107,7 +107,7 @@ for name, path, location in skill_dirs:
 ok(f"{len(skill_dirs)} 个 skill 包校验完成（{len(errors)} 错误，{len(warnings)} 警告）")
 
 # ═══════════════════════════════════════════════════════
-# 2. 校验 agent frontmatter
+# 2. 校验 agent frontmatter（平台中立）
 # ═══════════════════════════════════════════════════════
 print("\n=== 2. Agent frontmatter 校验 ===")
 agent_files = []
@@ -124,17 +124,8 @@ agent_files.append(("project-director", f"{BASE}/project-director.md", "root"))
 print(f"  发现 {len(agent_files)} 个 agent 文件")
 READONLY_CORE = {"core-architect", "core-code-reviewer", "core-security-auditor", "core-test-engineer", "core-fact-checker",
     "visual-design-reviewer", "content-reviewer", "video-performance-analyst", "video-quality-reviewer"}
-TEAM_LEADS = {"academic-team-lead", "fullstack-team-lead", "math-team-lead", "software-team-lead",
-    "visual-team-lead", "content-team-lead", "video-team-lead"}
-TEAM_DIR_MAP = {
-    "academic-team-lead": "academic-paper-team",
-    "fullstack-team-lead": "fullstack-web-team",
-    "math-team-lead": "math-modeling-team",
-    "software-team-lead": "software-dev-team",
-    "visual-team-lead": "visual-design-team",
-    "content-team-lead": "content-writing-team",
-    "video-team-lead": "video-production-team",
-}
+# 平台中立：frontmatter 中禁止出现平台专属字段
+FORBIDDEN_FIELDS = {"mode", "permission", "hidden"}
 
 agent_errors_before = len(errors)
 for agent_id, path, team in agent_files:
@@ -146,54 +137,31 @@ for agent_id, path, team in agent_files:
     if isinstance(fm, str) and fm.startswith("YAML_ERROR"):
         err(f"[{agent_id}] frontmatter YAML 语法错误: {fm}")
         continue
-    # 必填字段
+    # description 校验
     if 'description' not in fm:
         err(f"[{agent_id}] 缺 description")
-    if 'mode' not in fm:
-        err(f"[{agent_id}] 缺 mode")
+    else:
+        desc_len = len(str(fm['description']))
+        if desc_len < 1 or desc_len > 1024:
+            err(f"[{agent_id}] description 长度 {desc_len} 超出 1-1024")
     # 禁止 model 字段
     if 'model' in fm:
         err(f"[{agent_id}] 不应有 model 字段")
-    # project-director 不需要 temperature
-    if agent_id == "project-director":
-        continue
-    # temperature
-    if 'temperature' not in fm:
-        err(f"[{agent_id}] 缺 temperature")
-    else:
+    # 禁止平台专属字段
+    for bad in FORBIDDEN_FIELDS:
+        if bad in fm:
+            err(f"[{agent_id}] 不应有平台专属字段 '{bad}'")
+    # temperature：若存在则必须在 0-1 范围（不存在不报错）
+    if 'temperature' in fm:
         t = fm['temperature']
-        if not isinstance(t, (int, float)) or t < 0 or t > 1:
-            err(f"[{agent_id}] temperature={t} 不合规")
-    # team-lead 校验
-    if agent_id in TEAM_LEADS:
-        if fm.get('mode') != 'primary':
-            err(f"[{agent_id}] team-lead mode 应为 primary")
-        if fm.get('temperature') != 0.1:
-            err(f"[{agent_id}] team-lead temperature 应为 0.1")
-        if 'permission' not in fm or 'task' not in fm['permission']:
-            err(f"[{agent_id}] 缺 permission.task 配置")
-        else:
-            task = fm['permission']['task']
-            if not isinstance(task, dict):
-                err(f"[{agent_id}] permission.task 应为 glob->allow/deny/ask 映射")
-            else:
-                prefix = TEAM_DIR_MAP[agent_id].split('-')[0]
-                if task.get(f"{prefix}-*") != "allow":
-                    err(f"[{agent_id}] permission.task 应含 '{prefix}-*': allow")
-                if task.get("core-*") != "allow":
-                    err(f"[{agent_id}] permission.task 应含 'core-*': allow")
-    else:
-        if fm.get('mode') != 'subagent':
-            err(f"[{agent_id}] subagent mode 应为 subagent (实际 {fm.get('mode')})")
-    # core-* 只读校验
-    if agent_id in READONLY_CORE:
-        if 'tools' not in fm:
-            err(f"[{agent_id}] core-* 缺 tools 配置")
-        else:
-            if fm['tools'].get('write') is not False:
-                err(f"[{agent_id}] core-* tools.write 应为 false")
-            if fm['tools'].get('edit') is not False:
-                err(f"[{agent_id}] core-* tools.edit 应为 false")
+        if not isinstance(t, (int, float)) or isinstance(t, bool) or t < 0 or t > 1:
+            err(f"[{agent_id}] temperature={t} 不合规（须在 0-1 之间）")
+    # 只读角色：若配置了 tools，则 write/edit 必须为 false
+    if agent_id in READONLY_CORE and 'tools' in fm and isinstance(fm['tools'], dict):
+        if fm['tools'].get('write') is not False:
+            err(f"[{agent_id}] 只读角色 tools.write 应为 false")
+        if fm['tools'].get('edit') is not False:
+            err(f"[{agent_id}] 只读角色 tools.edit 应为 false")
 
 agent_err_count = len(errors) - agent_errors_before
 ok(f"{len(agent_files)} 个 agent 校验完成（{agent_err_count} 错误）")
@@ -215,6 +183,9 @@ REWRITE_AGENTS = [
 REQUIRED_SECTIONS = ["核心能力", "工作流程", "输出规范", "输入规范", "注意事项"]
 for rel_path in REWRITE_AGENTS:
     path = f"{BASE}/{rel_path}"
+    if not os.path.isfile(path):
+        err(f"[{rel_path}] 文件不存在")
+        continue
     text = open(path, encoding='utf-8').read()
     line_count = len(text.split('\n'))
     if line_count < 30:
@@ -252,32 +223,14 @@ if total != 101:
     err(f"总人数 {total} != 101")
 
 # ═══════════════════════════════════════════════════════
-# 5. 文件存在性校验
+# 5. 关键文件存在性校验（平台中立）
 # ═══════════════════════════════════════════════════════
 print("\n=== 5. 关键文件校验 ===")
-for f in ["install.sh", "opencode.json", "SKILLS_INDEX.md", "README.md", "AGENTS.md", "project-director.md"]:
+for f in ["SKILLS_INDEX.md", "README.md", "AGENTS.md", "project-director.md", "export-agents.py"]:
     if os.path.isfile(f"{BASE}/{f}"):
         ok(f"{f} 存在")
     else:
         err(f"{f} 不存在")
-
-# opencode.json 内容校验
-import json
-try:
-    with open(f"{BASE}/opencode.json") as f:
-        cfg = json.load(f)
-    if cfg.get("permission", {}).get("skill", {}).get("*") == "allow":
-        ok("opencode.json skill 权限配置正确")
-    else:
-        err("opencode.json permission.skill.* 应为 allow")
-except Exception as e:
-    err(f"opencode.json JSON 解析失败: {e}")
-
-# install.sh 可执行
-if os.access(f"{BASE}/install.sh", os.X_OK):
-    ok("install.sh 可执行")
-else:
-    err("install.sh 不可执行")
 
 # ═══════════════════════════════════════════════════════
 # 6. 团队 skill 绑定检查

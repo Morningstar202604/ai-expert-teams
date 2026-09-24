@@ -2,7 +2,7 @@
 name: helm-chart-builder
 description: Kubernetes Helm Chart 生成与规范化指南。当需要为服务编写/重构 Helm Chart、组织 values 与模板、配置 Ingress、探针、资源限制、HPA、Secret 与 ConfigMap、做 Chart 版本化与 lint 时，由 fullstack-devops-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # Helm Chart 构建规范

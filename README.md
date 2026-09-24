@@ -1,17 +1,27 @@
 <div align="center">
-  <h1>opencode-expert-teams</h1>
-  <p>7 个自包含专家团队 · 101 位专家 · 52 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
+  <h1>expert-teams</h1>
+  <p>通用专家团队资产 · 可接入任意 AI agent · 7 个自包含专家团队 · 101 位专家 · 52 个 Skill · 内置 Workflow / 门禁 / Checkpoint</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
   <img src="https://img.shields.io/badge/Agents-101_experts-purple" alt="Experts" />
   <img src="https://img.shields.io/badge/Skills-52-green" alt="Skills" />
-  <img src="https://img.shields.io/badge/Framework-Opencode-blueviolet" alt="Framework" />
+  <img src="https://img.shields.io/badge/Platform-Agnostic-blueviolet" alt="Platform" />
   <br />
   <p>
-    <a href="https://github.com/X33834/opencode-expert-teams">GitHub</a> ·
-    <a href="https://gitcode.com/badhope/opencode-expert-teams">GitCode</a> ·
-    <a href="https://gitee.com/badhope/opencode-expert-teams">Gitee</a>
+    <a href="https://github.com/X33834/expert-teams">GitHub</a> ·
+    <a href="https://gitcode.com/badhope/expert-teams">GitCode</a> ·
+    <a href="https://gitee.com/badhope/expert-teams">Gitee</a>
   </p>
 </div>
+
+---
+
+## 这是什么
+
+一套**平台中立的通用专家团队资产**：把 7 个专家团队、101 位专家、52 个 Skill 全部写成纯 Markdown 定义，自带 Workflow、Phase 门禁、Checkpoint 与交接模板。
+
+**无运行时依赖、不绑定任何具体 AI 产品或框架**——任何具备「读取文件 / 派发子 agent / 加载外部提示词」能力的 AI agent，都可以直接读取并扮演这些专家。
+
+> 历史说明：本仓库最初源自 opencode 生态，现已重写为平台中立资产，接入方式与运行时均不再依赖任何特定产品。
 
 ---
 
@@ -98,46 +108,53 @@ graph TB
 
 ## 快速开始
 
-### 安装（一键脚本，推荐）
+### 接入你自己的 agent
 
-```bash
-git clone https://github.com/X33834/opencode-expert-teams.git
-cd opencode-expert-teams
-bash install.sh            # 默认软链到 ~/.config/opencode
-# 可选：指定其他 opencode 配置目录
-bash install.sh /path/to/opencode/config
+本仓库是纯 Markdown 资产，**不需要安装脚本、不需要配置文件、不依赖任何特定产品**。按你所用 agent 的能力，三选一接入：
+
+**方式一：直接读团队 Markdown（推荐给读文件型 agent）**
+
+agent 直接读取 `teams/<team>/agents/*.md` 即可获得该专家的完整定义（角色、输入输出规范、Workflow、交接要求），按文件内容扮演对应专家：
+
+```
+teams/academic-paper-team/agents/academic-team-lead.md
+teams/fullstack-web-team/agents/fullstack-team-lead.md
+teams/math-modeling-team/agents/math-team-lead.md
 ```
 
-`install.sh` 会自动完成：
-1. 按 `teams/<team>/agents/<name>.md` 结构，把各团队 agents 软链到 `$TARGET/agents/`；
-2. 把 `skills/*/` 与 `teams/*/skills/*/` 共 52 个 skill 目录，按目录名扁平软链到 `$TARGET/skills/<name>/`；
-3. 打印安装摘要（agent 数、skill 数、目标路径）。
+无需软链、无需注册，把文件内容喂给 agent 即可。
 
-> 幂等：可重复执行，`ln -sfn` 自动覆盖已有软链。
-> 手动等价做法：
-> ```bash
-> mkdir -p ~/.config/opencode/agents/teams ~/.config/opencode/skills
-> for t in teams/*/; do mkdir -p ~/.config/opencode/agents/teams/$(basename "$t"); \
->   ln -sfn "$PWD/$t/agents" ~/.config/opencode/agents/teams/$(basename "$t")/agents; done
-> for s in skills/*/ teams/*/skills/*/; do [ -d "$s" ] && ln -sfn "$PWD/$s" ~/.config/opencode/skills/$(basename "$s"); done
-> ```
-> 重启 opencode 后生效。
+**方式二：导出 system prompt 后喂入（推荐给只接受单段提示词的 agent）**
+
+运行导出脚本，把各 agent 定义批量导出为 system prompt 文本 / JSON：
+
+```bash
+python3 export-agents.py
+```
+
+产物默认输出到 `dist/` 目录（每个 agent 一个 system prompt 文件，外加一份汇总 JSON）。把对应 agent 的 system prompt 粘贴到你的 agent 配置，或作为系统提示 / 上下文喂入即可。
+
+**方式三：整目录挂给目录式 agent 框架**
+
+把 `teams/` 目录整体复制（或软链）给支持「目录式加载 agent 定义」的框架——框架只要约定从某一目录发现 `*.md` agent 文件即可。`skills/` 与 `teams/*/skills/` 同理：**skill 目录即资产**，任何 agent 按需读取其中的 `SKILL.md` 即可使用该技能。
+
+> 三种方式任选其一。本仓库不提供、也不需要任何产品专属的安装或配置步骤。
 
 ### 直接调用
 
-```bash
-# 学术论文全流程
-opencode run --agent project-director "帮我从选题到投稿写篇论文"
+在支持子 agent 调度的框架中，按**路径 ID**（agent Markdown 文件相对仓库根的路径，去掉 `.md`）派发：
 
-# 全栈 Web 应用交付
-opencode run --agent teams/fullstack-web-team/agents/fullstack-team-lead "做个电商 Web 应用上线"
+```text
+# 多场景自动路由入口（不确定场景时先用它）
+project-director
 
-# 数学建模国赛全程托管
-opencode run --agent teams/math-modeling-team/agents/math-team-lead "帮我全程托管这个国赛赛题"
-
-# 软件开发交付（设计→实现→门禁→测试）
-opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我实现登录模块，从设计到测试全走一遍"
+# 明确单一场景 → 直派对应 Team-lead
+teams/fullstack-web-team/agents/fullstack-team-lead     # 做个电商 Web 应用上线
+teams/math-modeling-team/agents/math-team-lead         # 全程托管国赛赛题
+teams/software-dev-team/agents/software-team-lead       # 实现登录模块，设计到测试全走一遍
 ```
+
+路径 ID 是**平台中立标识符**：任何框架只要能按这个 ID 找到对应 Markdown 文件、并把它作为子 agent 的定义加载，即可调用。团队内部成员由 Team-lead 按 Workflow 编排派发，一般不单独作为入口。
 
 ---
 
@@ -175,7 +192,7 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 
 - **场景路由**：`project-director` 自动识别意图，派发到对应 Team-lead
 - **Phase 门禁**：前序 Phase 未完成不得跳后续，`git tag phase-N` + `checkpoint-N.md` 固化
-- **并行显式**：Phase 注释「并行 Task 调用」，非串行假装并行
+- **并行显式**：Phase 注释「并行派发」，非串行假装并行
 - **交接标准**：4 块模板（产出/决策/风险/重点），缺一不可
 - **监测断路**：3 轮无新增 = 卡死，同义 = 死循环，自动触发降级/换人/回退
 - **技能回退**：调用失败自动退回通用经验，**不阻塞流程**
@@ -185,12 +202,12 @@ opencode run --agent teams/software-dev-team/agents/software-team-lead "帮我�
 ## 仓库结构
 
 ```
-opencode-expert-teams/
+expert-teams/
 ├── project-director.md      # 总调度（7 场景路由）
+├── export-agents.py         # 导出脚本：把各 agent 定义导出为 system prompt 文本 / JSON
+├── dist/                    # 导出产物目录（gitignore，不入库）
 ├── SKILLS_INDEX.md          # 52 个 skill 统一索引
 ├── AGENTS.md                # 使用手册
-├── install.sh               # 一键安装脚本（agents + skills 软链）
-├── opencode.json            # opencode 配置（skill 权限全开）
 ├── skills/                  # 已实装（通用 14 + 团队 38）
 │   ├── web-search/
 │   ├── deep-research/

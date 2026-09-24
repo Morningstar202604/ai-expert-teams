@@ -2,7 +2,7 @@
 name: docker-development
 description: Dockerfile 编写与优化专用指南。当需要为 Node/Next.js、Python、Go 等服务编写或重构 Dockerfile、做镜像瘦身与多阶段构建、编写 .dockerignore、配置非 root 运行与健康检查、对接 CI 镜像扫描时，由 fullstack-devops-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # Docker 开发与镜像优化

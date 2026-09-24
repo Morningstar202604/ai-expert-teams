@@ -8,15 +8,18 @@
 
 ### 1. 复杂/跨场景需求 → 找 **project-director**
 > 「帮我写篇论文并配套实现代码」「做个 Web 应用还要写技术文档」
-```bash
-# 直接描述需求，project-director 自动路由到对应团队
-opencode run --agent project-director "帮我写篇论文并配套实现代码"
+
+在支持子 agent 调度的框架中，把 `project-director` 作为入口派发，它会自动路由到对应团队：
+```text
+project-director   # 输入："帮我写篇论文并配套实现代码"
 ```
 
 ### 2. 明确单一场景 → 直调 Team-lead
-> Agent ID 为相对 `~/.config/opencode/agents/` 的路径；短名不可用（`opencode run --agent academic-team-lead` → not found）。
-```bash
-opencode run --agent <team-lead-path> "任务描述"
+> Agent ID 为相对仓库根的路径（即 `teams/<team>/agents/<name>`，平台中立标识符）；短名不可用（直接用 `academic-team-lead` 这类短名会找不到对应定义）。
+
+在支持子 agent 调度的框架中，按路径 ID 派发 Team-lead：
+```text
+<team-lead-path>   # 输入："任务描述"
 ```
 | 场景 | Team-lead 路径 ID | 典型触发 |
 |------|-------------------|----------|
@@ -28,10 +31,10 @@ opencode run --agent <team-lead-path> "任务描述"
 | 内容写作 | `teams/content-writing-team/agents/content-team-lead` | "写公众号"、"小红书文案"、"短视频脚本"、"标题" |
 | 视频制作 | `teams/video-production-team/agents/video-team-lead` | "做短视频"、"宣传片"、"口播"、"分镜"、"剪辑" |
 
-### 3. 团队内部单兵 → 经 Team-lead 的 Task 派发（subagent）
-其余成员不作为 `--agent` 入口（短名不可直调）；由 Team-lead 按 Workflow 用 Task 派发。仅当用户明确指定单兵时，Team-lead 可 `Task(subagent_type=<路径 ID>)` 直达：
-```bash
-# Task subagent_type 同样用路径 ID（示例）
+### 3. 团队内部单兵 → 经 Team-lead 按 Workflow 派发（子 agent）
+其余成员不作为入口直调；由 Team-lead 按 Workflow 在内部编排派发。仅当用户明确指定单兵时，Team-lead 可在支持子 agent 调度的框架中按路径 ID 直达：
+```text
+# 子 agent 调度同样按路径 ID 派发（示例）
 teams/academic-paper-team/agents/academic-topic-strategist
 teams/academic-paper-team/agents/academic-writer
 teams/fullstack-web-team/agents/core-architect
@@ -138,12 +141,12 @@ teams/software-dev-team/agents/software-tester
 ## 文件结构
 
 ```
-opencode-expert-teams/（本仓库根 = 安装后的 agents 目录）
+expert-teams/（本仓库根；纯 Markdown 资产，平台中立）
 ├── project-director.md          # 总调度入口（7 场景路由）
+├── export-agents.py             # 导出脚本：导出 system prompt 文本 / JSON 到 dist/
+├── dist/                        # 导出产物（gitignore，不入库）
 ├── SKILLS_INDEX.md              # 技能索引（52 个，含归属团队）
 ├── AGENTS.md                    # 本文档
-├── install.sh                   # 一键安装脚本
-├── opencode.json                # opencode 配置（skill 权限）
 ├── skills/                      # 通用 skill（已实装 14 个，全团队共用）
 ├── teams/
 │   ├── academic-paper-team/

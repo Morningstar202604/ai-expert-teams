@@ -2,7 +2,7 @@
 name: terraform-patterns
 description: Terraform IaC 编写规范与安全实践。当需要组织 Terraform 模块、配置远程状态与状态锁、管理多环境工作区、编写变量/输出、做 plan 审查、最小权限与 state 安全时，由 fullstack-devops-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # Terraform 模式与安全

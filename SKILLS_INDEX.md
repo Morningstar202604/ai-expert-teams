@@ -5,9 +5,11 @@
 
 ## 目录结构
 ```
-skills/                                 # 用户级通用 skill（14 个，全团队共用）
+skills/                                 # 通用 skill（14 个，全团队共用）
 teams/<team-name>/skills/               # 团队专用 skill（相对本仓库根）
 ```
+
+> skill 目录即资产：每个 skill 是一个含 `SKILL.md` 的目录，任何 agent 按需读取对应 `SKILL.md` 即可使用，无需安装到任何特定产品的目录。
 
 ---
 

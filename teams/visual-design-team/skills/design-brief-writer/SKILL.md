@@ -2,7 +2,7 @@
 name: design-brief-writer
 description: 设计需求简报（Design Brief）拆解模板与撰写指南。当接到一个视觉设计任务却需求模糊、需要把用途/受众/尺寸/风格/文案/交付物拆成一份可执行简报时使用；主理人在 Phase 0 与设计师开工前照此模板逐项问清，避免返工。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 设计需求简报拆解模板（Design Brief）

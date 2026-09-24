@@ -2,7 +2,7 @@
 name: figure-maker
 description: 论文级图表生成与改版工具。当用户需要把实验结果数据做成可投稿的图、设计研究框架图/流程图、把现有的"Excel 丑图"改成期刊风格图，或判断"这组数据该用柱状图还是箱线图"时使用。适配 academic-data-visualizer，负责图表选型、视觉编码、投稿规格与自明图注写作。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 论文级图表制作

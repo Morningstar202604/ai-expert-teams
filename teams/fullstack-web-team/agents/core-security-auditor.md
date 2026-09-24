@@ -1,6 +1,5 @@
 ---
 description: "安全审计（单兵专家）：注入、硬编码密钥、越权、依赖漏洞、敏感数据泄露扫描。仅用户点名启用、只读不改代码；上线前审查或怀疑有安全问题时 @ 调用。"
-mode: subagent
 temperature: 0.2
 tools: { write: false, edit: false, bash: true }
 ---

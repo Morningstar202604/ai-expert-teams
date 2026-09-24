@@ -52,12 +52,12 @@
 > **协作接口**：可对接 software/fullstack（论文+配套代码/实验复现）、visual（数据图表/论文配图）、content（科普文章/学术传播）；典型跨场景触发词：论文+代码、实验复现、学术可视化、科普写作。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；团队成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 完整论文（Team-lead 为 primary）
-opencode run --agent teams/academic-paper-team/agents/academic-team-lead "帮我从选题到投稿写一篇关于 X 的论文"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 完整论文（Team-lead 为入口）
+teams/academic-paper-team/agents/academic-team-lead "帮我从选题到投稿写一篇关于 X 的论文"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/academic-paper-team/agents/academic-topic-strategist "这个研究方向可行吗"
 # teams/academic-paper-team/agents/academic-writer "帮我写 Introduction"
 # teams/academic-paper-team/agents/academic-peer-reviewer "帮我模拟审稿一次"

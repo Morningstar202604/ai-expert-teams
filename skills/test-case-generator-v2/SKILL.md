@@ -2,7 +2,7 @@
 name: test-case-generator-v2
 description: 企业级测试用例生成规程。当 software-qa-engineer 需要补测试策略、或 software-tester 在收口阶段补单元/边界/回归用例时调用。按等价类、边界值、判定表、状态迁移、错误路径、幂等与并发等方法系统化生成用例，输出可执行用例表与覆盖率缺口清单，拒绝只写 happy path。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 企业级测试用例生成（v2）

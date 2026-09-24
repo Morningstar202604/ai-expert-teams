@@ -2,7 +2,7 @@
 name: design-review-checklist
 description: 设计评审清单。设计稿交付前由只读质检员逐项过单：风格一致性、信息层级、对齐网格、文字可读性、对比度、版权合规、落地参数（出血/分辨率/色彩模式）；任一 H 级问题阻断交付。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 设计评审清单（交付闸门）

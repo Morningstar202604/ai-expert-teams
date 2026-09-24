@@ -2,7 +2,7 @@
 name: copywriting-framework
 description: 广告文案框架。提供 AIDA、FAB、PAS、4U 四个经典文案模型，覆盖 slogan、落地页、电商详情、EDM 的写作结构与 CTA 设计。适用于 copywriter 写转化型文案、主理人审广告稿。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 广告文案框架

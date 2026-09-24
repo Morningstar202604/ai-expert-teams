@@ -2,7 +2,7 @@
 name: security-scan
 description: 单遍快速仓库安全审计。当全栈/软件开发团队在门禁阶段需要一轮快速安全检查时调用。单遍扫描依赖漏洞、硬编码密钥、注入点、鉴权缺失、危险函数等常见风险，输出分级清单与修复建议，速度优先、覆盖面广，不做深度链路追踪。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 单遍仓库安全审计（security-scan）

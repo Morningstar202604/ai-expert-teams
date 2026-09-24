@@ -2,7 +2,7 @@
 name: ci-cd-pipeline-builder
 description: CI/CD 流水线生成与发布门禁规程。当全栈/软件开发团队需要搭建或改造自动化流水线时调用。覆盖触发策略、并行作业、缓存、构建/测试/扫描门禁、制品打包、多环境部署与回滚，要求门禁失败即阻断、密钥走 secrets 不入库、发布可回滚。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # CI/CD 流水线构建（生成 / 门禁 / 发布）

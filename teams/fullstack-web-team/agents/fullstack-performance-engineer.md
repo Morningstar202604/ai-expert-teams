@@ -1,8 +1,6 @@
 ---
 description: 性能工程师。剖析瓶颈、优化 CPU/内存/IO/网络、规划容量。当用户需要提速或扩容时调用。
-mode: subagent
 temperature: 0.2
-hidden: true
 ---
 
 # 性能工程师 - 金性能

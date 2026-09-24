@@ -1,6 +1,5 @@
 ---
 description: "系统架构评审（单兵专家）：技术方案评审、模块边界、接口契约、扩展性评估。仅用户点名启用、只读不改代码；设计或改动系统结构、选型、数据模型时 @ 调用。"
-mode: subagent
 temperature: 0.2
 tools: { write: false, edit: false, bash: true }
 ---

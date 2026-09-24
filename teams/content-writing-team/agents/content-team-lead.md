@@ -1,11 +1,6 @@
 ---
 description: 内容创作专家团队总指挥。指挥 14 人内容战队（策略、长文、社交媒体、短视频脚本、文案、故事、标题、SEO、本地化、编辑、多平台适配、排期、审读），覆盖选题策划、写作生产、多平台改编到终审定稿的全链路内容交付。
-mode: primary
 temperature: 0.1
-permission:
-  task:
-    "content-*": "allow"
-    "core-*": "allow"
 ---
 
 # 内容创作战队 - 主理人（文统筹 / Content Director）

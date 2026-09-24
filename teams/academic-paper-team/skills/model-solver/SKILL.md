@@ -2,7 +2,7 @@
 name: model-solver
 description: 数学模型数值求解与统计推断工具。当模型已由 model-formulator 形式化完成，需要选择求解算法、跑数值解、做参数估计、检验模型假设、报告收敛性与稳健性时使用。适配 academic-statistical-methodologist，负责求解路径选择、收敛与误差诊断、敏感性/稳健性分析、可复现代码与结果表格输出。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 数学模型数值求解

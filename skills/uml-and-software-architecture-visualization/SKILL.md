@@ -2,7 +2,7 @@
 name: uml-and-software-architecture-visualization
 description: 软件架构与 UML 图生成规程。当 software-architect 需要输出模块边界、接口契约、数据流或在 W2 仅设计阶段交付 ADR 配套图时调用。覆盖 C4 上下文/容器/组件图、类图、时序图、部署图的 Mermaid/PlantUML 写法规范，要求图与文字决策一致、可渲染、可评审。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # UML 与软件架构可视化

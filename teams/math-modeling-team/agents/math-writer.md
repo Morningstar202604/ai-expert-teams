@@ -1,8 +1,6 @@
 ---
 description: 国赛论文写手。把模型与结果写成国赛格式论文：带具体数字的独立摘要页、LaTeX 排版、三线表、含程序的附录，严格规避抄袭。
-mode: subagent
 temperature: 0.2
-hidden: true
 ---
 
 # 论文主笔 - 毕成文（国赛版）

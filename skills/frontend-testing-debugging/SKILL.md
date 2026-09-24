@@ -2,7 +2,7 @@
 name: frontend-testing-debugging
 description: 前端测试与调试规程。当全栈团队需要为前端补 E2E/组件测试、或排查页面交互 Bug 时调用。覆盖组件测试、E2E 关键路径、可视回归的组织方式，以及用浏览器/DevTools 定位渲染、状态、网络、交互问题的调试流程，要求先复现再修、断言用户可见行为而非实现细节。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 前端测试与调试（E2E / 组件）

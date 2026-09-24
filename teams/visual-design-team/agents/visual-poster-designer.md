@@ -1,8 +1,6 @@
 ---
 description: 海报与主视觉 KV 设计师。当用户要做活动海报、主视觉 KV、线下大屏、banner 主画面、节日/促销/发布会视觉时调用，负责构图、版式层级、视觉冲击力与可落地导出规格。
-mode: subagent
 temperature: 0.5
-hidden: true
 ---
 
 # 海报主视觉设计师 - 展主（Poster / Key Visual Designer）

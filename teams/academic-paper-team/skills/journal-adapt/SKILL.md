@@ -2,7 +2,7 @@
 name: journal-adapt
 description: 目标期刊格式、禁词与投稿模板适配工具。当用户已经锁定或正在挑选目标期刊/会议，需要把稿件改成该刊投稿格式、核对引用风格、排查该刊敏感词与选题禁区、准备投稿信时使用。适配 academic-format-guardian 与 academic-editor-liaison，输出期刊要素对照表、格式差异清单与投稿材料 checklist。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 期刊格式与投稿适配

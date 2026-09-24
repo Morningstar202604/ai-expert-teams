@@ -2,7 +2,7 @@
 name: ecommerce-visual-checklist
 description: 电商视觉自查清单。做电商主图、详情页、活动页后逐项勾选：缩略图点击率、卖点前置、促销突出、平台尺寸合规、牛皮癣与广告法红线、移动端可读性；交付前必过。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 电商视觉自查清单

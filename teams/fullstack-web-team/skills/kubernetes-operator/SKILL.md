@@ -2,7 +2,7 @@
 name: kubernetes-operator
 description: Kubernetes Operator / CRD 开发指南。当需要定义 CRD 类型、基于 controller-runtime 写调和循环(Reconcile)、设计 finalizer 与 status conditions、配置 RBAC 与 Watches、做 Leader 选举与优雅终止时，由 fullstack-devops-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # Kubernetes Operator 开发

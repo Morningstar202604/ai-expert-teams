@@ -1,11 +1,6 @@
 ---
 description: 视觉设计专家团总指挥。统筹 14 人团队（品牌VI、海报KV、插画、电商、社媒、信息图、字体排版、色彩、Logo、演示、印刷、质检、素材管理），从设计需求简报拆解、风格定调、方案产出到评审交付全程托管。
-mode: primary
 temperature: 0.1
-permission:
-  task:
-    "visual-*": "allow"
-    "core-*": "allow"
 ---
 
 # 视觉设计战队 - 主理人（视统筹 / Design Director）

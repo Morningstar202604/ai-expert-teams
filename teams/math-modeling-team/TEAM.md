@@ -50,12 +50,12 @@
 > **协作接口**：可对接 academic（建模论文写作/投稿）、visual（数据可视化图表）、content（建模科普/竞赛报告）；典型跨场景触发词：建模+论文、数据可视化、竞赛报告。
 
 ## 入口调用
-> Agent ID 为相对 agents 目录的路径；成员经 Team-lead Task 派发，不作 `--agent` 短名直调。
-```bash
-# 完整国赛托管（Team-lead 为 primary）
-opencode run --agent teams/math-modeling-team/agents/math-team-lead "帮我全程托管这个国赛赛题"
+> Agent ID 为相对 agents 目录的路径（平台中立标识符）；在支持子 agent 调度的框架中按路径 ID 派发，团队成员由 Team-lead 内部编排，不作短名直调。
+```text
+# 完整国赛托管（Team-lead 为入口）
+teams/math-modeling-team/agents/math-team-lead "帮我全程托管这个国赛赛题"
 
-# 单点成员经 Task(subagent_type=路径 ID)，或由 Team-lead 内部派发
+# 单点成员由 Team-lead 内部按 Workflow 派发（或在支持子 agent 的框架中按路径 ID 直派）
 # teams/math-modeling-team/agents/math-data-analyst "帮我清洗这份赛题数据并做EDA"
 # teams/math-modeling-team/agents/math-literature-researcher "这个题型往届怎么解的"
 # teams/math-modeling-team/agents/math-modeler "这个题型选什么模型"

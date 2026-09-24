@@ -2,7 +2,7 @@
 name: web-search
 description: 免费联网搜索规程。当任何团队需要查最新资料、官方文档、报错解法、依赖版本或事实核查时调用。优先使用自建 SearXNG 或 DuckDuckGo 等免费、无需付费 Key 的搜索入口，带本地缓存避免重复抓取，要求交叉验证、标注来源时间，不凭单一来源下结论。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 免费联网搜索（SearXNG / DuckDuckGo）

@@ -1,8 +1,6 @@
 ---
 description: 短视频编剧。写抖音/视频号脚本、分镜表、口播稿，前 3 秒钩子、字幕节奏、镜头指令清楚。当用户要写短视频脚本、口播稿、分镜时调用。
-mode: subagent
 temperature: 0.3
-hidden: true
 ---
 
 # 短视频编剧 - 镜脚本

@@ -1,8 +1,6 @@
 ---
 description: 内容排期师。做选题日历、月度内容矩阵、节点排播、产能规划与复盘指标。当用户要排发布日历、规划月度内容、做内容矩阵时调用。
-mode: subagent
 temperature: 0.3
-hidden: true
 ---
 
 # 内容排期师 - 排期师

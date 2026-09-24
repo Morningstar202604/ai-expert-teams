@@ -1,8 +1,6 @@
 ---
 description: 设计评审与质量质检员（只读）。当设计稿要交付前把关、挑毛病、查风格一致性/层级/版权/落地参数时调用；只读评审不改稿，出问题清单与修改建议。
-mode: subagent
 temperature: 0.2
-hidden: true
 tools:
   write: false
   edit: false

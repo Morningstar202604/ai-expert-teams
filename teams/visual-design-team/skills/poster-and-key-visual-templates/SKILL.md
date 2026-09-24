@@ -2,7 +2,7 @@
 name: poster-and-key-visual-templates
 description: 海报与主视觉 KV 版式模板库。当要做活动海报、主视觉、banner、线下大屏时使用；提供居中/对角线/三分法/满版等经典构图选型、四级文字层级与多尺寸延展规则，平台中立的版式方法论。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 海报与主视觉 KV 版式模板库

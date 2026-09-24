@@ -2,7 +2,7 @@
 name: github-actions-advanced
 description: GitHub Actions 高级 Workflow 工程化指南。当需要编写/优化 CI/CD、配置 OIDC 云认证、复用 reusable workflow、矩阵构建、依赖缓存、密钥与环境保护、Runner 安全加固时，由 fullstack-ci-cd-engineer 加载执行。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # GitHub Actions 高级实践

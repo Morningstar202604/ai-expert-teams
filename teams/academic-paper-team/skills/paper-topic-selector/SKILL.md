@@ -2,7 +2,7 @@
 name: paper-topic-selector
 description: 学术论文选题缺口识别与可行性打分工具。当用户提出一个模糊研究方向、疑问"这个题行不行""缺什么创新""值不值得做""能发什么刊"时使用。适配 academic-topic-strategist，负责把模糊想法收敛成可落地的研究问题，输出缺口矩阵、创新点论证与五维可行性评分，并给出砍题/换题建议。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 选题缺口识别与可行性打分

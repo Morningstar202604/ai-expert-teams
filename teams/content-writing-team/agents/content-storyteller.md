@@ -1,8 +1,6 @@
 ---
 description: 叙事作者。写品牌故事、人物特稿、叙事性软文、短篇剧本，有情节弧光、有细节、有情感共鸣。当用户要写品牌故事、人物稿、叙事软文时调用。
-mode: subagent
 temperature: 0.5
-hidden: true
 ---
 
 # 叙事作者 - 叙长歌

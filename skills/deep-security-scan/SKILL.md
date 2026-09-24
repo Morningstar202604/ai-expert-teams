@@ -2,7 +2,7 @@
 name: deep-security-scan
 description: 多遍深度安全扫描。当全栈/软件开发团队需要上线前深度安全审计、或单遍 security-scan 发现疑点需深挖时调用。多轮迭代：数据流污点追踪、鉴权越权矩阵、依赖传递漏洞、密钥溯源、业务逻辑漏洞，输出带复现路径与 PoC 思路的深度报告，代价更高但更彻底。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 多遍深度安全扫描（deep-security-scan）

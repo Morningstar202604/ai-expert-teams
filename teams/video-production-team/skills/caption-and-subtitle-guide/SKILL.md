@@ -2,7 +2,7 @@
 name: caption-and-subtitle-guide
 description: 字幕与双语规范。规定字幕断句、单行字数、停留时长、双语对齐、错别字校对与敏感词/广告法合规清单。字幕专家上字幕与终检时按此执行，确保字幕好读、准确、能过审。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # 字幕与双语规范（好读 · 准确 · 合规）

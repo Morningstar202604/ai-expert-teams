@@ -2,7 +2,7 @@
 name: image-generation-prompt-guide
 description: AI 生图提示词工程指南。当需要用文字描述驱动生图时使用：提供主体/构图/视角/光影/材质/风格/画质的结构化提示词模板，以及通用负面词清单；平台中立，不绑定具体生图工具。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # AI 生图提示词工程指南

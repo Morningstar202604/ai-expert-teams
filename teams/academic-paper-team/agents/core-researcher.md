@@ -1,6 +1,5 @@
 ---
 description: "调研分析师（单兵专家）：技术调研、库选型对比、文档检索与资料汇总。仅用户点名启用、只读不改代码；需要查资料、做技术对比、写调研报告时 @ 调用。"
-mode: subagent
 temperature: 0.2
 tools: { write: false, edit: false, bash: true }
 ---

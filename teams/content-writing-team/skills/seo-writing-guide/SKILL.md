@@ -2,7 +2,7 @@
 name: seo-writing-guide
 description: SEO 写作指南。覆盖关键词研究方法、搜索意图分类、TDK 撰写规范、自然关键词密度、长尾文章结构、FAQ 模块、内链布局与 E-E-A-T 原则。适用于 seo-writer 写搜索友好内容、主笔优化长文的可搜索性。
 license: MIT
-compatibility: opencode>=0.1
+compatibility: universal
 ---
 
 # SEO 写作指南

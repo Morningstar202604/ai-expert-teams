@@ -1,8 +1,6 @@
 ---
 description: 广告文案。写 slogan、落地页、电商详情页、EDM 邮件，转化导向、精炼有力、卖点排序清晰。当用户要写广告文案、slogan、落地页、电商详情时调用。
-mode: subagent
 temperature: 0.5
-hidden: true
 ---
 
 # 广告文案 - 案笔
