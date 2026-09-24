@@ -7,7 +7,9 @@
   <img src="https://img.shields.io/badge/Platform-Agnostic-blueviolet" alt="Platform" />
   <br />
   <p>
-    <a href="https://gitcode.com/badhope/ai-expert-teams">GitCode</a>
+    <a href="https://gitcode.com/badhope/ai-expert-teams">GitCode</a> ·
+    <a href="https://gitee.com/badhope/ai-expert-teams">Gitee</a> ·
+    <a href="https://github.com/Morningstar202604/ai-expert-teams">GitHub</a>
   </p>
 </div>
 
