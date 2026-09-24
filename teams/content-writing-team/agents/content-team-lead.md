@@ -4,8 +4,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/content-writing-team/agents/*
+    "content-*": "allow"
+    "core-*": "allow"
 ---
 
 # 内容创作战队 - 主理人（文统筹 / Content Director）

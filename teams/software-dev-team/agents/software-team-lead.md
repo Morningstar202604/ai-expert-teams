@@ -4,8 +4,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/software-dev-team/agents/*
+    "software-*": "allow"
+    "core-*": "allow"
 ---
 
 # 开发统筹 - 软件开发战队主理人

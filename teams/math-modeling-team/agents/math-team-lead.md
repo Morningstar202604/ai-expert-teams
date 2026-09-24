@@ -5,8 +5,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/math-modeling-team/agents/*
+    "math-*": "allow"
+    "core-*": "allow"
 ---
 
 # 数学建模战队 - 主理人（黎统筹 / Competition Director）

@@ -3,9 +3,9 @@
 # install.sh — opencode-expert-teams 一键安装脚本
 #
 # 把本仓库的 agents 与 skills 通过软链接接入 opencode 配置目录：
-#   - agents: 每个团队的 teams/<team>/agents/ 按 teams/<team>/agents/<name>.md
-#             结构软链到 $TARGET/agents/；根级 project-director.md 一并软链。
-#   - skills: skills/*/ 与 teams/*/skills/*/ 共 49 个 skill 目录，
+#   - agents: teams/<team>/agents/*.md 按文件名<name>.md 扁平软链到 $TARGET/agents/
+#             （opencode 只发现 agents/ 顶层 .md，不递归子目录；根级 project-director.md 一并软链）
+#   - skills: skills/*/ 与 teams/*/skills/*/ 共 52 个 skill 目录，
 #             按目录名扁平软链到 $TARGET/skills/<name>/
 #
 # 用法:
@@ -31,25 +31,31 @@ echo "==> opencode 配置目录: $TARGET"
 echo "==> 仓库根: $REPO_ROOT"
 echo
 
-# ---------- 1. agents：按团队软链 ----------
-# 保持 teams/<team>/agents/<name>.md 结构：
-#   $TARGET/agents/teams/<team>/agents -> $REPO_ROOT/teams/<team>/agents
+# ---------- 1. agents：扁平软链（opencode 只发现 agents/ 顶层 .md） ----------
+# 遍历 teams/<team>/agents/*.md，按文件名扁平软链到 $TARGET/agents/<name>.md
 echo "==> 安装 agents ..."
-mkdir -p "$TARGET/agents/teams"
+declare -A _seen_names
 for team_dir in "$REPO_ROOT"/teams/*/; do
     [ -d "$team_dir" ] || continue
     team="$(basename "$team_dir")"
     src_agents="$team_dir/agents"
-    # 源目录存在才链接
     if [ ! -d "$src_agents" ]; then
         echo "    - 跳过 $team（无 agents 目录）"
         continue
     fi
-    mkdir -p "$TARGET/agents/teams/$team"
-    ln -sfn "$src_agents" "$TARGET/agents/teams/$team/agents"
+    for agent_md in "$src_agents"/*.md; do
+        [ -f "$agent_md" ] || continue
+        name="$(basename "$agent_md" .md)"
+        if [ -n "${_seen_names[$name]:-}" ]; then
+            echo "    ! 重名 agent: $name（来自 $team 与 ${_seen_names[$name]}），跳过" >&2
+            continue
+        fi
+        _seen_names[$name]="$team"
+        ln -sfn "$agent_md" "$TARGET/agents/$name.md"
+        agent_count=$((agent_count + 1))
+    done
     n="$(find "$src_agents" -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
-    agent_count=$((agent_count + n))
-    echo "    + teams/$team/agents/  ($n 个 agent)"
+    echo "    + $team/agents/  ($n 个 agent，扁平)"
 done
 
 # 仓库根级 agent（project-director.md 等），非文档/许可证类 .md

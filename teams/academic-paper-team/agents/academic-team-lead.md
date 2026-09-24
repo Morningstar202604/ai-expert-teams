@@ -4,8 +4,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/academic-paper-team/agents/*
+    "academic-*": "allow"
+    "core-*": "allow"
 ---
 
 # 学术论文战队 - 主理人

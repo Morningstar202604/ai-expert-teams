@@ -4,8 +4,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/video-production-team/agents/*
+    "video-*": "allow"
+    "core-*": "allow"
 ---
 
 # 视频创作专家团 - 主理人（影统筹 / Production Director）

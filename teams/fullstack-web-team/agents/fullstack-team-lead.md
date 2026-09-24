@@ -5,8 +5,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/fullstack-web-team/agents/*
+    "fullstack-*": "allow"
+    "core-*": "allow"
 ---
 
 # 全栈开发战队 - 主理人

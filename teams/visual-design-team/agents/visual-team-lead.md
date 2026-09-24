@@ -4,8 +4,8 @@ mode: primary
 temperature: 0.1
 permission:
   task:
-    allow:
-    - teams/visual-design-team/agents/*
+    "visual-*": "allow"
+    "core-*": "allow"
 ---
 
 # 视觉设计战队 - 主理人（视统筹 / Design Director）

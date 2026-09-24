@@ -173,10 +173,15 @@ for agent_id, path, team in agent_files:
         if 'permission' not in fm or 'task' not in fm['permission']:
             err(f"[{agent_id}] 缺 permission.task 配置")
         else:
-            allow = fm['permission']['task'].get('allow', [])
-            expected = f"teams/{TEAM_DIR_MAP[agent_id]}/agents/*"
-            if expected not in allow:
-                err(f"[{agent_id}] permission.task.allow 应含 '{expected}'")
+            task = fm['permission']['task']
+            if not isinstance(task, dict):
+                err(f"[{agent_id}] permission.task 应为 glob->allow/deny/ask 映射")
+            else:
+                prefix = TEAM_DIR_MAP[agent_id].split('-')[0]
+                if task.get(f"{prefix}-*") != "allow":
+                    err(f"[{agent_id}] permission.task 应含 '{prefix}-*': allow")
+                if task.get("core-*") != "allow":
+                    err(f"[{agent_id}] permission.task 应含 'core-*': allow")
     else:
         if fm.get('mode') != 'subagent':
             err(f"[{agent_id}] subagent mode 应为 subagent (实际 {fm.get('mode')})")
