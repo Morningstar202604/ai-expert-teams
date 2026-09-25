@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ai-expert-teams · 把 {{N_AGENTS}} 位 AI 专家装进你的 Agent</title>
-<meta name="description" content="{{N_AGENTS}} 位 AI 领域专家 + {{N_SKILLS}} 个开箱即用技能，覆盖学术/开发/建模/设计/内容/视频 {{N_TEAMS}} 大领域。纯 Markdown、平台中立，任何 AI agent 接入即用。MIT 开源。">
+<meta name="description" content="{{N_AGENTS}} 位 AI 领域专家 + {{N_SKILLS}} 个开箱即用技能，覆盖学术/开发/建模/设计/内容/视频/数据/营销/电商/产品/财务/HR/法律/翻译/教育/音频/游戏 {{N_TEAMS}} 大领域。纯 Markdown、平台中立，任何 AI agent 接入即用。MIT 开源。">
 <meta name="keywords" content="AI专家团队, multi-agent, expert teams, agent 工作流, LLM agents, opencode 替代, 豆包, Markdown agents, ai-expert-teams">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2333475E'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23F4F1E8'%3E%E9%98%9F%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ai-expert-teams · 把 {{N_AGENTS}} 位 AI 专家装进你的 Agent">
-<meta property="og:description" content="{{N_AGENTS}} 位 AI 领域专家 + {{N_SKILLS}} 个开箱即用技能，7 大领域全覆盖，纯 Markdown 平台中立，任何 AI agent 接入即用。MIT 开源。">
+<meta property="og:description" content="{{N_AGENTS}} 位 AI 领域专家 + {{N_SKILLS}} 个开箱即用技能，{{N_TEAMS}} 大领域全覆盖，纯 Markdown 平台中立，任何 AI agent 接入即用。MIT 开源。">
 <meta property="og:url" content="https://x33834.github.io/ai-expert-teams/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ai-expert-teams · {{N_AGENTS}} 位 AI 专家即插即用">
-<meta name="twitter:description" content="{{N_AGENTS}} 位 AI 领域专家 + {{N_SKILLS}} 个开箱技能，7 大领域，纯 Markdown，接入任意 AI agent 即用。">
+<meta name="twitter:description" content="{{N_AGENTS}} 位 AI 领域专家 + {{N_SKILLS}} 个开箱技能，{{N_TEAMS}} 大领域，纯 Markdown，接入任意 AI agent 即用。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23B8472E'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Georgia,serif' fill='%23F4F1E8' text-anchor='middle' font-weight='bold'%3EAT%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://miaoda.feishu.cn">
 <link href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -149,7 +149,7 @@ section{padding:72px 0}
   display:flex;align-items:center;justify-content:center;
   font-family:"Noto Serif SC",Georgia,serif;font-weight:900;font-size:12px;color:var(--paper);
 }
-/* 通用卡（第 8 张） */
+/* 通用卡 */
 .team-card.core-card{background:var(--ink);border-color:var(--ink)}
 .team-card.core-card .t-name,.team-card.core-card .t-scene{color:var(--white)}
 .team-card.core-card .t-num{color:var(--paper);border-color:rgba(244,241,232,.35)}
@@ -256,7 +256,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px;margin-top:20px}
     </div>
     <div class="stat-row">
       <div class="stat"><div class="v"><em>{{N_AGENTS}}</em></div><div class="k">位领域专家</div></div>
-      <div class="stat"><div class="v"><em>7</em></div><div class="k">大领域团队</div></div>
+      <div class="stat"><div class="v"><em>{{N_TEAMS}}</em></div><div class="k">大领域团队</div></div>
       <div class="stat"><div class="v"><em>{{N_SKILLS}}</em></div><div class="k">个开箱技能</div></div>
       <div class="stat"><div class="v"><em>0</em></div><div class="k">框架绑定依赖</div></div>
     </div>
@@ -291,58 +291,11 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px;margin-top:20px}
   <div class="wrap">
     <div class="sec-head">
       <div class="kicker">EXPERT ARCHIVE</div>
-      <h2>七支专家团队档案</h2>
+      <h2>{{N_TEAMS}} 支专家团队档案</h2>
       <p>每支团队都是一条完整交付链路：从需求进来到终稿/交付包出去，中间所有角色与门禁都已配置好。</p>
     </div>
     <div class="team-grid">
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">学术论文战队</span><span class="t-num">{{T_ACADEMIC}} 人 · {{S_ACADEMIC}} 技能</span></div>
-        <div class="t-scene">选题、文献、研究设计、写作、审稿、期刊匹配到投稿交付，一条链路出完整论文包。</div>
-        <div class="t-roles"><span class="role hot">选题策略师</span><span class="role">文献综述师</span><span class="role">写作主笔</span><span class="role">模拟审稿</span><span class="role">格式守卫</span></div>
-        <div class="t-meta"><span><b>入口：</b>academic-team-lead</span></div>
-      </div>
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">全栈 Web 战队</span><span class="t-num">{{T_FULLSTACK}} 人 · {{S_FULLSTACK}} 技能</span></div>
-        <div class="t-scene">需求、架构、前后端、API、数据、DevOps、测试、安全、性能到可上线交付包。</div>
-        <div class="t-roles"><span class="role hot">系统架构师</span><span class="role">前端工程师</span><span class="role">后端工程师</span><span class="role">DevOps</span><span class="role">QA</span></div>
-        <div class="t-meta"><span><b>入口：</b>fullstack-team-lead</span></div>
-      </div>
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">数学建模战队</span><span class="t-num">{{T_MATH}} 人 · {{S_MATH}} 技能</span></div>
-        <div class="t-scene">国赛 72 小时全程托管：选题、建模、求解、写作到查重安全的论文 PDF。</div>
-        <div class="t-roles"><span class="role hot">建模专家</span><span class="role">算法求解师</span><span class="role">论文质检</span><span class="role">复现查重</span></div>
-        <div class="t-meta"><span><b>入口：</b>math-team-lead</span></div>
-      </div>
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">软件开发战队</span><span class="t-num">{{T_SOFTWARE}} 人 · {{S_SOFTWARE}} 技能</span></div>
-        <div class="t-scene">需求拆解、架构、实现、评审、测试到交付，强门禁、小步走、可回滚。</div>
-        <div class="t-roles"><span class="role">蓝图师</span><span class="role">服务立</span><span class="role hot">代码质量评审</span><span class="role">测试</span></div>
-        <div class="t-meta"><span><b>入口：</b>software-team-lead</span></div>
-      </div>
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">视觉设计战队</span><span class="t-num">{{T_VISUAL}} 人 · {{S_VISUAL}} 技能</span></div>
-        <div class="t-scene">需求简报拆解、风格定调、海报/电商/品牌/插画产出到只读评审质检交付。</div>
-        <div class="t-roles"><span class="role">海报设计师</span><span class="role hot">电商视觉</span><span class="role">品牌 VI</span><span class="role">插画师</span><span class="role">评审</span></div>
-        <div class="t-meta"><span><b>入口：</b>visual-team-lead</span></div>
-      </div>
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">内容写作战队</span><span class="t-num">{{T_CONTENT}} 人 · {{S_CONTENT}} 技能</span></div>
-        <div class="t-scene">选题、长文/社媒/短视频脚本成稿、标题打磨、多平台改编到事实核查终检。</div>
-        <div class="t-roles"><span class="role">策略师</span><span class="role">长文作者</span><span class="role">社媒作者</span><span class="role">短视频编剧</span><span class="role hot">事实核查</span></div>
-        <div class="t-meta"><span><b>入口：</b>content-team-lead</span></div>
-      </div>
-      <div class="team-card">
-        <div class="t-head"><span class="t-name">视频创作战队</span><span class="t-num">{{T_VIDEO}} 人 · {{S_VIDEO}} 技能</span></div>
-        <div class="t-scene">从 brief 到成片：编剧导演、分镜、剪辑、调色、字幕到质检闸门合规发布。</div>
-        <div class="t-roles"><span class="role hot">编剧导演</span><span class="role">分镜师</span><span class="role">剪辑师</span><span class="role">调色师</span><span class="role">质检</span></div>
-        <div class="t-meta"><span><b>入口：</b>video-team-lead</span></div>
-      </div>
-      <div class="team-card core-card">
-        <div class="t-head"><span class="t-name">通用保障层（跨团队）</span><span class="t-num">{{N_GENERAL_SKILLS}} 技能 · {{N_CORE_UNITS}} 单兵</span></div>
-        <div class="t-scene">准确性核查、交叉验证、质检门禁、事实核查单兵、深度检索与安全扫描——所有团队共享的底座。</div>
-        <div class="t-roles"><span class="role hot">事实核查官</span><span class="role">质检门禁</span><span class="role">准确性核查</span><span class="role">交叉验证</span><span class="role">安全扫描</span></div>
-        <div class="t-meta"><span><b>调用：</b>任意团队交付前</span></div>
-      </div>
+{{TEAM_CARDS}}
     </div>
   </div>
 </section>
@@ -437,52 +390,45 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px;margin-top:20px}
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
-/* ===== ECharts：团队规模 ===== */
+/* ===== ECharts：团队规模（横向条形，动态数据） ===== */
 function renderBar(){
   var el = document.getElementById("chartBar");
   var c = echarts.init(el);
+  var labels = {{BAR_LABELS}};
+  var values = {{BAR_DATA}};
   c.setOption({
-    grid:{left:8,right:24,top:12,bottom:8,containLabel:true},
+    grid:{left:8,right:32,top:8,bottom:8,containLabel:true},
     xAxis:{type:"value",show:false},
-    yAxis:{type:"category",data:["视频","内容","视觉","软件","数学","全栈","学术"].reverse(),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:"#4A515B",fontSize:12.5}},
+    yAxis:{type:"category",data:labels,axisLine:{show:false},axisTick:{show:false},axisLabel:{color:"#4A515B",fontSize:11.5}},
     series:[{
-      type:"bar",data:{{BAR_DATA}}.reverse(),
-      barWidth:15,
-      itemStyle:{color:function(p){return p.dataIndex===6?"#B8472E":"#33475E";},borderRadius:[0,4,4,0]},
-      label:{show:true,position:"right",color:"#4A515B",fontSize:12.5,formatter:"{c} 人"}
+      type:"bar",data:values,
+      barWidth:12,
+      itemStyle:{color:function(p){return p.dataIndex===0?"#B8472E":"#33475E";},borderRadius:[0,4,4,0]},
+      label:{show:true,position:"right",color:"#4A515B",fontSize:11.5,formatter:"{c} 人"}
     }]
   });
   return c;
 }
 
-/* ===== ECharts：技能构成 donut ===== */
+/* ===== ECharts：技能构成（团队专属 vs 通用，两段 donut） ===== */
 function renderDonut(){
   var el = document.getElementById("chartDonut");
   var c = echarts.init(el);
   c.setOption({
     tooltip:{trigger:"item",formatter:"{b}：{c} 个（{d}%）"},
-    legend:{bottom:0,itemWidth:10,itemHeight:10,textStyle:{color:"#4A515B",fontSize:12}},
-    color:["#B8472E","#33475E","#8A6D2F","#7C8376","#A68A6A","#5A6B8C","#96613B","#20262E"],
+    legend:{bottom:0,itemWidth:12,itemHeight:12,textStyle:{color:"#4A515B",fontSize:13}},
+    color:["#B8472E","#33475E"],
     series:[{
-      type:"pie",radius:["42%","66%"],center:["50%","42%"],
-      itemStyle:{borderColor:"#FBF9F3",borderWidth:2},
-      label:{color:"#20262E",fontSize:12},
-      data:[
-        {value:{{S_FULLSTACK}},name:"全栈团队"},
-        {value:{{S_ACADEMIC}},name:"学术团队"},
-        {value:{{S_VISUAL}},name:"视觉团队"},
-        {value:{{S_CONTENT}},name:"内容团队"},
-        {value:{{S_VIDEO}},name:"视频团队"},
-        {value:{{S_MATH}},name:"数学团队"},
-        {value:{{S_SOFTWARE}},name:"软件团队（通用）"},
-        {value:{{N_GENERAL_SKILLS}},name:"通用保障层"}
-      ]
+      type:"pie",radius:["45%","68%"],center:["50%","42%"],
+      itemStyle:{borderColor:"#FBF9F3",borderWidth:3},
+      label:{color:"#20262E",fontSize:13,formatter:"{b}\n{c} 个"},
+      data:{{DONUT_DATA}}
     }]
   });
   return c;
 }
 
-/* ===== 初始化 + 自适应（DOM 就绪即渲染，不依赖 window load） ===== */
+/* ===== 初始化 + 自适应 ===== */
 var charts = [];
 charts.push(renderBar());
 charts.push(renderDonut());

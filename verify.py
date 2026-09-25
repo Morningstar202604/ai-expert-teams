@@ -209,7 +209,10 @@ for agent_id, path, team in agent_files:
     team_counts[team] = team_counts.get(team, 0) + 1
 
 expected = {"academic-paper-team": 19, "fullstack-web-team": 19, "math-modeling-team": 9, "software-dev-team": 12,
-    "visual-design-team": 14, "content-writing-team": 14, "video-production-team": 14}
+    "visual-design-team": 14, "content-writing-team": 14, "video-production-team": 14,
+    "data-analysis-team": 12, "marketing-team": 12, "ecommerce-ops-team": 12, "product-team": 12,
+    "finance-team": 10, "hr-team": 10, "legal-compliance-team": 10, "translation-team": 10,
+    "education-training-team": 10, "audio-podcast-team": 10, "game-design-team": 10}
 total = 0
 for team, count in sorted(team_counts.items()):
     exp = expected.get(team, "?")
@@ -218,9 +221,10 @@ for team, count in sorted(team_counts.items()):
     total += count
     if count != exp:
         err(f"{team} 人数 {count} != 预期 {exp}")
-print(f"  总计: {total} (预期 101)")
-if total != 101:
-    err(f"总人数 {total} != 101")
+expected_total = sum(expected.values())
+print(f"  总计: {total} (预期 {expected_total})")
+if total != expected_total:
+    err(f"总人数 {total} != {expected_total}")
 
 # ═══════════════════════════════════════════════════════
 # 5. 关键文件存在性校验（平台中立）

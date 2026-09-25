@@ -17,6 +17,17 @@ description: "项目总调度：按场景把请求路由到对应专家团队。
 | 海报、插画、设计、主视觉、KV、电商图、信息图、VI、Logo、品牌、排版、配色、PPT、包装 | **视觉设计** | `teams/visual-design-team/agents/visual-team-lead` |
 | 文章、文案、公众号、小红书、短视频脚本、标题、内容、选题、SEO、品牌故事、口播稿 | **内容写作** | `teams/content-writing-team/agents/content-team-lead` |
 | 视频、短片、分镜、剪辑、动画、宣传片、口播、调色、字幕、特效、纪录片、Vlog | **视频制作** | `teams/video-production-team/agents/video-team-lead` |
+| 数据分析、数据清洗、指标体系、漏斗、归因、A/B 测试、实验设计、数据可视化、报表、BI、SQL、数据治理 | **数据分析** | `teams/data-analysis-team/agents/data-analysis-team-lead` |
+| 市场营销、品牌策略、活动策划、社媒营销、SEO、SEM、增长黑客、品牌公关、KOC、达人、营销复盘 | **市场营销** | `teams/marketing-team/agents/marketing-team-lead` |
+| 电商运营、选品、Listing、详情页、店铺运营、客服、供应链、定价、评价管理、物流、电商数据 | **电商运营** | `teams/ecommerce-ops-team/agents/ecommerce-ops-team-lead` |
+| 产品管理、PRD、用户研究、交互设计、产品路线图、竞品分析、产品数据、产品体验、产品运营 | **产品管理** | `teams/product-team/agents/product-team-lead` |
+| 财务、会计、预算、财务报告、税务、成本控制、资金管理、薪酬核算、审计、财报分析 | **财务会计** | `teams/finance-team/agents/finance-team-lead` |
+| 人力资源、招聘、JD、面试、入职、绩效、薪酬福利、培训、员工关系、HR | **人力资源** | `teams/hr-team/agents/hr-team-lead` |
+| 法律、合规、合同审查、数据隐私、个保法、知识产权、劳动法、争议处理、监管、法律文书 | **法律合规** | `teams/legal-compliance-team/agents/legal-team-lead` |
+| 翻译、本地化、中英译、英中译、技术翻译、术语、校对、文化适配、字幕翻译、i18n | **翻译本地化** | `teams/translation-team/agents/translation-team-lead` |
+| 教育培训、课程设计、课件、出题、讲解、辅导、测评、学习路径、在线教育、题库 | **教育培训** | `teams/education-training-team/agents/education-team-lead` |
+| 音频、播客、声音设计、音频剪辑、音效、配乐、主播、播客品牌、音频质检、有声书 | **音频播客** | `teams/audio-podcast-team/agents/audio-team-lead` |
+| 游戏设计、玩法设计、关卡设计、数值平衡、叙事设计、游戏经济、原型、游戏美术、游戏 QA | **游戏设计** | `teams/game-design-team/agents/game-team-lead` |
 | 混合：论文+配套代码、实验实现、文档+代码 | **多场景并行** | 并行派发多团队 |
 
 ## 路由决策流程
@@ -31,7 +42,7 @@ description: "项目总调度：按场景把请求路由到对应专家团队。
 ## 调度输出格式
 ```
 ## 路由决策
-- 主场景：[学术论文 / 全栈Web / 数学建模 / 软件开发 / 视觉设计 / 内容写作 / 视频制作 / 混合]
+- 主场景：[学术论文 / 全栈Web / 数学建模 / 软件开发 / 视觉设计 / 内容写作 / 视频制作 / 数据分析 / 市场营销 / 电商运营 / 产品管理 / 财务会计 / 人力资源 / 法律合规 / 翻译本地化 / 教育培训 / 音频播客 / 游戏设计 / 混合]
 - 目标团队：[team-lead agent 名称]
 - Workflow：[团队内部预设 Workflow / 单兵直调]
 - 理由：[一句话]
@@ -53,11 +64,16 @@ description: "项目总调度：按场景把请求路由到对应专家团队。
 ### 混合场景判定
 - 命中 ≥2 个团队的场景关键词即判定为混合场景，典型组合：
   - 「小红书图文 / 公众号推文配图」→ content + visual
-  - 「抖音营销视频 / 短视频带货」→ content + video + visual
+  - 「抖音营销视频 / 短视频带货」→ content + video + visual + marketing
   - 「论文 + 配套代码 / 实验复现」→ academic + software / fullstack
-  - 「产品落地页 / 官网」→ visual + fullstack + content
-  - 「数据可视化报告」→ academic / math + visual + content
+  - 「产品落地页 / 官网」→ visual + fullstack + content + product
+  - 「数据可视化报告」→ data-analysis + visual + content
   - 「技术博客 + 代码示例」→ content + software / fullstack
+  - 「电商大促活动」→ ecommerce-ops + marketing + visual + content
+  - 「产品发布全案」→ product + marketing + visual + content + video
+  - 「出海产品本地化」→ translation + product + marketing + legal-compliance
+  - 「在线课程制作」→ education-training + content + audio-podcast + visual
+  - 「游戏宣发」→ game-design + marketing + video + visual + content
 - 判定依据为路由表关键词交集，不依赖用户显式声明"多团队"。
 
 ### 编排规则

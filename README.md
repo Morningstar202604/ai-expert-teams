@@ -1,9 +1,9 @@
 <div align="center">
   <h1>ai-expert-teams</h1>
-  <p>101 位 AI 专家即插即用 · 7 大领域全覆盖 · 52 个开箱技能 · 纯 Markdown 平台中立 · 接入任意 AI agent 即用</p>
+  <p>219 位 AI 专家即插即用 · 18 大领域全覆盖 · 100 个开箱技能 · 纯 Markdown 平台中立 · 接入任意 AI agent 即用</p>
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="License" />
-  <img src="https://img.shields.io/badge/Agents-101_experts-purple" alt="Experts" />
-  <img src="https://img.shields.io/badge/Skills-52-green" alt="Skills" />
+  <img src="https://img.shields.io/badge/Agents-219_experts-purple" alt="Experts" />
+  <img src="https://img.shields.io/badge/Skills-100-green" alt="Skills" />
   <img src="https://img.shields.io/badge/Platform-Agnostic-blueviolet" alt="Platform" />
   <br />
   <p>
@@ -22,7 +22,7 @@
 
 ## 这是什么
 
-一套**平台中立的通用专家团队资产**：把 7 个专家团队、101 位专家、52 个 Skill 全部写成纯 Markdown 定义，自带 Workflow、Phase 门禁、Checkpoint 与交接模板。
+一套**平台中立的通用专家团队资产**：把 18 个专家团队、219 位专家、100 个 Skill 全部写成纯 Markdown 定义，自带 Workflow、Phase 门禁、Checkpoint 与交接模板。
 
 **无运行时依赖、不绑定任何具体 AI 产品或框架**——任何具备「读取文件 / 派发子 agent / 加载外部提示词」能力的 AI agent，都可以直接读取并扮演这些专家。
 
@@ -36,77 +36,37 @@
 graph TB
     User["用户指令"]
     PD["project-director<br/>场景路由"]
-    subgraph Academic Team
-        AL["academic-team-lead<br/>(主理人)"]
-        A1["topic-selector"]
-        A2["lit-review"]
-        A3["journal-adapt"]
-        A4["figure-maker"]
-        AN["...14 more"]
-    end
-    subgraph Fullstack Team
-        FL["fullstack-team-lead<br/>(主理人)"]
-        F1["architecture-designer"]
-        F2["ci-cd-pipeline-builder"]
-        F3["security-scan"]
-        F4["docker-development"]
-        FN["...15 more"]
-    end
-    subgraph Math Team
-        ML["math-team-lead<br/>(主理人)"]
-        M1["math-modeler"]
-        M2["math-solver"]
-        M3["math-writer"]
-        M4["math-qa-reviewer"]
-        MN["...5 more"]
-    end
-    subgraph Software Dev Team
-        SL["software-team-lead<br/>(主理人)"]
-        S1["software-architect"]
-        S2["software-backend-engineer"]
-        S3["software-security-engineer"]
-        S4["software-tester"]
-        SN["...8 more"]
-    end
-    subgraph Visual Design Team
-        VL["visual-team-lead<br/>(主理人)"]
-        V1["poster-designer"]
-        V2["illustrator"]
-        V3["ecommerce-designer"]
-        V4["logo-designer"]
-        VN["...10 more"]
-    end
-    subgraph Content Writing Team
-        CL["content-team-lead<br/>(主理人)"]
-        C1["article-writer"]
-        C2["copywriter"]
-        C3["short-video-scriptwriter"]
-        C4["seo-writer"]
-        CN["...10 more"]
-    end
-    subgraph Video Production Team
-        VDL["video-team-lead<br/>(主理人)"]
-        D1["scriptwriter-director"]
-        D2["storyboard-artist"]
-        D3["editor"]
-        D4["motion-graphics"]
-        DN["...10 more"]
+    subgraph Teams["18 支专家团队（219 位专家）"]
+        direction TB
+        subgraph Tech["技术开发类"]
+            AL["学术论文 19人"]
+            FL["全栈 Web 19人"]
+            ML["数学建模 9人"]
+            SL["软件开发 12人"]
+        end
+        subgraph Creative["内容创作类"]
+            VL["视觉设计 14人"]
+            CL["内容写作 14人"]
+            VDL["视频创作 14人"]
+            AL2["音频播客 10人"]
+        end
+        subgraph Business["商业运营类"]
+            DL["数据分析 12人"]
+            MK["市场营销 12人"]
+            EC["电商运营 12人"]
+            PL["产品管理 12人"]
+            GD["游戏设计 10人"]
+        end
+        subgraph Support["专业支持类"]
+            FN["财务会计 10人"]
+            HR["人力资源 10人"]
+            LG["法律合规 10人"]
+            TR["翻译本地化 10人"]
+            ED["教育培训 10人"]
+        end
     end
     User --> PD
-    PD -->|"论文/学术"| AL
-    PD -->|"Web 应用"| FL
-    PD -->|"数学建模竞赛"| ML
-    PD -->|"软件开发交付"| SL
-    PD -->|"视觉设计"| VL
-    PD -->|"内容写作"| CL
-    PD -->|"视频制作"| VDL
-    AL --- A1 & A2 & A3 & A4 & AN
-    FL --- F1 & F2 & F3 & F4 & FN
-    ML --- M1 & M2 & M3 & M4 & MN
-    SL --- S1 & S2 & S3 & S4 & SN
-    VL --- V1 & V2 & V3 & V4 & VN
-    CL --- C1 & C2 & C3 & C4 & CN
-    VDL --- D1 & D2 & D3 & D4 & DN
+    PD -->|"按场景关键词路由"| Teams
 ```
 
 ---
@@ -167,7 +127,7 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 
 ## 场景分类
 
-7 个团队按 **4 大类** 组织，`project-director` 按关键词自动路由：
+18 个团队按 **4 大类** 组织，`project-director` 按关键词自动路由：
 
 | 大类 | 团队 | 专家数 | 典型场景 |
 |------|------|--------|----------|
@@ -178,6 +138,17 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 | **视觉设计** | Visual Design | 14 | 品牌VI/海报KV/插画/电商图/信息图/PPT |
 | **内容创作** | Content Writing | 14 | 长文/公众号/小红书/短视频脚本/文案/SEO |
 | **视频制作** | Video Production | 14 | 脚本→分镜→剪辑→包装→音频→字幕→调色→质检 |
+| **数据智能** | Data Analysis | 12 | 数据清洗→指标体系→漏斗归因→A/B实验→可视化 |
+| **商业运营** | Marketing | 12 | 品牌定位→策略→活动→社媒/SEO→增长→复盘 |
+| **商业运营** | Ecommerce Ops | 12 | 选品→Listing→店铺→定价→供应链→客服→数据 |
+| **产品管理** | Product | 12 | 用户研究→PRD→路线图→竞品→数据→体验评审 |
+| **内容创作** | Audio Podcast | 10 | 脚本→声音导演→剪辑→音效→配乐→质检→发布 |
+| **互动娱乐** | Game Design | 10 | 玩法→关卡→数值→叙事→经济→原型→QA |
+| **专业支持** | Finance | 10 | 会计→预算→财报→税务→成本→资金→审计 |
+| **专业支持** | HR | 10 | 招聘→JD→面试→入职→绩效→薪酬→培训→员工关系 |
+| **专业支持** | Legal Compliance | 10 | 合同→合规→隐私→知识产权→劳动法→监管 |
+| **专业支持** | Translation | 10 | 中英互译→技术翻译→术语→本地化→校对→QA |
+| **专业支持** | Education Training | 10 | 课程设计→课件→出题→讲解→辅导→测评→学习路径 |
 
 ---
 
@@ -192,6 +163,17 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 | **Visual Design** | 14 位 | 品牌VI → 海报KV → 插画 → 电商图 → 信息图 → PPT → 评审 | "做张海报"、"设计个Logo"、"电商主图" |
 | **Content Writing** | 14 位 | 选题策略 → 长文/社媒 → 文案 → 脚本 → SEO → 编辑 → 质检 | "写篇公众号"、"小红书文案"、"短视频脚本" |
 | **Video Production** | 14 位 | 脚本 → 分镜 → 剪辑 → 包装 → 音频 → 字幕 → 调色 → 质检复盘 | "做条短视频"、"宣传片"、"口播脚本" |
+| **Data Analysis** | 12 位 | 清洗 → 指标体系 → 漏斗归因 → A/B实验 → 可视化报表 → 治理 | "分析用户留存"、"设计A/B实验"、"做数据看板" |
+| **Marketing** | 12 位 | 品牌定位 → 策略 → 活动策划 → 社媒/SEO → 增长 → KOC → 复盘 | "做营销方案"、"策划618活动"、"品牌定位" |
+| **Ecommerce Ops** | 12 位 | 选品 → Listing → 店铺运营 → 定价 → 供应链 → 客服 → 数据 | "优化Listing"、"选品分析"、"店铺运营" |
+| **Product** | 12 位 | 用户研究 → PRD → 路线图 → 竞品 → 数据 → 体验评审 → 运营 | "写PRD"、"用户调研"、"产品路线图" |
+| **Finance** | 10 位 | 会计 → 预算 → 财报 → 税务 → 成本 → 资金 → 审计支持 | "财务分析"、"税务筹划"、"预算编制" |
+| **HR** | 10 位 | 招聘 → JD → 面试 → 入职 → 绩效 → 薪酬 → 培训 → 员工关系 | "写JD"、"面试评估"、"绩效方案" |
+| **Legal Compliance** | 10 位 | 合同 → 合规 → 隐私 → 知识产权 → 劳动法 → 监管 → 文书 | "审查合同"、"个保法合规"、"商标注册" |
+| **Translation** | 10 位 | 中英互译 → 技术翻译 → 术语 → 本地化 → 校对 → 字幕 → QA | "翻译文档"、"产品本地化"、"字幕翻译" |
+| **Education Training** | 10 位 | 课程设计 → 课件 → 出题 → 讲解 → 辅导 → 测评 → 学习路径 | "设计课程"、"出题"、"学习路径规划" |
+| **Audio Podcast** | 10 位 | 脚本 → 声音导演 → 剪辑 → 音效 → 配乐 → 主播 → 质检 | "做播客"、"音频剪辑"、"配音指导" |
+| **Game Design** | 10 位 | 玩法 → 关卡 → 数值 → 叙事 → 经济 → 原型 → 美术 → QA | "游戏设计"、"数值平衡"、"关卡设计" |
 
 ---
 
@@ -210,15 +192,15 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 
 ```
 ai-expert-teams/
-├── project-director.md      # 总调度（7 场景路由）
+├── project-director.md      # 总调度（18 场景路由）
 ├── export-agents.py         # 导出脚本：把各 agent 定义导出为 system prompt 文本 / JSON
 ├── build-site.py            # 官网生成：从仓库实装统计生成 site/index.html（数据不漂移）
 ├── dist/                    # 导出产物目录（gitignore，不入库）
-├── SKILLS_INDEX.md          # 52 个 skill 统一索引
+├── SKILLS_INDEX.md          # 100 个 skill 统一索引
 ├── AGENTS.md                # 使用手册
 ├── site/                    # 官网：template.html（模板）+ index.html（生成产物）
 ├── .github/workflows/ci.yml # CI 门禁：verify + export + 官网数据防漂移检查
-├── skills/                  # 已实装（通用 14 + 团队 38）
+├── skills/                  # 通用 14 个（全团队共用）
 │   ├── web-search/
 │   ├── deep-research/
 │   ├── security-scan/
@@ -233,34 +215,26 @@ ai-expert-teams/
 │   ├── accuracy-and-fact-check/
 │   ├── cross-validation-guide/
 │   └── quality-gate-checklist/
-└── teams/
-    ├── academic-paper-team/ # 19 专家（含 core-researcher + core-fact-checker 通用单兵）
-    │   ├── agents/
-    │   ├── skills/          # 7 个团队专用 skill（已实装）
-    │   └── TEAM.md
-    ├── fullstack-web-team/  # 19 专家 + 4 core 单兵
-    │   ├── agents/
-    │   ├── skills/          # 11 个团队专用 skill（已实装）
-    │   └── TEAM.md
-    ├── math-modeling-team/  # 9 专家（国赛专用）
-    │   ├── agents/
-    │   ├── skills/          # 2 个（math-modeling-guosai / selfcheck，已实装）
-    │   └── TEAM.md
-    ├── software-dev-team/   # 12 专家
-    │   ├── agents/
-    │   └── TEAM.md          # 无独立 skill，引用通用 skills/ 中 3 个
-    ├── visual-design-team/  # 14 专家
-    │   ├── agents/
-    │   ├── skills/          # 6 个团队专用 skill（已实装）
-    │   └── TEAM.md
-    ├── content-writing-team/ # 14 专家
-    │   ├── agents/
-    │   ├── skills/          # 6 个团队专用 skill（已实装）
-    │   └── TEAM.md
-    └── video-production-team/ # 14 专家
-        ├── agents/
-        ├── skills/          # 6 个团队专用 skill（已实装）
-        └── TEAM.md
+└── teams/                   # 18 支团队（219 专家 + 86 团队专属 skill）
+    ├── academic-paper-team/     # 19 专家 · 7 skill
+    ├── fullstack-web-team/      # 19 专家 · 11 skill
+    ├── math-modeling-team/      # 9 专家 · 2 skill
+    ├── software-dev-team/       # 12 专家 · 绑定 3 通用 skill
+    ├── visual-design-team/      # 14 专家 · 6 skill
+    ├── content-writing-team/    # 14 专家 · 6 skill
+    ├── video-production-team/   # 14 专家 · 6 skill
+    ├── data-analysis-team/      # 12 专家 · 5 skill
+    ├── marketing-team/          # 12 专家 · 5 skill
+    ├── ecommerce-ops-team/      # 12 专家 · 5 skill
+    ├── product-team/            # 12 专家 · 5 skill
+    ├── finance-team/            # 10 专家 · 4 skill
+    ├── hr-team/                 # 10 专家 · 4 skill
+    ├── legal-compliance-team/   # 10 专家 · 4 skill
+    ├── translation-team/        # 10 专家 · 4 skill
+    ├── education-training-team/ # 10 专家 · 4 skill
+    ├── audio-podcast-team/      # 10 专家 · 4 skill
+    └── game-design-team/        # 10 专家 · 4 skill
+    # 每支团队结构：agents/（专家 .md）+ skills/（SKILL.md）+ TEAM.md（编排）
 ```
 
 ---

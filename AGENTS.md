@@ -1,6 +1,6 @@
 # Agent 系统使用手册 - AGENTS.md
 
-> **7 个专家团队 + 核心单兵** = 101 个 agent（Academic 19 + Fullstack 19 + Math 9 + Software 12 + Visual 14 + Content 14 + Video 14）。按**场景**组织，每个团队自包含，不拆单兵池。
+> **18 个专家团队 + 核心单兵** = 219 个 agent。按**场景**组织，每个团队自包含，不拆单兵池。
 
 ---
 
@@ -30,6 +30,17 @@ project-director   # 输入："帮我写篇论文并配套实现代码"
 | 视觉设计 | `teams/visual-design-team/agents/visual-team-lead` | "做海报"、"设计Logo"、"电商主图"、"信息图" |
 | 内容写作 | `teams/content-writing-team/agents/content-team-lead` | "写公众号"、"小红书文案"、"短视频脚本"、"标题" |
 | 视频制作 | `teams/video-production-team/agents/video-team-lead` | "做短视频"、"宣传片"、"口播"、"分镜"、"剪辑" |
+| 数据分析 | `teams/data-analysis-team/agents/data-analysis-team-lead` | "分析留存"、"A/B实验"、"数据看板"、"指标体系" |
+| 市场营销 | `teams/marketing-team/agents/marketing-team-lead` | "营销方案"、"活动策划"、"品牌定位"、"增长黑客" |
+| 电商运营 | `teams/ecommerce-ops-team/agents/ecommerce-ops-team-lead` | "选品"、"Listing优化"、"店铺运营"、"定价策略" |
+| 产品管理 | `teams/product-team/agents/product-team-lead` | "写PRD"、"用户调研"、"产品路线图"、"竞品分析" |
+| 财务会计 | `teams/finance-team/agents/finance-team-lead` | "财务分析"、"预算编制"、"税务筹划"、"成本控制" |
+| 人力资源 | `teams/hr-team/agents/hr-team-lead` | "写JD"、"面试评估"、"绩效方案"、"培训设计" |
+| 法律合规 | `teams/legal-compliance-team/agents/legal-team-lead` | "审查合同"、"个保法合规"、"知识产权"、"劳动法" |
+| 翻译本地化 | `teams/translation-team/agents/translation-team-lead` | "翻译文档"、"产品本地化"、"字幕翻译"、"术语管理" |
+| 教育培训 | `teams/education-training-team/agents/education-team-lead` | "设计课程"、"出题"、"课件制作"、"学习路径" |
+| 音频播客 | `teams/audio-podcast-team/agents/audio-team-lead` | "做播客"、"音频剪辑"、"配音指导"、"音效设计" |
+| 游戏设计 | `teams/game-design-team/agents/game-team-lead` | "游戏设计"、"数值平衡"、"关卡设计"、"GDD" |
 
 ### 3. 团队内部单兵 → 经 Team-lead 按 Workflow 派发（子 agent）
 其余成员不作为入口直调；由 Team-lead 按 Workflow 在内部编排派发。仅当用户明确指定单兵时，Team-lead 可在支持子 agent 调度的框架中按路径 ID 直达：
@@ -51,6 +62,17 @@ teams/software-dev-team/agents/software-tester
 - 视觉设计团队前缀：`teams/visual-design-team/agents/`
 - 内容写作团队前缀：`teams/content-writing-team/agents/`
 - 视频制作团队前缀：`teams/video-production-team/agents/`
+- 数据分析团队前缀：`teams/data-analysis-team/agents/`
+- 市场营销团队前缀：`teams/marketing-team/agents/`
+- 电商运营团队前缀：`teams/ecommerce-ops-team/agents/`
+- 产品管理团队前缀：`teams/product-team/agents/`
+- 财务会计团队前缀：`teams/finance-team/agents/`
+- 人力资源团队前缀：`teams/hr-team/agents/`
+- 法律合规团队前缀：`teams/legal-compliance-team/agents/`
+- 翻译本地化团队前缀：`teams/translation-team/agents/`
+- 教育培训团队前缀：`teams/education-training-team/agents/`
+- 音频播客团队前缀：`teams/audio-podcast-team/agents/`
+- 游戏设计团队前缀：`teams/game-design-team/agents/`
 - core-* 单兵（core-architect / core-code-reviewer / core-security-auditor / core-test-engineer）在 fullstack 目录；core-researcher、core-fact-checker（跨团队通用事实核查官，只读）在 academic 目录
 
 ---
@@ -142,40 +164,34 @@ teams/software-dev-team/agents/software-tester
 
 ```
 ai-expert-teams/（本仓库根；纯 Markdown 资产，平台中立）
-├── project-director.md          # 总调度入口（7 场景路由）
+├── project-director.md          # 总调度入口（18 场景路由）
 ├── export-agents.py             # 导出脚本：导出 system prompt 文本 / JSON 到 dist/
+├── build-site.py                # 官网生成：从仓库实装统计生成 site/index.html
 ├── dist/                        # 导出产物（gitignore，不入库）
-├── SKILLS_INDEX.md              # 技能索引（52 个，含归属团队）
+├── SKILLS_INDEX.md              # 技能索引（100 个，含归属团队）
 ├── AGENTS.md                    # 本文档
-├── skills/                      # 通用 skill（已实装 14 个，全团队共用）
-├── teams/
-│   ├── academic-paper-team/
-│   │   ├── agents/ (19)          # team-lead + 16 专家 + 2 core（researcher + fact-checker）
-│   │   ├── skills/ (7)           # 团队专用 skill（已实装）
-│   │   └── TEAM.md              # 团队说明
-│   ├── fullstack-web-team/
-│   │   ├── agents/ (19)          # team-lead + 14 fullstack + 4 core
-│   │   ├── skills/ (11)          # 团队专用 skill（已实装）
-│   │   └── TEAM.md
-│   ├── math-modeling-team/
-│   │   ├── agents/ (9)           # team-lead + 8 专家
-│   │   ├── skills/ (2)           # math-modeling-guosai + selfcheck（已实装）
-│   │   └── TEAM.md
-│   ├── software-dev-team/
-│   │   ├── agents/ (12)          # team-lead + 11 专家
-│   │   └── TEAM.md              # 无独立 skill，引用通用 skills/ 中 3 个
-│   ├── visual-design-team/
-│   │   ├── agents/ (14)          # team-lead + 13 专家（含只读评审）
-│   │   ├── skills/ (6)           # 团队专用 skill（已实装）
-│   │   └── TEAM.md
-│   ├── content-writing-team/
-│   │   ├── agents/ (14)          # team-lead + 13 专家（含只读质检）
-│   │   ├── skills/ (6)           # 团队专用 skill（已实装）
-│   │   └── TEAM.md
-│   └── video-production-team/
-│       ├── agents/ (14)          # team-lead + 13 专家（含两只读角色）
-│       ├── skills/ (6)           # 团队专用 skill（已实装）
-│       └── TEAM.md
+├── skills/                      # 通用 skill（14 个，全团队共用）
+├── site/                        # 官网：template.html + index.html（生成产物）
+└── teams/                       # 18 支团队（219 专家）
+    ├── academic-paper-team/     # 19 专家 · 7 skill
+    ├── fullstack-web-team/      # 19 专家 · 11 skill
+    ├── math-modeling-team/      # 9 专家 · 2 skill
+    ├── software-dev-team/       # 12 专家 · 绑定 3 通用 skill
+    ├── visual-design-team/      # 14 专家 · 6 skill
+    ├── content-writing-team/    # 14 专家 · 6 skill
+    ├── video-production-team/   # 14 专家 · 6 skill
+    ├── data-analysis-team/      # 12 专家 · 5 skill
+    ├── marketing-team/          # 12 专家 · 5 skill
+    ├── ecommerce-ops-team/      # 12 专家 · 5 skill
+    ├── product-team/            # 12 专家 · 5 skill
+    ├── finance-team/            # 10 专家 · 4 skill
+    ├── hr-team/                 # 10 专家 · 4 skill
+    ├── legal-compliance-team/   # 10 专家 · 4 skill
+    ├── translation-team/        # 10 专家 · 4 skill
+    ├── education-training-team/ # 10 专家 · 4 skill
+    ├── audio-podcast-team/      # 10 专家 · 4 skill
+    └── game-design-team/        # 10 专家 · 4 skill
+    # 每支团队结构：agents/（专家 .md）+ skills/（SKILL.md）+ TEAM.md（编排）
 ```
 
 ---
