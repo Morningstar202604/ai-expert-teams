@@ -7,6 +7,7 @@ import sys
 import unittest
 from pathlib import Path
 
+import tomllib
 import yaml
 
 REPO = Path(__file__).resolve().parent.parent
@@ -129,6 +130,46 @@ class TestExportPlatforms(unittest.TestCase):
             text = p.read_text(encoding="utf-8")
             self.assertIn('prompt = """', text, f"{p.name} 缺多行 prompt")
             self.assertIn("{{args}}", text, f"{p.name} 缺 {{args}} 注入点")
+
+    def test_gemini_toml_semantic_parse(self):
+        for p in sorted((DIST / "gemini" / "commands").glob("*.toml")):
+            data = tomllib.loads(p.read_text(encoding="utf-8"))
+            prompt = data.get("prompt", "")
+            self.assertTrue(data.get("description"), f"{p.name} 缺 description")
+            self.assertIn("{{args}}", prompt, f"{p.name} prompt 无 {{args}}")
+            self.assertGreater(len(prompt), 500, f"{p.name} prompt 内容疑似截断")
+
+    def test_agent_names_consistent_across_platforms(self):
+        roots = {
+            "claude": DIST / "claude" / ".claude" / "agents",
+            "opencode": DIST / "opencode" / ".opencode" / "agents",
+            "cursor": DIST / "cursor" / "agents",
+        }
+        sets = {k: {p.stem for p in v.glob("*.md")} for k, v in roots.items()}
+        for k, names in sets.items():
+            self.assertEqual(len(names), AGENT_COUNT, f"{k} agent 数量不符")
+        self.assertEqual(
+            sets["claude"], sets["opencode"], "claude/opencode agent 名单漂移"
+        )
+        self.assertEqual(sets["claude"], sets["cursor"], "claude/cursor agent 名单漂移")
+
+    def test_cursor_frontmatter_contract(self):
+        source_tools = {}
+        for p in (REPO / "teams").rglob("*.md"):
+            if p.parent.name == "agents":
+                source_tools.setdefault(
+                    p.stem, frontmatter(p.read_text(encoding="utf-8"))
+                )
+        for p in sorted((DIST / "cursor" / "agents").glob("*.md")):
+            fm = frontmatter(p.read_text(encoding="utf-8"))
+            self.assertTrue(fm.get("description"), f"{p.name} 缺 description")
+            src = source_tools.get(p.stem, {})
+            if src.get("tools"):
+                self.assertEqual(
+                    fm.get("tools"), src["tools"], f"{p.name} tools 与源不一致"
+                )
+            else:
+                self.assertNotIn("tools", fm, f"{p.name} 源未声明 tools 却被注入")
 
 
 class TestExistingGates(unittest.TestCase):
