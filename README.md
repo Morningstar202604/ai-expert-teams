@@ -12,6 +12,10 @@
     <a href="https://github.com/X33834/ai-expert-teams">GitHub (X33834)</a> ·
     <a href="https://github.com/Morningstar202604/ai-expert-teams">GitHub (Morningstar202604)</a>
   </p>
+  <p>
+    <a href="https://x33834.github.io/ai-expert-teams/"><b>官网（在线浏览）</b></a> ·
+    <a href="https://morningstar202604.github.io/">官网镜像</a>
+  </p>
 </div>
 
 ---
@@ -108,6 +112,8 @@ graph TB
 ---
 
 ## 快速开始
+
+> 想先看全貌？访问官网在线浏览：https://x33834.github.io/ai-expert-teams/ （镜像：https://morningstar202604.github.io/）
 
 ### 接入你自己的 agent
 
@@ -206,9 +212,12 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 ai-expert-teams/
 ├── project-director.md      # 总调度（7 场景路由）
 ├── export-agents.py         # 导出脚本：把各 agent 定义导出为 system prompt 文本 / JSON
+├── build-site.py            # 官网生成：从仓库实装统计生成 site/index.html（数据不漂移）
 ├── dist/                    # 导出产物目录（gitignore，不入库）
 ├── SKILLS_INDEX.md          # 52 个 skill 统一索引
 ├── AGENTS.md                # 使用手册
+├── site/                    # 官网：template.html（模板）+ index.html（生成产物）
+├── .github/workflows/ci.yml # CI 门禁：verify + export + 官网数据防漂移检查
 ├── skills/                  # 已实装（通用 14 + 团队 38）
 │   ├── web-search/
 │   ├── deep-research/

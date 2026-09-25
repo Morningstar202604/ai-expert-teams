@@ -20,3 +20,4 @@ dist/
 # Python 缓存
 __pycache__/
 *.pyc
+site/_shots
