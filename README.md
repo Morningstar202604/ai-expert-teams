@@ -185,6 +185,8 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 - **交接标准**：4 块模板（产出/决策/风险/重点），缺一不可
 - **监测断路**：3 轮无新增 = 卡死，同义 = 死循环，自动触发降级/换人/回退
 - **技能回退**：调用失败自动退回通用经验，**不阻塞流程**
+- **平台原生包**：`python3 export-platforms.py` 一键生成 OpenCode / Claude Code / Cursor / Gemini 安装包到 `dist/`（源格式保持平台中立）
+- **有效性门禁**：`verify.py` 第 7 节核对路由、成员表、技能索引、徽章数字与编排协议引用，漂移即 CI 红灯
 
 ---
 
@@ -193,7 +195,12 @@ teams/software-dev-team/agents/software-team-lead       # 实现登录模块，�
 ```
 ai-expert-teams/
 ├── project-director.md      # 总调度（18 场景路由）
+├── orchestration-protocol.md # 共享编排协议（门禁/回炉/断路/交接，18 lead 引用）
 ├── export-agents.py         # 导出脚本：把各 agent 定义导出为 system prompt 文本 / JSON
+├── export-platforms.py      # 平台原生包：OpenCode / Claude Code / Cursor / Gemini → dist/
+├── effectiveness.py         # 团队有效性门禁（verify.py 第 7 节）
+├── tests/                   # 单测：导出产物结构 + 有效性门禁
+├── requirements.txt         # Python 依赖（pyyaml）
 ├── build-site.py            # 官网生成：从仓库实装统计生成 site/index.html（数据不漂移）
 ├── dist/                    # 导出产物目录（gitignore，不入库）
 ├── SKILLS_INDEX.md          # 100 个 skill 统一索引

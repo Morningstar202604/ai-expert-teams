@@ -165,7 +165,11 @@ teams/software-dev-team/agents/software-tester
 ```
 ai-expert-teams/（本仓库根；纯 Markdown 资产，平台中立）
 ├── project-director.md          # 总调度入口（18 场景路由）
+├── orchestration-protocol.md    # 共享编排协议（门禁/回炉≤2/断路/交接四块，18 lead 必须引用）
 ├── export-agents.py             # 导出脚本：导出 system prompt 文本 / JSON 到 dist/
+├── export-platforms.py          # 平台原生包：OpenCode / Claude Code / Cursor / Gemini → dist/
+├── effectiveness.py             # 团队有效性门禁（verify.py 第 7 节调用）
+├── tests/                       # 单测：导出产物结构 + 有效性门禁（python -m unittest）
 ├── build-site.py                # 官网生成：从仓库实装统计生成 site/index.html
 ├── dist/                        # 导出产物（gitignore，不入库）
 ├── SKILLS_INDEX.md              # 技能索引（100 个，含归属团队）
@@ -205,8 +209,8 @@ ai-expert-teams/（本仓库根；纯 Markdown 资产，平台中立）
 | 成员卡死/死循环 | Team-lead 自动触发断路，汇报给用户 |
 | Skill 未安装 | 自动回退通用经验，日志记录 fallback |
 | 想用特定 skill | 在需求中指定「优先用 xxx skill」 |
-| 需要回滚 | Team-lead 执行 `git tag phase-N` + `checkpoint-N.md`，按记录回退 |
-| 版本追踪 | 每 Phase 结束自动写入 `versions.md` |
+| 需要回滚 | 宿主具备 git/bash 时：Team-lead 按 `checkpoint-N.md` 记录回退（`git tag phase-N` 固化）；无该能力宿主按 checkpoint 记录人工回退（分层见 `orchestration-protocol.md`） |
+| 版本追踪 | fullstack / academic 团队 lead 在 Phase 结束写 `versions.md`（非全局保证，其余团队按需） |
 
 ---
 

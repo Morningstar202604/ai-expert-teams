@@ -27,5 +27,11 @@ jobs:
       - name: Export agents (export-agents.py)
         run: python3 export-agents.py
 
+      - name: Export platform packages (export-platforms.py)
+        run: python3 export-platforms.py
+
+      - name: Unit tests (unittest)
+        run: python3 -m unittest discover -s tests
+
       - name: Site data drift check (build-site.py --check)
         run: python3 build-site.py --check

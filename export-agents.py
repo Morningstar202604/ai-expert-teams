@@ -54,7 +54,7 @@ def split_frontmatter(text: str) -> tuple[dict, str]:
         return {}, text
 
     fm_text = "".join(lines[1:end_idx])
-    body = "".join(lines[end_idx + 1:])
+    body = "".join(lines[end_idx + 1 :])
 
     try:
         meta = yaml.safe_load(fm_text) or {}
@@ -174,11 +174,14 @@ def extract_team_intro(team_md_path: Path) -> str:
     wf = _extract_section(lines, "Workflow")
     if wf:
         # 只取表格里的 workflow 名称行，避免整表过长
-        wf_names = [ln.strip() for ln in wf if ln.strip().startswith("|") and "**W" in ln]
+        wf_names = [
+            ln.strip() for ln in wf if ln.strip().startswith("|") and "**W" in ln
+        ]
         if wf_names:
-            picked.append("**核心 Workflow**：" + "；".join(
-                re.sub(r"[*|]", "", w).strip() for w in wf_names
-            ))
+            picked.append(
+                "**核心 Workflow**："
+                + "；".join(re.sub(r"[*|]", "", w).strip() for w in wf_names)
+            )
 
     return "\n\n".join(p for p in picked if p).strip()
 
@@ -210,7 +213,8 @@ def collect_common_skills() -> list[str]:
     if not COMMON_SKILLS_DIR.exists():
         return []
     return sorted(
-        p.name for p in COMMON_SKILLS_DIR.iterdir()
+        p.name
+        for p in COMMON_SKILLS_DIR.iterdir()
         if p.is_dir() and not p.name.startswith(".")
     )
 
@@ -220,7 +224,8 @@ def collect_team_skills(team_dir: Path) -> list[str]:
     if not team_skills.exists():
         return []
     return sorted(
-        p.name for p in team_skills.iterdir()
+        p.name
+        for p in team_skills.iterdir()
         if p.is_dir() and not p.name.startswith(".")
     )
 
@@ -229,9 +234,7 @@ def process_team(team_dir: Path) -> dict:
     """处理一个团队目录，返回 JSON team 对象，并写出 txt / 团队 md。"""
     team_name = team_dir.name
     agents_dir = team_dir / "agents"
-    agent_files = sorted(
-        agents_dir.glob("*.md"), key=lambda p: p.name
-    )
+    agent_files = sorted(agents_dir.glob("*.md"), key=lambda p: p.name)
 
     team_obj = {
         "team": team_name,
@@ -272,7 +275,9 @@ def process_team(team_dir: Path) -> dict:
     md_parts = [f"# {team_name} 专家团队 - 完整 system prompt 汇总", ""]
     if intro:
         md_parts += [intro, ""]
-    md_parts.append("> 以下为该团队全部成员的 system prompt，可整队复制或按需拆分使用。")
+    md_parts.append(
+        "> 以下为该团队全部成员的 system prompt，可整队复制或按需拆分使用。"
+    )
     md_parts.append("")
 
     for agent_id, txt in team_sysprompts:
@@ -292,16 +297,19 @@ def process_team(team_dir: Path) -> dict:
 
 
 def main() -> int:
-    # 幂等：清空并重建 dist/
-    if DIST_DIR.exists():
-        shutil.rmtree(DIST_DIR)
+    # 幂等：只清理本脚本自己的产物，保留 export-platforms.py 的平台包
+    for own in ("teams", "system-prompts"):
+        target = DIST_DIR / own
+        if target.exists():
+            shutil.rmtree(target)
+    agents_json = DIST_DIR / "agents.json"
+    if agents_json.exists():
+        agents_json.unlink()
     DIST_DIR.mkdir(parents=True, exist_ok=True)
 
     common_skills = collect_common_skills()
 
-    team_dirs = sorted(
-        p for p in TEAMS_DIR.iterdir() if p.is_dir()
-    )
+    team_dirs = sorted(p for p in TEAMS_DIR.iterdir() if p.is_dir())
 
     teams_out: list[dict] = []
     total_agents = 0
@@ -309,8 +317,10 @@ def main() -> int:
         team_obj = process_team(team_dir)
         teams_out.append(team_obj)
         total_agents += len(team_obj["agents"])
-        print(f"  [团队] {team_dir.name}: {len(team_obj['agents'])} 个 agent, "
-              f"{len(team_obj['team_skills'])} 个团队 skill")
+        print(
+            f"  [团队] {team_dir.name}: {len(team_obj['agents'])} 个 agent, "
+            f"{len(team_obj['team_skills'])} 个团队 skill"
+        )
 
     payload = {
         "version": 1,
@@ -326,8 +336,10 @@ def main() -> int:
     )
 
     print()
-    print(f"导出完成：{len(teams_out)} 个团队 / {total_agents} 个 agent "
-          f"/ {len(common_skills)} 个通用 skill")
+    print(
+        f"导出完成：{len(teams_out)} 个团队 / {total_agents} 个 agent "
+        f"/ {len(common_skills)} 个通用 skill"
+    )
     print(f"  JSON:      {json_path.relative_to(REPO_ROOT)}")
     print(f"  纯文本:    dist/teams/<team>/<agent-id>.txt")
     print(f"  团队汇总:  dist/system-prompts/<team>-team.md")
