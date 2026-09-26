@@ -45,7 +45,7 @@ READONLY_CLAIMS = (
     "不改代码",
 )
 ROUTE_RE = re.compile(r"`teams/([a-z0-9-]+)/agents/([a-z0-9-]+)`")
-MEMBER_COUNT_RE = re.compile(r"成员架构（?\s*(\d+)\s*人")
+MEMBER_COUNT_RE = re.compile(r"成员架构（?\s*(\d+)\s*人）?")
 TABLE_ID_RE = re.compile(r"\|\s*`([a-z0-9][a-z0-9-]{2,})`\s*\|")
 BADGE_AGENTS_RE = re.compile(r"Agents-(\d+)")
 BADGE_SKILLS_RE = re.compile(r"Skills-(\d+)")

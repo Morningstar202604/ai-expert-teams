@@ -198,7 +198,7 @@ def export_cursor(agents: list[dict], skills: list[tuple[str, Path]]) -> None:
 
 
 def toml_string(text: str) -> str:
-    """转成可放进 TOML 多行基本字符串（\"\"\") 的内容：先转义反斜杠再转义引号。"""
+    """转成可放进 TOML 多行基本字符串（\"\"\"）的内容：先转义反斜杠再转义引号。"""
     return text.replace("\\", "\\\\").replace('"', '\\"')
 
 
