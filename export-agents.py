@@ -166,7 +166,7 @@ def extract_team_intro(team_md_path: Path) -> str:
         picked.extend(section)
 
     # 3) 成员架构标题里的人数
-    m = re.search(r"##\s*成员架构（?\s*(\d+)\s*人", text)
+    m = re.search(r"##\s*成员架构（?\s*(\d+)\s*人）?", text)
     if m:
         picked.append(f"**成员规模**：共 {m.group(1)} 名专家。")
 
