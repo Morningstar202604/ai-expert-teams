@@ -17,15 +17,15 @@ teams/<team-name>/skills/               # 团队专用 skill（相对本仓库�
 
 | 名称 | 位置 | 一句话用途 |
 |------|------|------------|
-| `web-search` | `skills/web-search/` | 通用联网搜索：query 改写、多源检索、去重可信度分级、TTL 缓存与引用溯源。 |
-| `deep-research` | `skills/deep-research/` | 多轮深度调研：问题拆解、迭代检索、证据分级交叉验证、带引用的综合报告。 |
+| `web-search` | `skills/web-search/` | 免费联网搜索：SearXNG 主 + DuckDuckGo 备、24h 缓存、深度模式（融合版，含 search_client.py 与 4 份 references） |
+| `deep-research` | `skills/deep-research/` | 多轮检索深度调研：查询分解、信源可信度评分、去重与结构化报告（含 research_agent.py 可执行流水线，依赖 web-search） |
 | `security-scan` | `skills/security-scan/` | 单遍仓库安全审计：依赖 CVE、硬编码密钥、IaC 配置、轻量 SAST 风险清单。 |
 | `deep-security-scan` | `skills/deep-security-scan/` | 多遍深度安全扫描：业务逻辑漏洞、越权/注入深挖、攻击面测绘与修复排序。 |
-| `performance-profiler` | `skills/performance-profiler/` | CPU/内存/IO 瓶颈定位：Python/Node/系统/前端工具链，先度量再优化。 |
-| `ci-cd-pipeline-builder` | `skills/ci-cd-pipeline-builder/` | 流水线生成与质量门禁：阶段划分、覆盖率/漏洞门禁、蓝绿/金丝雀与回滚模板。 |
+| `performance-profiler` | `skills/performance-profiler/` | Node/Python/Go 性能剖析：CPU/内存/IO 瓶颈、火焰图、k6/Artillery 压测（含剖析与示例代码库） |
+| `ci-cd-pipeline-builder` | `skills/ci-cd-pipeline-builder/` | CI/CD 流水线设计：阶段规划、测试门禁、部署策略（融合版，含 pipeline_generator/stack_detector 脚本与平台决策库） |
 | `frontend-app-builder` | `skills/frontend-app-builder/` | 前端应用脚手架：Vite/Next.js 目录结构、状态管理选型、路由与 API 层封装。 |
 | `frontend-testing-debugging` | `skills/frontend-testing-debugging/` | 前端 E2E/组件测试：Playwright/Vitest 选择器策略、调试与 flaky test 治理。 |
-| `api-design-reviewer` | `skills/api-design-reviewer/` | REST/GraphQL 设计评审：命名、状态码、分页版本化、错误格式与安全检查清单。 |
+| `api-design-reviewer` | `skills/api-design-reviewer/` | REST/GraphQL 设计评审：命名、状态码、分页版本化、错误格式与安全（融合版，含 api_linter/api_scorecard/breaking_change_detector 脚本） |
 | `test-case-generator-v2` | `skills/test-case-generator-v2/` | 企业级测试用例生成：等价类/边界值/决策表设计、标准化模板与回归集分层。 |
 | `uml-and-software-architecture-visualization` | `skills/uml-and-software-architecture-visualization/` | 架构/时序/类/流程图：PlantUML 与 Mermaid、C4 模型与图表选型规则。 |
 | `accuracy-and-fact-check` | `skills/accuracy-and-fact-check/` | **P0 全团队**：交付前事实准确性核查，断言三级分级+证据强度五级，防幻觉，反例搜索与交叉计算。 |
@@ -38,13 +38,13 @@ teams/<team-name>/skills/               # 团队专用 skill（相对本仓库�
 
 | 名称 | 位置 | 一句话用途 |
 |------|------|------------|
-| `paper-topic-selector` | `teams/academic-paper-team/skills/paper-topic-selector/` | 选题缺口识别与可行性打分：研究空白/数据/创新/期刊匹配四维 0-5 分排序。 |
-| `journal-adapt` | `teams/academic-paper-team/skills/journal-adapt/` | 目标期刊格式适配：字数、引用格式、图表编号、学术禁词逐项核对清单。 |
-| `lit-review` | `teams/academic-paper-team/skills/lit-review/` | PRISMA 文献综述：检索式、纳入排除标准、去重筛选与四阶段流程图矩阵。 |
+| `paper-topic-selector` | `teams/academic-paper-team/skills/paper-topic-selector/` | 研究选题评分排序：novelty/feasibility/impact/buildability 四因子（融合版，含打分脚本与 lit-review 联动） |
+| `journal-adapt` | `teams/academic-paper-team/skills/journal-adapt/` | 期刊投稿格式适配：venue 规则、页数估算、禁词与双盲检查（融合版，含 journal_adapt.py 校验脚本） |
+| `lit-review` | `teams/academic-paper-team/skills/lit-review/` | PRISMA 文献综述与真实引文图：S2/arXiv 检索、趋势缺口综合（融合版，含 lit_review.py 与离线 mock 回退） |
 | `figure-maker` | `teams/academic-paper-team/skills/figure-maker/` | 论文级图表闸门：矢量导出、色盲友好配色、字号坐标轴规范与 Matplotlib 模板。 |
-| `model-formulator` | `teams/academic-paper-team/skills/model-formulator/` | 自然语言问题→规范数学模型：决策变量/目标函数/约束/假设四件套。 |
-| `model-solver` | `teams/academic-paper-team/skills/model-solver/` | 数学模型数值求解：按线性/非线性/启发式选求解器，给 Python 代码与正确性检查。 |
-| `pdf-pipeline` | `teams/academic-paper-team/skills/pdf-pipeline/` | 学术 PDF 流水线：合并/拆分、文本表格提取、OCR、元数据批量写入与自检。 |
+| `model-formulator` | `teams/academic-paper-team/skills/model-formulator/` | 自然语言问题→数学模型规格：变量/约束/目标形式化（融合版，含规格化脚本，衔接 model-solver） |
+| `model-solver` | `teams/academic-paper-team/skills/model-solver/` | LP/MIP/ODE/蒙特卡洛数值求解与收敛报告（融合版，含求解脚本，消费 model-formulator 规格） |
+| `pdf-pipeline` | `teams/academic-paper-team/skills/pdf-pipeline/` | PDF 页级处理：合并/拆分/文本提取/元数据/AcroForm 探测（融合版，含 pdf_ops.py 操作脚本） |
 
 ---
 
@@ -52,17 +52,17 @@ teams/<team-name>/skills/               # 团队专用 skill（相对本仓库�
 
 | 名称 | 位置 | 一句话用途 |
 |------|------|------------|
-| `docker-development` | `teams/fullstack-web-team/skills/docker-development/` | 生产级 Dockerfile：多阶段构建、层缓存、非 root、健康检查与镜像瘦身。 |
-| `helm-chart-builder` | `teams/fullstack-web-team/skills/helm-chart-builder/` | Helm Chart 打包：values 分层、hooks 迁移、依赖管理与升级回滚模板。 |
-| `terraform-patterns` | `teams/fullstack-web-team/skills/terraform-patterns/` | Terraform 工程化：模块、S3+DynamoDB 远程状态、workspace 分环境与 CI 门禁。 |
+| `docker-development` | `teams/fullstack-web-team/skills/docker-development/` | Dockerfile 优化、compose 编排、多阶段构建与容器安全加固（含 compose_validator 等校验脚本与规则库） |
+| `helm-chart-builder` | `teams/fullstack-web-team/skills/helm-chart-builder/` | Helm chart 脚手架、values 设计、模板模式与安全加固（含 chart_analyzer 脚本与 references） |
+| `terraform-patterns` | `teams/fullstack-web-team/skills/terraform-patterns/` | Terraform 模块设计、state 管理、安全加固与 CI plan/apply（含 tf_module_analyzer 与规则库） |
 | `github-actions-advanced` | `teams/fullstack-web-team/skills/github-actions-advanced/` | 高级 Workflow：矩阵构建、缓存、environment 保护、OIDC 免密与并发控制。 |
 | `supabase-postgres-best-practices` | `teams/fullstack-web-team/skills/supabase-postgres-best-practices/` | Postgres 实战：索引选型、EXPLAIN 慢查询、RLS 策略、分区与 vacuum。 |
-| `react-best-practices` | `teams/fullstack-web-team/skills/react-best-practices/` | React/Next.js 性能：memo 取舍、代码分割、SSR/SSG/ISR 与数据获取模板。 |
+| `react-best-practices` | `teams/fullstack-web-team/skills/react-best-practices/` | React/Next.js 性能优化规则库（Vercel 工程规则 + references 全集，组件/数据获取/打包纪律） |
 | `shadcn` | `teams/fullstack-web-team/skills/shadcn/` | shadcn/ui 规范：初始化、组件引入、主题暗色、react-hook-form+zod 表单与 a11y。 |
 | `stripe-best-practices` | `teams/fullstack-web-team/skills/stripe-best-practices/` | Stripe 接入：Payment Intent、Webhook 签名校验、订阅生命周期与 Connect 分账。 |
-| `observability-designer` | `teams/fullstack-web-team/skills/observability-designer/` | 观测体系：OpenTelemetry 接入、Prometheus 指标命名、Grafana 面板与告警分级。 |
-| `slo-architect` | `teams/fullstack-web-team/skills/slo-architect/` | SLO 可靠性：SLI 选型、错误预算计算、多窗口多燃尽率告警与预算冻结发布。 |
-| `kubernetes-operator` | `teams/fullstack-web-team/skills/kubernetes-operator/` | Operator 模式：CRD 定义、Reconcile 循环、Finalizer、Webhook 与多版本兼容。 |
+| `observability-designer` | `teams/fullstack-web-team/skills/observability-designer/` | 可观测性三支柱、黄金信号与告警降噪（融合版，含 dashboard_generator/alert_optimizer 脚本与 Grafana 模板） |
+| `slo-architect` | `teams/fullstack-web-team/skills/slo-architect/` | SLO/SLI/错误预算设计与评审（含 SLO designer、error-budget 计算器、multi-window burn-rate 脚本） |
+| `kubernetes-operator` | `teams/fullstack-web-team/skills/kubernetes-operator/` | K8s Operator/自定义控制器与 CRD 设计（含 CRD validator、reconcile linter、capability auditor 脚本） |
 
 ---
 

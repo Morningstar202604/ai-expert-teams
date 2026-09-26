@@ -1,52 +1,105 @@
 ---
 name: performance-profiler
-description: 性能瓶颈剖析规程。当全栈/软件开发团队遇到慢接口、内存泄漏、CPU 打满、IO 阻塞或需要优化前先定位瓶颈时调用。按「先测量再优化」原则，用 profiler 抓火焰图/堆快照/IO 等待分布，区分 CPU/内存/IO/锁瓶颈，定位到具体函数与调用栈，拒绝凭直觉优化。
-license: MIT
-compatibility: universal
+description: "对 Node.js、Python、Go 应用做系统性性能剖析：定位 CPU/内存/I/O 瓶颈、生成火焰图、分析包体积、优化数据库查询、用 k6 与 Artillery 跑压测。始终先测后改。何时使用：排查慢接口、规划性能预算或定位内存泄漏时。触发场景（中/英）：性能分析 / 找瓶颈 / 优化慢代码 / profile performance / find bottleneck / optimize slow code。排除项：不改业务代码修复热点（仅做剖析）。 何时使用：接口变慢、内存持续增长或需要定性能预算时。触发场景（中/英）：性能分析 / 找瓶颈 / 优化慢代码 / 内存泄漏排查 / profile performance / find bottleneck / optimize slow code.排除项：不直接改业务代码修复热点（仅做剖析与建议）。Use when the user asks 性能分析 / 找瓶颈 / 优化慢代码 / 内存泄漏排查 / profile performance / find bottleneck / optimize slow code. Do NOT use when the ask is to patch business logic or refactor the hot path directly (this skill only diagnoses)."
+license: Apache-2.0
+compatibility: Pure prompt-based; may read project structure via Bash.
+metadata:
+  version: "1.0"
+  author: awesome-skillkit
+  category: performance
+  pattern: single-task
+  tier: powerful
+  verified-date: "2026-09-09"
 ---
 
-# 性能瓶颈剖析（CPU / 内存 / IO）
+# Performance Profiler
 
-本 skill 适配**全栈、软件开发**团队。铁律：**先测量，再优化**。没有 profiler 数据前，不凭直觉猜哪里慢、不先上缓存/多线程。优化目标是消除被测量证实的瓶颈，而不是让代码「看起来更快」。
+系统性性能剖析：定位瓶颈、量化前后差异、给出优化方向。
 
-## 这是什么
-一套定位性能瓶颈的方法论：复现 → 采样 → 区分瓶颈类型 → 定位到函数/调用栈 → 验证优化收益。它强调用数据说话，每一步都要有前后对比数字。
+## 核心能力
 
-## 何时使用
-- 接口 P99 慢、页面卡顿、批量任务跑太久。
-- 内存持续上涨 / OOM / GC 频繁。
-- CPU 打满、线程阻塞、DB 连接耗尽。
-- 优化前必须先知道瓶颈在哪。
+- **CPU 剖析** — Node.js 火焰图、Python py-spy、Go pprof
+- **内存剖析** — 堆快照、泄漏检测、GC 压力
+- **包体积分析** — webpack-bundle-analyzer、Next.js bundle analyzer
+- **数据库优化** — EXPLAIN ANALYZE、慢查询日志、N+1 检测
+- **压测** — k6 脚本、Artillery 场景、阶梯加压
+- **前后对比** — 先建基线，再剖析、优化、复测验证
 
-## 核心步骤
-1. **先定基线与指标**：明确测什么（P50/P99、吞吐、内存峰值、CPU%），记录优化前数字。
-2. **复现并采样**：在能复现的环境跑负载，同时抓 profiler——CPU 火焰图、堆快照、IO/锁等待分布。
-3. **分类瓶颈**：先看是 CPU 密集、内存（分配/泄漏）、IO 等待（DB/磁盘/网络）还是锁竞争。
-4. **下钻到热点**：火焰图找占比最高的栈帧；堆快照找最大保留对象；IO 等待找最慢的调用。
-5. **验证根因**：确认瓶颈是真热点而非采样噪声；区分「真慢」与「调用次数多累积慢」。
-6. **优化并复测**：改一处、测一次，对比基线；没有收益的优化回滚。
+## 输入清单
 
-## 瓶颈分类速查
-| 现象 | 工具方向 | 常见根因 |
-|------|----------|----------|
-| CPU 高 | CPU 火焰图 | 热循环、正则、序列化、无缓存重复计算 |
-| 内存涨/OOM | 堆快照、GC 日志 | 泄漏（静态集合累积）、大对象、未释放连接 |
-| 延迟高但 CPU 低 | IO 等待 | 慢 SQL、缺索引、同步串行调用、外部接口慢 |
-| 吞吐上不去 | 锁/并发分析 | 全局锁、连接池耗尽、串行化 |
+| 输入 | 必需 | 说明 |
+|------|------|------|
+| project_path | 是 | 待剖析项目根目录路径 |
+| format | 否 | `text` / `json`（用 `--json`） | text |
+| large_file_threshold_kb | 否 | 大文件告警阈值（KB） | 脚本默认 |
 
-## 优化清单
-- [ ] 优化前有基线数字，优化后有对比数字。
-- [ ] 瓶颈已用 profiler 数据定位到具体函数/调用栈。
-- [ ] 先优化占比最高的热点，不从小处抠。
-- [ ] 区分 CPU 时间与等待时间，不把 IO 等待误当 CPU 问题。
-- [ ] 内存问题查对象保留链，不盲目加机器内存。
-- [ ] 每个优化点单独验证收益，无收益即回滚。
-- [ ] 关注 P99 长尾，不只看平均值。
+缺失时一次性问齐：「请提供：① project_path（项目根目录）。输出格式与阈值我按默认处理。」
 
-## 易错点
-- **凭直觉优化**：觉得某函数慢就改它，结果 profiler 显示热点在别处。
-- **平均指标骗人**：平均延迟正常，但 P99 长尾严重，必须看分位数。
-- **过早优化**：还没确认瓶颈就引入缓存/异步，增加复杂度却没收益。
-- **把 IO 等待当 CPU**：进程大部分时间在等 DB，却去优化计算逻辑，方向错。
-- **测了不复现**：在低负载下采样，抓不到生产的高并发热点。
-- **优化不测回归**：改了一处热点，却拖垮了别处（如加缓存引入一致性问题）。
+## 前置自检
+
+```bash
+python3 --version
+test -f scripts/performance_profiler.py && echo "OK script present"
+```
+
+- 预期：版本号输出；脚本存在打印 `OK script present`。
+- 若失败：脚本缺失 → STOP 回报；非 Python 项目剖析时还需对应运行时（node/py-spy/go）与 k6/artillery 按需安装。
+
+## 工作流
+
+### 步骤 1：扫描风险指标（基线）
+
+```bash
+python3 scripts/performance_profiler.py examples/sample-codebase   # 随包样例代码库；你的真实项目换成项目根
+python3 scripts/performance_profiler.py examples/sample-codebase --json
+python3 scripts/performance_profiler.py examples/sample-codebase --large-file-threshold-kb 256
+```
+
+- 动作：扫描项目，输出性能风险指标（大文件、可疑模式等）。
+- 预期：终端打印风险清单；`--json` 时输出结构化 JSON；`--large-file-threshold-kb` 覆盖阈值。
+- 若失败：`No such file or directory` → project_path 错；非预期退出 → 去掉 `--json` 看文本报错。
+
+### 步骤 2：建立前后测量基线
+
+- 动作：在任意优化前记录 P50/P95/P99 延迟、RPS、错误率、内存占用。
+- 预期：得到可对比的数字基线。
+- 若失败：无监控数据 → 先用步骤 1 扫描 + 运行时 profiler 取数，禁止凭感觉优化。
+
+### 步骤 3：按语言剖析并优化
+
+- 动作：对照 references/profiling-recipes.md 取对应命令生成火焰图/堆快照；按 references/optimization-playbook.md 的清单做优化。
+- 预期：定位到具体热点（函数/查询/依赖）。
+- 若失败：无热点 → 回到基线确认瓶颈假设是否成立。
+
+### 步骤 4：复测验证
+
+- 动作：优化后重复步骤 1–2，对比基线确认改善。
+- 预期：关键指标较基线下降（延迟）或资源占用减少。
+- 若失败：无改善甚至回退 → 回滚变更，重读 recipes 选其他路径。
+
+## 快速优化清单
+
+- 数据库：为高频查询列加索引；连接池（pgBouncer/HikariCP）；结果缓存（Redis）；把 N+1 合并为批量查询。
+- 应用：同步 I/O 改异步；大结果集分页；大文件流式处理；缓存昂贵计算（LRU/Redis）。
+- 前端：大包 code-split（动态 import）；首屏外图片懒加载；gzip/brotli 压缩；静态资源走 CDN。
+
+## 失败处置表
+
+| 现象/错误码 | 原因 | 处置 |
+|------------|------|------|
+| `No such file or directory` | project_path 错误 | 核对路径后重跑 |
+| 非预期非零退出 | 项目含不支持结构 | 去掉 `--json` 看文本错误 |
+| 优化后指标无改善 | 热点判断错 | 回滚，重读 profiling-recipes.md |
+| 缺运行时工具 | node/py-spy/go 未装 | 安装对应剖析工具后重测 |
+
+## 交付标准
+
+- 成功定义：产出基线数字 + 热点定位 + 优化后复测对比（至少延迟或资源一项有改善）。
+- 产物命名：`profile-<date>.json`（--json 时）或终端报告文本。
+- 保存位置：项目根目录或用户指定目录。
+- 验证完整性：前后两次 `--json` 输出可解析，关键指标字段存在且可对比。
+
+## 参考
+
+- references/profiling-recipes.md — Node/Python/Go 剖析命令、火焰图、堆快照时读
+- references/optimization-playbook.md — 前后测量模板、DB/Node/包/API 优化清单、常见陷阱时读
