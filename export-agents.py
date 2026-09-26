@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 export-agents.py — 将仓库中的 markdown agent 定义导出为平台中立的通用格式。
 
@@ -341,8 +340,8 @@ def main() -> int:
         f"/ {len(common_skills)} 个通用 skill"
     )
     print(f"  JSON:      {json_path.relative_to(REPO_ROOT)}")
-    print(f"  纯文本:    dist/teams/<team>/<agent-id>.txt")
-    print(f"  团队汇总:  dist/system-prompts/<team>-team.md")
+    print("  纯文本:    dist/teams/<team>/<agent-id>.txt")
+    print("  团队汇总:  dist/system-prompts/<team>-team.md")
     return 0
 
 

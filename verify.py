@@ -4,6 +4,7 @@
 import os
 import re
 import sys
+
 import yaml
 
 import effectiveness
@@ -78,7 +79,8 @@ for name, path, location in skill_dirs:
     if not os.path.isfile(skill_md):
         err(f"[{name}] 缺少 SKILL.md ({location})")
         continue
-    text = open(skill_md, encoding="utf-8").read()
+    with open(skill_md, encoding="utf-8") as fh:
+        text = fh.read()
     fm, body = parse_frontmatter(text)
     if fm is None:
         err(f"[{name}] 无 frontmatter")
@@ -146,7 +148,8 @@ FORBIDDEN_FIELDS = {"mode", "permission", "hidden"}
 
 agent_errors_before = len(errors)
 for agent_id, path, team in agent_files:
-    text = open(path, encoding="utf-8").read()
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
     fm, body = parse_frontmatter(text)
     if fm is None:
         err(f"[{agent_id}] 无 frontmatter")
@@ -203,7 +206,8 @@ for rel_path in REWRITE_AGENTS:
     if not os.path.isfile(path):
         err(f"[{rel_path}] 文件不存在")
         continue
-    text = open(path, encoding="utf-8").read()
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
     line_count = len(text.split("\n"))
     if line_count < 30:
         err(f"[{rel_path}] 仅 {line_count} 行，疑似未重写")
@@ -213,7 +217,7 @@ for rel_path in REWRITE_AGENTS:
     # 检查交接模板
     if "交接模板" not in text:
         err(f"[{rel_path}] 缺交接模板")
-ok(f"8 个重写 agent 结构校验完成")
+ok("8 个重写 agent 结构校验完成")
 
 # ═══════════════════════════════════════════════════════
 # 4. 人数口径校验
@@ -272,7 +276,8 @@ def read_agent_bodies(agents_path):
     if os.path.isdir(agents_path):
         for fname in sorted(os.listdir(agents_path)):
             if fname.endswith(".md"):
-                bodies.append(open(f"{agents_path}/{fname}", encoding="utf-8").read())
+                with open(f"{agents_path}/{fname}", encoding="utf-8") as fh:
+                    bodies.append(fh.read())
     return bodies
 
 
@@ -299,7 +304,8 @@ if os.path.isdir(general_skills_path):
         all_bodies.extend(read_agent_bodies(f"{BASE}/teams/{team}/agents"))
     pd_path = f"{BASE}/project-director.md"
     if os.path.isfile(pd_path):
-        all_bodies.append(open(pd_path, encoding="utf-8").read())
+        with open(pd_path, encoding="utf-8") as fh:
+            all_bodies.append(fh.read())
     global_body = "\n".join(all_bodies)
     for skill_name in sorted(os.listdir(general_skills_path)):
         if not os.path.isdir(f"{general_skills_path}/{skill_name}"):
